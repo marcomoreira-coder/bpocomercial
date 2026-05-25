@@ -231,6 +231,30 @@ select option{background:var(--bg2);color:var(--text);}
 .jl{font-size:11px;color:var(--text2);line-height:1.7;padding-left:11px;position:relative;margin-bottom:2px;}
 .jl::before{content:'·';position:absolute;left:2px;color:var(--cyan);font-weight:700;}
 
+
+/* ── ADM PANEL ── */
+.adm-trigger{display:block;text-align:center;padding:28px 0 12px;cursor:pointer;font-size:10px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;opacity:.35;transition:opacity .2s;user-select:none;}
+.adm-trigger:hover{opacity:.7;}
+.adm-panel{display:none;max-width:600px;margin:0 auto 32px;background:var(--surface);border:1.5px solid var(--border);border-radius:7px;overflow:hidden;}
+.adm-panel.open{display:block;}
+.adm-head{background:var(--bg2);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
+.adm-head-t{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;}
+.adm-body{padding:14px 16px;}
+.adm-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:12px;}
+.adm-row:last-child{border-bottom:none;}
+.adm-name{flex:1;font-weight:600;color:var(--text);font-size:12px;}
+.adm-co{font-size:11px;color:var(--text3);}
+.adm-st{font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;text-transform:uppercase;}
+.adm-btn{background:transparent;border:1.5px solid var(--border);color:var(--text2);border-radius:4px;padding:4px 10px;font-size:11px;font-weight:600;cursor:pointer;font-family:Montserrat,sans-serif;transition:all .15s;}
+.adm-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+.adm-btn.del{border-color:rgba(224,85,85,.3);color:var(--red);}
+.adm-btn.del:hover{background:rgba(224,85,85,.08);}
+.adm-empty{text-align:center;padding:20px;color:var(--text3);font-size:12px;}
+.adm-lock{display:none;padding:16px;text-align:center;}
+.adm-lock.show{display:block;}
+.adm-lock input{max-width:200px;text-align:center;margin:8px auto 0;display:block;}
+.adm-lock-lbl{font-size:11px;color:var(--text3);margin-bottom:6px;}
+
 /* ── FOOTER ── */
 .of{background:var(--bg2);padding:18px 42px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid var(--cyan);}
 
@@ -581,7 +605,19 @@ function rDash(){
     '<div class="ps"><div class="ps-l">Ticket Médio</div><div class="ps-v" style="font-size:18px;color:#e8edf2;">'+fmtVal(avgV)+'</div><div class="ps-s" style="color:#5e7888;">por proposta</div></div>'+
     '<div class="ps"><div class="ps-l">Conversão</div><div class="ps-v" style="font-size:18px;color:#e8edf2;">'+conv+'</div><div class="ps-s" style="color:#5e7888;">env → apr</div></div>'+
     '</div></div>'+
-    cards+'</div>';
+    cards+
+    '<div class="adm-trigger" onclick="toggleAdm()">⚙ adm</div>'+
+    '<div class="adm-panel" id="adm-panel">'+
+      '<div class="adm-head">'+
+        '<span class="adm-head-t">⚙ Painel Administrativo</span>'+
+        '<div style="display:flex;gap:6px;">'+
+          '<button class="adm-btn del" onclick="admClearAll()">Excluir tudo</button>'+
+          '<button class="adm-btn" onclick="document.getElementById(\'adm-panel\').classList.remove(\'open\')">✕ Fechar</button>'+
+        '</div>'+
+      '</div>'+
+      '<div class="adm-body"><div id="adm-list"></div></div>'+
+    '</div>'+
+    '</div>';
 }
 
 function chip(l,v,key,multi){const on=multi?(F[key]||[]).includes(v):F[key]===v;const cl=multi?`tgl('${key}','${v}')`:`setF('${key}','${v}')`;return`<span class="chip${on?' on':''}" onclick="${cl}">${l}</span>`;}
@@ -1106,6 +1142,62 @@ function saveG(){
 }
 
 re();
+
+// ── ADM PANEL ──────────────────────────────────────────────────────────────
+var admUnlocked=false;
+const ADM_PASS='escalar2025';
+
+function toggleAdm(){
+  const panel=document.getElementById('adm-panel');
+  if(!panel)return;
+  if(!admUnlocked){
+    const pw=prompt('Senha ADM:');
+    if(pw!==ADM_PASS){if(pw!==null)alert('Senha incorreta.');return;}
+    admUnlocked=true;
+  }
+  panel.classList.toggle('open');
+  renderAdmList();
+}
+
+function renderAdmList(){
+  const list=document.getElementById('adm-list');
+  if(!list)return;
+  if(!proposals.length){list.innerHTML='<div class="adm-empty">Nenhuma proposta cadastrada.</div>';return;}
+  const SCOL={'rascunho':'color:#5e7888;background:rgba(255,255,255,.05)','enviada':'color:#00c4bc;background:rgba(0,196,188,.1)','aprovada':'color:#3ecf7a;background:rgba(62,207,122,.1)','perdida':'color:#e05555;background:rgba(224,85,85,.1)'};
+  list.innerHTML=proposals.map(p=>`
+    <div class="adm-row">
+      <div class="adm-name">${p.empresa||'Sem nome'}</div>
+      <div class="adm-co">${p.contato||'—'}</div>
+      <span class="adm-st" style="${SCOL[p.status]||''}">${p.status||'rascunho'}</span>
+      <button class="adm-btn" onclick="admEdit(${p.id})">✏ Editar</button>
+      <button class="adm-btn del" onclick="admDel(${p.id})">✕ Excluir</button>
+    </div>`).join('');
+}
+
+function admEdit(id){
+  document.getElementById('adm-panel').classList.remove('open');
+  goEdit(id);
+}
+
+function admDel(id){
+  const p=proposals.find(x=>x.id===id);
+  if(!p)return;
+  if(!confirm('Excluir proposta de "'+( p.empresa||'Sem nome')+'"?\n\nEssa ação não pode ser desfeita.'))return;
+  proposals=proposals.filter(x=>x.id!==id);
+  save();
+  renderAdmList();
+  re();
+}
+
+function admClearAll(){
+  if(!confirm('⚠️ ATENÇÃO\n\nExcluir TODAS as propostas?\n\nEssa ação não pode ser desfeita.'))return;
+  proposals=[];
+  save();
+  document.getElementById('adm-panel').classList.remove('open');
+  admUnlocked=false;
+  re();
+}
+
 </script>
 </body>
 </html>
