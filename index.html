@@ -1,448 +1,365 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Proposta Comercial — Escalar BPO</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
-<style>
-/* ── DESIGN SYSTEM: PDF Dark Theme ────────────────────────── */
-:root{
-  --bg:        #f2f2f2;
-  --bg2:       #ffffff;
-  --bg3:       #ebebeb;
-  --bg4:       #e4e4e4;
-  --surface:   #ffffff;
-  --surface2:  #f7f7f7;
-  --border:    rgba(0,196,188,.22);
-  --border2:   rgba(0,0,0,.08);
-  --cyan:      #00c4bc;
-  --cyan2:     #00a89f;
-  --cyan-dim:  rgba(0,196,188,.12);
-  --cyan-glow: rgba(0,196,188,.07);
-  --amber:     #e6a800;
-  --amber-dim: rgba(230,168,0,.1);
-  --green:     #2db36e;
-  --red:       #d94040;
-  --text:      #1a2830;
-  --text2:     #4a6070;
-  --text3:     #8a9ea8;
-  --dark-bg:   #1a2830;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:Montserrat,sans-serif;background:var(--bg);color:var(--text);}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Comercial — Escalar BPO</title>
+    <!-- Fonte Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-general: #f2f2f2;
+            --surface: #ffffff;
+            --text-primary: #1a2830;
+            --text-secondary: #4a6070;
+            --text-muted: #8a9ea8;
+            --accent-cyan: #00c4bc;
+            --border-cyan: rgba(0, 196, 188, 0.22);
+            --shadow-cyan: rgba(0, 196, 188, 0.1);
+            --dark-surface: #1a2830;
+        }
 
-/* ── NAV ── */
-.nav{background:#ffffff;border-bottom:2px solid var(--cyan);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,196,188,.15);}
-.nav-center{position:absolute;left:50%;transform:translateX(-50%);}
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--bg-general); 
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
 
-/* ── BUTTONS ── */
-.nbtn{background:var(--cyan);color:#ffffff;border:none;border-radius:5px;padding:8px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:Montserrat,sans-serif;transition:background .15s;}
-.nbtn:hover{background:var(--cyan2);}
-.sbtn{background:transparent;color:var(--text2);border:1.5px solid rgba(0,0,0,.15);border-radius:5px;padding:7px 13px;font-weight:600;font-size:12px;cursor:pointer;font-family:Montserrat,sans-serif;transition:all .15s;}
-.sbtn:hover{border-color:var(--cyan);color:var(--cyan);}
-.dbtn{background:transparent;color:var(--red);border:1.5px solid rgba(224,85,85,.3);border-radius:5px;padding:7px 12px;font-weight:600;font-size:12px;cursor:pointer;font-family:Montserrat,sans-serif;}
+        /* Nav & Footer */
+        .nav { 
+            background-color: var(--surface); 
+            padding: 16px 24px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            position: sticky; 
+            top: 0; 
+            z-index: 100;
+            box-shadow: 0 2px 10px var(--shadow-cyan);
+            border-bottom: 1px solid var(--border-cyan);
+        }
 
-/* ── LAYOUT ── */
-.main{max-width:960px;margin:0 auto;padding:28px 22px 60px;}
+        .main { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
 
-/* ── STATS ── */
-.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px;}
-.stat{background:var(--surface);border:1.5px solid var(--border);border-radius:7px;padding:14px 16px;}
-.sv{font-family:Montserrat,sans-serif;font-size:28px;font-weight:700;color:var(--cyan);}
-.sl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-top:3px;}
+        /* Logos */
+        .logo-container { text-align: center; margin-bottom: 30px; }
+        .logo-escalar { height: 50px; display: block; margin: 0 auto; }
+        
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--accent-cyan);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .btn-primary:hover { opacity: 0.9; }
 
-/* ── PIPELINE ── */
-.pipe{background:var(--surface);border:1.5px solid var(--border);border-radius:7px;padding:15px 18px;margin-bottom:18px;}
-.pipe-t{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;}
-.pipe-row{display:flex;border:1.5px solid var(--border);border-radius:6px;overflow:hidden;}
-.ps{flex:1;padding:12px 14px;border-right:1.5px solid var(--border);text-align:center;}
-.ps:last-child{border-right:none;}
-.ps-l{font-size:10px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
-.ps-v{font-family:Montserrat,sans-serif;font-size:22px;font-weight:700;}
-.ps-s{font-size:12px;font-weight:600;margin-top:2px;}
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-cyan);
+            border: 1.5px solid var(--accent-cyan);
+            padding: 9px 19px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-/* ── PROPOSAL CARDS ── */
-.pcard{background:var(--surface);border:1.5px solid var(--border);border-radius:7px;padding:14px 18px;margin-bottom:10px;transition:border-color .15s;}
-.pcard:hover{border-color:rgba(0,196,188,.3);}
-.pcard-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
-.pav{width:42px;height:42px;border-radius:7px;background:var(--cyan-dim);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--cyan);flex-shrink:0;font-family:Montserrat,sans-serif;}
-.pinfo{flex:1;min-width:160px;}
-.pname{font-weight:700;font-size:14px;color:var(--text);margin-bottom:2px;}
-.pmeta{font-size:11px;color:var(--text3);}
-.pact{display:flex;gap:7px;align-items:center;flex-wrap:wrap;}
-.badge{font-size:10px;font-weight:700;padding:4px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:.04em;display:inline-block;border:1.5px solid;}
-.br{color:var(--text3);border-color:var(--border2);background:rgba(255,255,255,.04);}
-.be{color:var(--cyan2);border-color:rgba(0,196,188,.3);background:rgba(0,196,188,.08);}
-.ba{color:var(--green);border-color:rgba(62,207,122,.3);background:rgba(62,207,122,.07);}
-.bp{color:var(--red);border-color:rgba(224,85,85,.3);background:rgba(224,85,85,.07);}
-.ssel{background:#ffffff;border:1.5px solid rgba(0,196,188,.2);color:var(--text2);font-size:11px;padding:5px 8px;border-radius:5px;font-family:Montserrat,sans-serif;cursor:pointer;}
-.empty{text-align:center;padding:40px;color:var(--text3);font-size:13px;background:var(--surface);border:1.5px solid var(--border);border-radius:7px;}
+        /* Cards & Surfaces */
+        .card {
+            background-color: var(--surface);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-cyan);
+        }
 
-/* ── FORM ── */
-.fcard{background:#ffffff;border:1.5px solid rgba(0,196,188,.2);border-radius:8px;overflow:hidden;box-shadow:0 2px 16px rgba(0,196,188,.08);}
-.prog{height:4px;background:rgba(0,196,188,.15);}
-.pf{height:100%;background:var(--cyan);transition:width .4s;}
-.fbody{padding:26px 28px;}
-.sey{font-size:10px;color:var(--cyan);font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:3px;}
-.stt{font-family:Montserrat,sans-serif;font-size:22px;font-weight:700;color:var(--text);margin-bottom:3px;}
-.ssb{font-size:12px;color:var(--text3);margin-bottom:20px;}
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
-.lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-weight:600;display:block;margin-bottom:5px;}
-input,select,textarea{background:var(--bg3);border:1.5px solid var(--border);color:var(--text);font-size:13px;padding:9px 12px;border-radius:5px;outline:none;width:100%;font-family:Montserrat,sans-serif;transition:border .18s;}
-input:focus,select:focus,textarea:focus{border-color:var(--cyan);background:var(--bg4);}
-.fld{margin-bottom:13px;}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:5px;}
-.chip{padding:6px 13px;border-radius:5px;font-size:12px;font-weight:600;border:1.5px solid rgba(0,196,188,.18);background:#f2f2f2;color:var(--text2);cursor:pointer;font-family:Montserrat,sans-serif;transition:all .15s;}
-.chip.on{border-color:var(--cyan);background:var(--cyan-dim);color:var(--cyan);}
-.mbt{flex:1;padding:15px 12px;border-radius:6px;cursor:pointer;text-align:center;border:1.5px solid rgba(0,196,188,.18);background:#f2f2f2;color:var(--text2);font-weight:700;font-size:13px;font-family:Montserrat,sans-serif;transition:all .18s;}
-.mbt.on{border-color:var(--cyan);border-width:2px;background:var(--cyan-dim);color:var(--cyan);}
-.fnav{display:flex;justify-content:space-between;margin-top:22px;padding-top:18px;border-top:1.5px solid var(--border);}
+        /* Investment Box - Dark Contrast */
+        .investment-box {
+            background-color: var(--dark-surface);
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .investment-box h2 { color: var(--accent-cyan); margin-bottom: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
+        .investment-value { font-size: 48px; font-weight: 800; margin: 10px 0; }
 
-/* ── ONEPAGE (PROPOSTA FINAL) ── */
-.op{background:var(--dark-bg);color:#fff;border-radius:8px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.3);}
-.ops{padding:32px 48px;border-bottom:1px solid rgba(255,255,255,0.05);position:relative;}
-.ops:last-child{border-bottom:none;}
-.opsh{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
-.opsn{font-size:10px;font-weight:800;color:var(--cyan);letter-spacing:.14em;}
-.opsl{flex:1;height:1px;background:linear-gradient(90deg,var(--cyan),transparent);}
-.opst{font-size:10px;font-weight:800;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.14em;}
+        /* Strategic Partners */
+        .partners-section { margin-top: 50px; text-align: center; }
+        .partners-title { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
+        .partners-grid { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 40px; 
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .partner-logo { height: 30px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s; }
+        .partner-logo:hover { filter: grayscale(0%); opacity: 1; }
 
-.capa{padding:60px 48px;text-align:center;background:linear-gradient(180deg, #1e2f38 0%, #1a2830 100%);}
-.capa-num{font-size:10px;color:var(--cyan);text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;font-weight:800;}
-.capa-logo{height:55px;margin:0 auto 30px;display:block;}
-.capa-line{width:40px;height:2px;background:var(--cyan);margin:0 auto 30px;}
-.capa-tagline{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;max-width:500px;margin:0 auto 40px;}
-.capa-meta{display:flex;justify-content:center;gap:15px;}
-.capa-card{background:rgba(255,255,255,0.03);border:1px solid rgba(0,196,188,0.2);padding:12px 24px;border-radius:6px;min-width:140px;}
-.capa-card-l{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
-.capa-card-v{font-size:13px;font-weight:700;color:var(--cyan);}
+        /* Admin Section */
+        .admin-footer {
+            margin-top: 60px;
+            padding: 20px;
+            text-align: center;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+        .admin-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+        .admin-link:hover { color: var(--accent-cyan); }
+        
+        /* Inputs */
+        input, select, textarea {
+            background-color: #ffffff;
+            border: 1.5px solid var(--border-cyan);
+            border-radius: 6px;
+            padding: 12px;
+            color: var(--text-primary);
+            font-family: 'Montserrat', sans-serif;
+            width: 100%;
+            outline: none;
+        }
+        input:focus { border-color: var(--accent-cyan); }
 
-.res-box{background:rgba(0,196,188,0.05);border-left:3px solid var(--cyan);padding:24px 28px;border-radius:0 8px 8px 0;font-size:15px;line-height:1.8;color:rgba(255,255,255,0.9);font-weight:500;}
+        /* OnePage Specifics */
+        .op-section { padding: 30px 0; border-bottom: 1px solid #eee; }
+        .op-title { color: var(--accent-cyan); font-weight: 800; font-size: 18px; margin-bottom: 15px; }
+        
+        /* Dashboard Stats */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .stat-card { background: var(--surface); padding: 20px; border-radius: 10px; border: 1px solid var(--border-cyan); }
+        .stat-val { font-size: 24px; font-weight: 800; color: var(--accent-cyan); }
+        .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; }
 
-.grid-ctx{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.ctx-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:18px;border-radius:6px;border-bottom:2px solid rgba(0,196,188,0.3);}
-.ctx-l{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
-.ctx-v{font-size:13px;font-weight:700;color:#fff;}
-
-.diag-grid{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:center;}
-.diag-side{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:24px;border-radius:8px;}
-.diag-t{font-size:10px;font-weight:800;color:var(--cyan);text-transform:uppercase;letter-spacing:.12em;margin-bottom:15px;}
-.diag-item{font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:8px;display:flex;gap:8px;}
-.diag-arrow{text-align:center;font-size:20px;color:var(--cyan);opacity:0.5;}
-
-.time-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
-.time-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:20px 10px;text-align:center;border-radius:8px;transition:all .3s;}
-.time-card.active{background:rgba(0,196,188,0.1);border-color:var(--cyan);}
-.time-icon{width:36px;height:36px;background:rgba(255,255,255,0.05);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:var(--cyan);}
-.time-card.active .time-icon{background:var(--cyan);color:#fff;}
-.time-l{font-size:11px;font-weight:700;color:#fff;line-height:1.4;}
-
-.invest-box{background:rgba(255,255,255,0.02);border:2px solid rgba(0,196,188,0.3);padding:40px;border-radius:12px;text-align:center;position:relative;}
-.invest-l{font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px;}
-.invest-v{font-size:52px;font-weight:800;color:var(--cyan);letter-spacing:-1px;margin-bottom:10px;}
-.invest-s{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:25px;}
-.invest-roi{background:rgba(0,196,188,0.05);padding:20px;border-radius:8px;font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7);font-style:italic;}
-
-.cond-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;}
-.cond-item{padding:15px 20px;border-bottom:1px solid rgba(255,255,255,0.05);}
-.cond-item:nth-child(odd){border-right:1px solid rgba(255,255,255,0.05);}
-.cond-l{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
-.cond-v{font-size:12px;font-weight:700;color:#fff;}
-
-.parc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;}
-.parc-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:25px;border-radius:8px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:140px;}
-.parc-logo{max-height:35px;margin-bottom:15px;opacity:0.9;}
-.parc-l{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.1em;font-weight:700;}
-
-.footer-final{background:#0d1b2a;padding:25px 48px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);}
-.footer-l{font-size:12px;font-weight:800;color:#fff;}
-.footer-l span{color:var(--cyan);}
-.footer-r{text-align:right;}
-.footer-v{font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;}
-.footer-m{font-size:10px;color:rgba(255,255,255,0.4);}
-
-.v-filter{display:flex;gap:8px;margin-bottom:15px;}
-.v-tab{padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;border:1.5px solid rgba(0,196,188,0.15);background:#fff;color:var(--text2);cursor:pointer;}
-.v-tab.on{background:var(--cyan);color:#fff;border-color:var(--cyan);}
-
-@media print{
-  .nav,.fnav,.nbtn,.sbtn,.v-filter{display:none!important;}
-  body{background:#fff;}
-  .main{max-width:100%;padding:0;margin:0;}
-  .op{box-shadow:none;border-radius:0;}
-  .ops{page-break-inside:avoid;}
-  .footer-final{background:#1a2830!important;-webkit-print-color-adjust:exact;}
-}
-</style>
+    </style>
 </head>
 <body>
+
 <div id="app"></div>
+
 <script>
-const VENDEDORES={
-  'andre':{nome:'André Albergaria',email:'andre@grupoescalar.com.br',tel:'(31) 99998-0237'},
-  'marco':{nome:'Marco Tulio',email:'marco@grupoescalar.com.br',tel:''},
-  'rhavi':{nome:'Rhavi',email:'rhavi@grupoescalar.com.br',tel:''}
-};
-const SEGS=['Tecnologia & SaaS','Serviços B2B & Consultoria','Indústria & Manufatura','Energia & Sustentabilidade','Marketing & Comunicação','Logística & Transporte','Jurídico & Contábil','Mobilidade & Automóveis','Seguros & Financeiro','Telecom & Conectividade','Saúde & Bem-estar','Impressão & Tecnologia','Financeiro & Contábil'];
-const RLBL={'abaixo_1':'< R$ 1MM','1_5':'R$ 1-5MM','5_20':'R$ 5-20MM','acima_20':'> R$ 20MM'};
-const VLBL={'nenhum':'0','1_2':'1-2','3_5':'3-5','6_10':'6-10','acima_10':'10+'};
-const CLBL={'menos30':'< 30 dias','30_60':'30-60 dias','60_120':'60-120 dias','mais120':'120+ dias'};
-const CNAME={'nenhum':'Sem CRM','pipedrive':'Pipedrive','hubspot':'HubSpot','salesforce':'Salesforce','rdstation':'RD Station','planilha':'Planilhas','outros':'Outros'};
-const RNOME={'local':'Local','estadual':'Estadual','sul_sudeste':'Sul+Sudeste','sudeste':'Sudeste','brasil':'Brasil','america_latina':'América Latina','global':'Global'};
-const OBJ_OPTS=['Prospecção Outbound Consultiva','Mapeamento de Mercado & Inteligência','Construção de Base Estratégica','Social Selling & Relacionamento','Cadências Multicanais','Qualificação de Leads & Reuniões','Nutrição Outbound','Scripts de abordagem','Templates de e-mail','Mensagens LinkedIn/WhatsApp','Gestão Operacional & Performance'];
+    // Configurações e Dados
+    const CONFIG = {
+        logoEscalar: 'https://novosite.grupoescalar.com/wp-content/uploads/2025/07/ESCALAR-NOVO-LOGO-28-scaled.webp',
+        logoSalesforce: 'https://www.salesforce.com/news/wp-content/uploads/sites/3/2021/05/Salesforce-Logo.png',
+        logoG4Scale: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/770267104128527.5f5bd7c3666f4.png'
+    };
 
-const LOGO_ESCALAR='https://files.manuscdn.com/user_upload_by_module/session_file/310519663657555915/GsSkaBxaWaIUoyHg.png';
-const LOGO_G4='https://files.manuscdn.com/user_upload_by_module/session_file/310519663634474230/dZcrmkMRyROqiuCW.png';
-const LOGO_SF='https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg';
+    let state = {
+        view: 'dashboard', // dashboard, form, onepage
+        proposals: JSON.parse(localStorage.getItem('escalar_proposals') || '[]'),
+        editingId: null,
+        isAdmin: false
+    };
 
-let proposals=[];
-try{const r=localStorage.getItem('esc_bpo_v3');if(r)proposals=JSON.parse(r);}catch(e){}
+    function render() {
+        const app = document.getElementById('app');
+        if (state.view === 'dashboard') app.innerHTML = renderDashboard();
+        else if (state.view === 'form') app.innerHTML = renderForm();
+        else if (state.view === 'onepage') app.innerHTML = renderOnePage();
+    }
 
-let view='dash',step=1,F={},editId=null,vFilter='todos';
-
-function sv(){localStorage.setItem('esc_bpo_v3',JSON.stringify(proposals));}
-function ef(){return{id:Date.now(),num:proposals.length+1,vendedor:'andre',empresa:'',segmento:'',contato:'',cargo:'',website:'',receita:'',vendedores:'',crm:'',regiao:'',crescimento:[],dores:'',objetivos:[],ciclo:'',modelo:'compartilhado',valor:'',ganho:'',status:'rascunho',created:new Date().toLocaleDateString('pt-BR')};}
-
-function setF(k,v){F[k]=v;re();}
-function tgl(k,v){if(!F[k])F[k]=[];if(F[k].includes(v))F[k]=F[k].filter(x=>x!==v);else F[k].push(v);re();}
-function goDash(){view='dash';re();}
-function goNew(){F=ef();step=1;view='form';re();}
-function goEdit(id){const p=proposals.find(x=>x.id===id);F=JSON.parse(JSON.stringify(p));editId=id;step=1;view='form';re();}
-function goOP(id){editId=id;view='onepage';re();}
-function prev(){if(step>1){step--;re();}}
-function next(){if(step<4){step++;re();}else{save();}}
-function save(){
-  if(editId){const idx=proposals.findIndex(x=>x.id===editId);proposals[idx]=F;}
-  else{proposals.unshift(F);}
-  sv();view='dash';re();
-}
-function delP(id){if(confirm('Excluir proposta?')){proposals=proposals.filter(x=>x.id!==id);sv();re();}}
-
-function re(){document.getElementById('app').innerHTML=view==='dash'?rDash():view==='form'?rForm():rOP();}
-
-function rDash(){
-  const filtered=vFilter==='todos'?proposals:proposals.filter(p=>p.vendedor===vFilter);
-  const cards=filtered.map(p=>`
-    <div class="pcard">
-      <div class="pcard-top">
-        <div class="pav">${(p.empresa||'?').slice(0,2).toUpperCase()}</div>
-        <div class="pinfo">
-          <div class="pname">${p.empresa||'Sem nome'}</div>
-          <div class="pmeta">${p.segmento||'—'} · ${p.contato||'—'} · ${p.created}</div>
-        </div>
-        <div class="pact">
-          <span class="badge ${p.status==='aprovada'?'ba':p.status==='enviada'?'be':'br'}">${p.status}</span>
-          <span style="font-size:11px;font-weight:700;color:var(--cyan);">${p.valor||'—'}</span>
-          <button class="nbtn" style="padding:5px 10px;font-size:11px;" onclick="goOP(${p.id})">Ver Proposta</button>
-          <button class="sbtn" style="padding:5px 10px;" onclick="goEdit(${p.id})">Editar</button>
-          <button class="dbtn" onclick="delP(${p.id})">✕</button>
-        </div>
-      </div>
-    </div>
-  `).join('') || '<div class="empty">Nenhuma proposta encontrada.</div>';
-
-  return `
-    <div class="nav">
-      <div style="width:100px;"></div> <!-- Spacer -->
-      <div class="nav-center">
-        <img src="${LOGO_ESCALAR}" style="height:35px;">
-      </div>
-      <button class="nbtn" onclick="goNew()">+ Nova Proposta</button>
-    </div>
-    <div class="main">
-      <div class="v-filter">
-        <span class="v-tab ${vFilter==='todos'?'on':''}" onclick="vFilter='todos';re()">Todos</span>
-        ${Object.entries(VENDEDORES).map(([k,v])=>`<span class="v-tab ${vFilter===k?'on':''}" onclick="vFilter='${k}';re()">${v.nome.split(' ')[0]}</span>`).join('')}
-      </div>
-      ${cards}
-    </div>
-  `;
-}
-
-function rForm(){
-  const s=step; const p=F;
-  let body='';
-  if(s===1) body=`<div class="sey">Etapa 1 de 4</div><div class="stt">Dados da Empresa</div>
-    <div class="fld"><label class="lbl">Nome da Empresa</label><input value="${p.empresa}" onchange="setF('empresa',this.value)"></div>
-    <div class="g2">
-      <div class="fld"><label class="lbl">Segmento</label><select onchange="setF('segmento',this.value)"><option value="">Selecione...</option>${SEGS.map(x=>`<option ${p.segmento===x?'selected':''}>${x}</option>`).join('')}</select></div>
-      <div class="fld"><label class="lbl">Website</label><input placeholder="ex: empresa.com.br" value="${p.website}" onchange="setF('website',this.value)"></div>
-    </div>
-    <div class="g2">
-      <div class="fld"><label class="lbl">Contato Principal</label><input value="${p.contato}" onchange="setF('contato',this.value)"></div>
-      <div class="fld"><label class="lbl">Cargo</label><input value="${p.cargo}" onchange="setF('cargo',this.value)"></div>
-    </div>
-    <div class="fld"><label class="lbl">Vendedor Responsável</label><select onchange="setF('vendedor',this.value)">${Object.entries(VENDEDORES).map(([k,v])=>`<option value="${k}" ${p.vendedor===k?'selected':''}>${v.nome}</option>`).join('')}</select></div>`;
-  else if(s===2) body=`<div class="sey">Etapa 2 de 4</div><div class="stt">Perfil & Maturidade</div>
-    <div class="g2">
-      <div class="fld"><label class="lbl">Faturamento Anual</label><select onchange="setF('receita',this.value)"><option value="">Selecione...</option>${Object.entries(RLBL).map(([k,v])=>`<option value="${k}" ${p.receita===k?'selected':''}>${v}</option>`).join('')}</select></div>
-      <div class="fld"><label class="lbl">Time de Vendas</label><select onchange="setF('vendedores',this.value)"><option value="">Selecione...</option>${Object.entries(VLBL).map(([k,v])=>`<option value="${k}" ${p.vendedores===k?'selected':''}>${v}</option>`).join('')}</select></div>
-    </div>
-    <div class="g2">
-      <div class="fld"><label class="lbl">CRM Atual</label><select onchange="setF('crm',this.value)"><option value="">Selecione...</option>${Object.entries(CNAME).map(([k,v])=>`<option value="${k}" ${p.crm===k?'selected':''}>${v}</option>`).join('')}</select></div>
-      <div class="fld"><label class="lbl">Região de Atuação</label><select onchange="setF('regiao',this.value)"><option value="">Selecione...</option>${Object.entries(RNOME).map(([k,v])=>`<option value="${k}" ${p.regiao===k?'selected':''}>${v}</option>`).join('')}</select></div>
-    </div>`;
-  else if(s===3) body=`<div class="sey">Etapa 3 de 4</div><div class="stt">Diagnóstico & Dores</div>
-    <div class="fld"><label class="lbl">Principais Dores / Desafios</label><textarea rows="3" onchange="setF('dores',this.value)">${p.dores}</textarea></div>
-    <div class="fld"><label class="lbl">Objetivos do Projeto</label><div class="chips">${OBJ_OPTS.map(x=>`<div class="chip ${p.objetivos.includes(x)?'on':''}" onclick="tgl('objetivos','${x}')">${x}</div>`).join('')}</div></div>`;
-  else body=`<div class="sey">Etapa 4 de 4</div><div class="stt">Proposta & Modelo</div>
-    <div class="fld"><label class="lbl">Modelo de Operação</label><div style="display:flex;gap:10px;"><div class="mbt ${p.modelo==='compartilhado'?'on':''}" onclick="setF('modelo','compartilhado')">Compartilhado</div><div class="mbt ${p.modelo==='dedicado'?'on':''}" onclick="setF('modelo','dedicado')">Dedicado</div></div></div>
-    <div class="g2">
-      <div class="fld"><label class="lbl">Investimento Mensal</label><input placeholder="R$ 8.500" value="${p.valor}" onchange="setF('valor',this.value)"></div>
-      <div class="fld"><label class="lbl">Taxa de Ganho</label><input placeholder="R$ 2.000" value="${p.ganho}" onchange="setF('ganho',this.value)"></div>
-    </div>
-    <div class="fld"><label class="lbl">Status</label><select onchange="setF('status',this.value)"><option value="rascunho" ${p.status==='rascunho'?'selected':''}>Rascunho</option><option value="enviada" ${p.status==='enviada'?'selected':''}>Enviada</option><option value="aprovada" ${p.status==='aprovada'?'selected':''}>Aprovada</option></select></div>`;
-
-  return `
-    <div class="nav">
-      <div style="width:100px;"></div>
-      <div class="nav-center"><img src="${LOGO_ESCALAR}" style="height:35px;"></div>
-      <button class="sbtn" onclick="goDash()">Cancelar</button>
-    </div>
-    <div class="main" style="max-width:600px;">
-      <div class="fcard">
-        <div class="prog"><div class="pf" style="width:${s*25}%"></div></div>
-        <div class="fbody">
-          ${body}
-          <div class="fnav">
-            <button class="sbtn" onclick="prev()" ${s===1?'disabled':''}>Voltar</button>
-            <button class="nbtn" onclick="next()">${s===4?'Gerar Proposta':'Próximo'}</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function rOP(){
-  const p=proposals.find(x=>x.id===editId); if(!p) return '';
-  const vd=VENDEDORES[p.vendedor] || VENDEDORES['andre'];
-  const valData=new Date(Date.now()+30*24*3600*1000).toLocaleDateString('pt-BR');
-  
-  return `
-    <div class="nav">
-      <div style="width:100px;"></div>
-      <div class="nav-center"><img src="${LOGO_ESCALAR}" style="height:35px;"></div>
-      <div style="display:flex;gap:10px;">
-        <button class="sbtn" onclick="goDash()">Dashboard</button>
-        <button class="nbtn" onclick="window.print()">Imprimir PDF</button>
-      </div>
-    </div>
-    <div class="main" style="max-width:850px;">
-      <div class="op">
-        <!-- CAPA -->
-        <div class="capa">
-          <div class="capa-num">PROPOSTA COMERCIAL · BPO COMERCIAL #${String(p.num).padStart(3,'0')}</div>
-          <img src="${LOGO_ESCALAR}" class="capa-logo">
-          <div class="capa-line"></div>
-          <div class="capa-tagline">Motor de prospecção outbound para empresas B2B que querem crescer com previsibilidade.</div>
-          <div class="capa-meta">
-            <div class="capa-card"><div class="capa-card-l">MODELO</div><div class="capa-card-v">${p.modelo==='dedicado'?'Dedicado':'Compartilhado'}</div></div>
-            <div class="capa-card"><div class="capa-card-l">VÁLIDA ATÉ</div><div class="capa-card-v">${valData}</div></div>
-          </div>
-        </div>
-
-        <!-- SEÇÃO 01 -->
-        <div class="ops">
-          <div class="opsh"><div class="opsn">01</div><div class="opsl"></div><div class="opst">POR QUE A ESCALAR</div></div>
-          <div style="background:var(--cyan);color:#1a2830;font-size:10px;font-weight:800;padding:4px 12px;border-radius:4px;display:inline-block;margin-bottom:20px;">9 ANOS DE MERCADO B2B</div>
-          <div class="res-box">A Escalar é uma empresa de gente. Cada operação é conduzida de forma artesanal, com atenção genuína ao negócio do cliente — não vendemos pacotes, construímos motores comerciais sob medida, junto com você.</div>
-        </div>
-
-        <!-- SEÇÃO 02 -->
-        <div class="ops">
-          <div class="opsh"><div class="opsn">02</div><div class="opsl"></div><div class="opst">CONTEXTO MAPEADO</div></div>
-          <div class="grid-ctx">
-            <div class="ctx-card"><div class="ctx-l">FATURAMENTO ANUAL</div><div class="ctx-v">${RLBL[p.receita]||'—'}</div></div>
-            <div class="ctx-card"><div class="ctx-l">Nº DE VENDEDORES</div><div class="ctx-v">${VLBL[p.vendedores]||'—'}</div></div>
-            <div class="ctx-card"><div class="ctx-l">CRM ATUAL</div><div class="ctx-v">${CNAME[p.crm]||'—'}</div></div>
-            <div class="ctx-card"><div class="ctx-l">TICKET MÉDIO</div><div class="ctx-v">${p.valor||'—'}</div></div>
-            <div class="ctx-card"><div class="ctx-l">TIPO DE VENDA</div><div class="ctx-v">B2B</div></div>
-            <div class="ctx-card"><div class="ctx-l">CICLO COMERCIAL</div><div class="ctx-v">${CLBL[p.ciclo]||'—'}</div></div>
-          </div>
-        </div>
-
-        <!-- SEÇÃO 03 -->
-        <div class="ops">
-          <div class="opsh"><div class="opsn">03</div><div class="opsl"></div><div class="opst">DIAGNÓSTICO EXECUTIVO</div></div>
-          <div class="res-box" style="margin-bottom:25px;">A operação da <strong>${p.empresa}</strong> apresenta oportunidades de escala através da estruturação de um motor outbound previsível.</div>
-          <div class="diag-grid">
-            <div class="diag-side">
-              <div class="diag-t">HOJE</div>
-              <div class="diag-item"><span>–</span> Sem motor de prospecção estruturado</div>
-              <div class="diag-item"><span>–</span> Dependência de indicações</div>
+    function renderDashboard() {
+        const cards = state.proposals.map(p => `
+            <div class="card">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <div>
+                        <h3 style="color:var(--text-primary)">${p.empresa || 'Nova Proposta'}</h3>
+                        <p style="color:var(--text-secondary); font-size:12px;">${p.segmento || 'Sem segmento'}</p>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <button class="btn-secondary" onclick="viewProposal('${p.id}')">Ver OnePage</button>
+                        <button class="btn-primary" onclick="editProposal('${p.id}')">Editar</button>
+                    </div>
+                </div>
             </div>
-            <div class="diag-arrow">→</div>
-            <div class="diag-side" style="border-color:var(--cyan);background:rgba(0,196,188,0.05);">
-              <div class="diag-t">COM A ESCALAR</div>
-              <div class="diag-item"><span style="color:var(--cyan)">✓</span> Motor de prospecção ativa e previsível</div>
-              <div class="diag-item"><span style="color:var(--cyan)">✓</span> Pipeline estruturado com dados reais</div>
-              <div class="diag-item"><span style="color:var(--cyan)">✓</span> ICP ativado com cadências inteligentes</div>
+        `).join('') || '<div class="card" style="text-align:center; color:var(--text-muted)">Nenhuma proposta criada.</div>';
+
+        return `
+            <div class="nav">
+                <img src="${CONFIG.logoEscalar}" alt="Escalar" style="height:30px;">
+                <button class="btn-primary" onclick="newState()">+ Nova Proposta</button>
             </div>
-          </div>
-        </div>
+            <div class="main">
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-val">${state.proposals.length}</div><div class="stat-label">Total</div></div>
+                    <div class="stat-card"><div class="stat-val">R$ 0</div><div class="stat-label">Pipeline</div></div>
+                </div>
+                ${cards}
+                
+                <div class="admin-footer">
+                    <span class="admin-link" onclick="toggleAdmin()">Painel ADM</span>
+                    ${state.isAdmin ? `
+                        <span class="admin-link" style="color:red" onclick="clearAll()">Limpar Tudo</span>
+                    ` : ''}
+                </div>
+            </div>
+        `;
+    }
 
-        <!-- SEÇÃO 06 -->
-        <div class="ops">
-          <div class="opsh"><div class="opsn">06</div><div class="opsl"></div><div class="opst">TIME ESCALAR — QUEM ESTARÁ AO SEU LADO</div></div>
-          <div class="time-grid">
-            <div class="time-card"><div class="time-icon">👤</div><div class="time-l">Gestor de Contas</div></div>
-            <div class="time-card"><div class="time-icon">📋</div><div class="time-l">Supervisor de Operações</div></div>
-            <div class="time-card"><div class="time-icon">👥</div><div class="time-l">Customer Success</div></div>
-            <div class="time-card"><div class="time-icon">⚡</div><div class="time-l">LDR Tech</div></div>
-            <div class="time-card active"><div class="time-icon">📞</div><div class="time-l">BDR ${p.modelo==='dedicado'?'Dedicado':'Compartilhado'}</div></div>
-          </div>
-        </div>
+    function renderOnePage() {
+        const p = state.proposals.find(x => x.id === state.editingId);
+        return `
+            <div class="nav">
+                <img src="${CONFIG.logoEscalar}" alt="Escalar" style="height:30px;">
+                <button class="btn-secondary" onclick="state.view='dashboard'; render()">← Voltar</button>
+            </div>
+            <div class="main">
+                <div class="logo-container">
+                    <img src="${CONFIG.logoEscalar}" class="logo-escalar" alt="Escalar Logo">
+                </div>
+                
+                <div class="card">
+                    <h1 style="font-weight:800; color:var(--text-primary); text-align:center; margin-bottom:10px;">PROPOSTA COMERCIAL</h1>
+                    <p style="text-align:center; color:var(--text-secondary)">Preparada para: <strong>${p.empresa}</strong></p>
+                </div>
 
-        <!-- SEÇÃO 08 -->
-        <div class="ops">
-          <div class="opsh"><div class="opsn">08</div><div class="opsl"></div><div class="opst">INVESTIMENTO</div></div>
-          <div class="invest-box">
-            <div class="invest-l">INVESTIMENTO MENSAL</div>
-            <div class="invest-v">${p.valor||'A definir'}</div>
-            <div class="invest-s">Ferramentas e impostos inclusos · Equipe CLT pela Escalar</div>
-            <div class="invest-roi">Empresas que investem em prospecção estruturada param de pensar no custo e começam a pensar em quantas oportunidades estão deixando na mesa.</div>
-          </div>
-        </div>
+                <div class="op-section">
+                    <h2 class="op-title">DIAGNÓSTICO E CONTEXTO</h2>
+                    <p style="color:var(--text-secondary)">Segmento: ${p.segmento}</p>
+                    <div style="background:#f9f9f9; padding:15px; border-radius:8px; margin-top:10px; border-left:4px solid var(--accent-cyan)">
+                        ${p.objetivo || 'Objetivos comerciais alinhados para expansão de mercado e geração de leads qualificados.'}
+                    </div>
+                </div>
 
-        <!-- SEÇÃO 09 -->
-        <div class="ops">
-          <div class="opsh"><div class="opsn">09</div><div class="opsl"></div><div class="opst">CONDIÇÕES COMERCIAIS</div></div>
-          <div class="cond-grid">
-            <div class="cond-item"><div class="cond-l">PRAZO CONTRATUAL</div><div class="cond-v">12 meses</div></div>
-            <div class="cond-item"><div class="cond-l">CANCELAMENTO</div><div class="cond-v">30 dias de aviso prévio</div></div>
-            <div class="cond-item"><div class="cond-l">FATURAMENTO</div><div class="cond-v">Mensal pós-serviço</div></div>
-            <div class="cond-item"><div class="cond-l">PRIMEIRO MÊS</div><div class="cond-v">50% adiantado</div></div>
-            <div class="cond-item"><div class="cond-l">EQUIPE</div><div class="cond-v">CLT contratada pela Escalar</div></div>
-            <div class="cond-item"><div class="cond-l">FERRAMENTAS</div><div class="cond-v">Inclusas no contrato</div></div>
-          </div>
-        </div>
+                <div class="investment-box">
+                    <h2>INVESTIMENTO MENSAL</h2>
+                    <div class="investment-value">${p.valor || 'R$ 0.000,00'}</div>
+                    <p style="font-size:12px; opacity:0.6;">Condições comerciais válidas por 15 dias</p>
+                </div>
 
-        <!-- SEÇÃO 12 -->
-        <div class="ops">
-          <div class="opsh"><div class="opsn">12</div><div class="opsl"></div><div class="opst">PARCEIROS ESTRATÉGICOS</div></div>
-          <div class="parc-grid">
-            <div class="parc-card"><img src="${LOGO_SF}" class="parc-logo"><div class="parc-l">CRM PARTNER OFICIAL</div></div>
-            <div class="parc-card"><img src="${LOGO_G4}" class="parc-logo"><div class="parc-l">EDUCAÇÃO ESTRATÉGICA</div></div>
-            <div class="parc-card"><div style="font-size:20px;font-weight:800;margin-bottom:15px;">Ramppy</div><div class="parc-l">SALES ENABLEMENT</div></div>
-          </div>
-        </div>
+                <div class="partners-section">
+                    <div class="partners-title">Parceiros Estratégicos</div>
+                    <div class="partners-grid">
+                        <img src="${CONFIG.logoSalesforce}" class="partner-logo" alt="Salesforce">
+                        <img src="${CONFIG.logoG4Scale}" class="partner-logo" alt="G4 Scale">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Pipedrive_logo.svg/2560px-Pipedrive_logo.svg.png" class="partner-logo" alt="Pipedrive" style="height:20px;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/HubSpot_Logo.svg/2560px-HubSpot_Logo.svg.png" class="partner-logo" alt="HubSpot" style="height:20px;">
+                    </div>
+                </div>
 
-        <!-- FOOTER FINAL -->
-        <div class="footer-final">
-          <div class="footer-l"><span>ESCALAR</span> BPO Comercial</div>
-          <div class="footer-r">
-            <div class="footer-v">${vd.nome}</div>
-            <div class="footer-m">${vd.email} ${vd.tel?'· '+vd.tel:''}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-}
+                <div class="admin-footer">
+                    <span class="admin-link" onclick="state.view='dashboard'; render()">Dashboard</span>
+                    ${state.isAdmin ? `<span class="admin-link" style="color:red" onclick="deleteProposal('${p.id}')">Excluir Proposta</span>` : ''}
+                </div>
+            </div>
+        `;
+    }
 
-window.onload=re;
+    function renderForm() {
+        const p = state.proposals.find(x => x.id === state.editingId) || {};
+        return `
+            <div class="nav">
+                <img src="${CONFIG.logoEscalar}" alt="Escalar" style="height:30px;">
+                <button class="btn-secondary" onclick="state.view='dashboard'; render()">Cancelar</button>
+            </div>
+            <div class="main">
+                <div class="card">
+                    <h2 style="margin-bottom:20px; color:var(--text-primary)">Dados da Proposta</h2>
+                    <div style="margin-bottom:15px">
+                        <label style="font-size:11px; font-weight:700; color:var(--text-muted)">NOME DA EMPRESA</label>
+                        <input type="text" id="f-empresa" value="${p.empresa || ''}" placeholder="Ex: Tech Solutions">
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <label style="font-size:11px; font-weight:700; color:var(--text-muted)">SEGMENTO</label>
+                        <select id="f-segmento">
+                            <option value="Tecnologia" ${p.segmento === 'Tecnologia' ? 'selected' : ''}>Tecnologia & SaaS</option>
+                            <option value="Serviços" ${p.segmento === 'Serviços' ? 'selected' : ''}>Serviços B2B</option>
+                            <option value="Indústria" ${p.segmento === 'Indústria' ? 'selected' : ''}>Indústria</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <label style="font-size:11px; font-weight:700; color:var(--text-muted)">VALOR INVESTIMENTO</label>
+                        <input type="text" id="f-valor" value="${p.valor || ''}" placeholder="R$ 6.500,00">
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <label style="font-size:11px; font-weight:700; color:var(--text-muted)">OBJETIVO PRINCIPAL</label>
+                        <textarea id="f-objetivo" rows="3">${p.objetivo || ''}</textarea>
+                    </div>
+                    <button class="btn-primary" style="width:100%" onclick="saveProposal()">Salvar Proposta</button>
+                </div>
+            </div>
+        `;
+    }
+
+    // Ações
+    function newState() {
+        state.editingId = 'p_' + Date.now();
+        state.view = 'form';
+        render();
+    }
+
+    function editProposal(id) {
+        state.editingId = id;
+        state.view = 'form';
+        render();
+    }
+
+    function viewProposal(id) {
+        state.editingId = id;
+        state.view = 'onepage';
+        render();
+    }
+
+    function saveProposal() {
+        const p = {
+            id: state.editingId,
+            empresa: document.getElementById('f-empresa').value,
+            segmento: document.getElementById('f-segmento').value,
+            valor: document.getElementById('f-valor').value,
+            objetivo: document.getElementById('f-objetivo').value
+        };
+        const idx = state.proposals.findIndex(x => x.id === p.id);
+        if (idx > -1) state.proposals[idx] = p;
+        else state.proposals.push(p);
+        
+        localStorage.setItem('escalar_proposals', JSON.stringify(state.proposals));
+        state.view = 'dashboard';
+        render();
+    }
+
+    function deleteProposal(id) {
+        if(confirm('Excluir esta proposta?')) {
+            state.proposals = state.proposals.filter(x => x.id !== id);
+            localStorage.setItem('escalar_proposals', JSON.stringify(state.proposals));
+            state.view = 'dashboard';
+            render();
+        }
+    }
+
+    function toggleAdmin() {
+        state.isAdmin = !state.isAdmin;
+        render();
+    }
+
+    function clearAll() {
+        if(confirm('LIMPAR TODOS OS DADOS?')) {
+            state.proposals = [];
+            localStorage.removeItem('escalar_proposals');
+            render();
+        }
+    }
+
+    // Inicialização
+    render();
 </script>
+
 </body>
 </html>
