@@ -27,23 +27,21 @@
   --text:      #1a2830;
   --text2:     #4a6070;
   --text3:     #8a9ea8;
+  --dark-bg:   #1a2830;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:Montserrat,sans-serif;background:var(--bg);color:var(--text);}
 
 /* ── NAV ── */
 .nav{background:#ffffff;border-bottom:2px solid var(--cyan);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,196,188,.15);}
-.nlogo{font-size:15px;font-weight:700;color:#1a2830;letter-spacing:.06em;}.nlogo span{color:var(--cyan);}
-.nsub{font-family:Montserrat,sans-serif;font-size:10px;color:var(--text3);font-style:italic;margin-top:1px;}
+.nav-center{position:absolute;left:50%;transform:translateX(-50%);}
 
 /* ── BUTTONS ── */
 .nbtn{background:var(--cyan);color:#ffffff;border:none;border-radius:5px;padding:8px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:Montserrat,sans-serif;transition:background .15s;}
 .nbtn:hover{background:var(--cyan2);}
-.gbtn{background:transparent;color:var(--cyan);border:1.5px solid var(--cyan);border-radius:5px;padding:7px 15px;font-weight:600;font-size:12px;cursor:pointer;font-family:Montserrat,sans-serif;transition:all .15s;}
-.gbtn:hover{background:var(--cyan-dim);}
-.dbtn{background:transparent;color:var(--red);border:1.5px solid rgba(224,85,85,.3);border-radius:5px;padding:7px 12px;font-weight:600;font-size:12px;cursor:pointer;font-family:Montserrat,sans-serif;}
 .sbtn{background:transparent;color:var(--text2);border:1.5px solid rgba(0,0,0,.15);border-radius:5px;padding:7px 13px;font-weight:600;font-size:12px;cursor:pointer;font-family:Montserrat,sans-serif;transition:all .15s;}
 .sbtn:hover{border-color:var(--cyan);color:var(--cyan);}
+.dbtn{background:transparent;color:var(--red);border:1.5px solid rgba(224,85,85,.3);border-radius:5px;padding:7px 12px;font-weight:600;font-size:12px;cursor:pointer;font-family:Montserrat,sans-serif;}
 
 /* ── LAYOUT ── */
 .main{max-width:960px;margin:0 auto;padding:28px 22px 60px;}
@@ -81,32 +79,6 @@ body{font-family:Montserrat,sans-serif;background:var(--bg);color:var(--text);}
 .ssel{background:#ffffff;border:1.5px solid rgba(0,196,188,.2);color:var(--text2);font-size:11px;padding:5px 8px;border-radius:5px;font-family:Montserrat,sans-serif;cursor:pointer;}
 .empty{text-align:center;padding:40px;color:var(--text3);font-size:13px;background:var(--surface);border:1.5px solid var(--border);border-radius:7px;}
 
-/* ── FUP ── */
-.fup-section{margin-top:12px;border-top:1.5px solid var(--border);padding-top:10px;}
-.fup-lbl{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
-.fup-row{display:flex;gap:6px;flex-wrap:wrap;}
-.fup-box{flex:1;min-width:90px;border:1.5px solid rgba(0,196,188,.18);border-radius:6px;padding:9px 10px;background:#f7f7f7;position:relative;transition:border .15s;}
-.fup-box.done{border-color:var(--cyan);background:var(--cyan-glow);}
-.fup-box.pend{border-color:var(--amber);background:var(--amber-dim);}
-.fup-num{font-size:10px;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
-.fup-dt{width:100%;border:none;background:transparent;font-size:11px;color:var(--text2);font-family:Montserrat,sans-serif;margin-bottom:3px;outline:none;}
-.fup-nt{width:100%;border:none;background:transparent;font-size:10px;color:var(--text3);font-family:Montserrat,sans-serif;resize:none;outline:none;line-height:1.4;min-height:26px;}
-.fup-dot{width:7px;height:7px;border-radius:50%;position:absolute;top:9px;right:9px;background:var(--border2);}
-.fup-dot.done{background:var(--cyan);}
-.fup-dot.pend{background:var(--amber);}
-.fup-sts{display:flex;gap:8px;margin-top:5px;}
-.fup-st{font-size:10px;color:var(--text3);cursor:pointer;display:flex;align-items:center;gap:3px;}
-
-/* ── QUALIFICAÇÃO ── */
-.qual-tabs{display:flex;gap:8px;margin-bottom:12px;}
-.qual-tab{flex:1;padding:10px 8px;border-radius:6px;border:1.5px solid rgba(0,196,188,.18);background:#f2f2f2;cursor:pointer;text-align:center;transition:all .15s;}
-.qual-tab.on{background:#ffffff;border-color:var(--cyan);box-shadow:0 0 0 2px rgba(0,196,188,.15);}
-.qual-tab-t{font-size:12px;font-weight:700;color:var(--text2);}
-.qual-tab.on .qual-tab-t{color:var(--cyan);}
-.qual-tab-s{font-size:10px;color:var(--text3);margin-top:2px;}
-.qual-tab.on .qual-tab-s{color:rgba(0,196,188,.55);}
-.qual-desc{background:var(--cyan-glow);border-left:3px solid var(--cyan);border-radius:0 5px 5px 0;padding:12px 16px;font-size:13px;color:var(--text);line-height:1.7;font-weight:500;margin-bottom:14px;}
-
 /* ── FORM ── */
 .fcard{background:#ffffff;border:1.5px solid rgba(0,196,188,.2);border-radius:8px;overflow:hidden;box-shadow:0 2px 16px rgba(0,196,188,.08);}
 .prog{height:4px;background:rgba(0,196,188,.15);}
@@ -119,704 +91,358 @@ body{font-family:Montserrat,sans-serif;background:var(--bg);color:var(--text);}
 .lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-weight:600;display:block;margin-bottom:5px;}
 input,select,textarea{background:var(--bg3);border:1.5px solid var(--border);color:var(--text);font-size:13px;padding:9px 12px;border-radius:5px;outline:none;width:100%;font-family:Montserrat,sans-serif;transition:border .18s;}
 input:focus,select:focus,textarea:focus{border-color:var(--cyan);background:var(--bg4);}
-select option{background:var(--bg2);color:var(--text);}
 .fld{margin-bottom:13px;}
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:5px;}
 .chip{padding:6px 13px;border-radius:5px;font-size:12px;font-weight:600;border:1.5px solid rgba(0,196,188,.18);background:#f2f2f2;color:var(--text2);cursor:pointer;font-family:Montserrat,sans-serif;transition:all .15s;}
 .chip.on{border-color:var(--cyan);background:var(--cyan-dim);color:var(--cyan);}
-.obj-chip{padding:6px 12px;border-radius:5px;font-size:12px;font-weight:500;border:1.5px solid rgba(0,196,188,.18);background:#f2f2f2;color:var(--text2);cursor:pointer;display:inline-block;margin:3px 3px 0 0;transition:all .15s;font-family:Montserrat,sans-serif;}
-.obj-chip.on{border-color:var(--cyan);background:var(--cyan-dim);color:var(--cyan);font-weight:600;}
-.cin{background:#f7f7f7;border:1.5px solid rgba(0,196,188,.18);border-radius:6px;padding:14px 16px;margin-bottom:13px;}
 .mbt{flex:1;padding:15px 12px;border-radius:6px;cursor:pointer;text-align:center;border:1.5px solid rgba(0,196,188,.18);background:#f2f2f2;color:var(--text2);font-weight:700;font-size:13px;font-family:Montserrat,sans-serif;transition:all .18s;}
 .mbt.on{border-color:var(--cyan);border-width:2px;background:var(--cyan-dim);color:var(--cyan);}
 .fnav{display:flex;justify-content:space-between;margin-top:22px;padding-top:18px;border-top:1.5px solid var(--border);}
 
-/* ── ONEPAGE ── */
-.op{background:var(--surface);border:1.5px solid var(--border);border-radius:8px;overflow:hidden;}
-.ops{padding:22px 42px;border-bottom:1px solid var(--border);}
+/* ── ONEPAGE (PROPOSTA FINAL) ── */
+.op{background:var(--dark-bg);color:#fff;border-radius:8px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,0.3);}
+.ops{padding:32px 48px;border-bottom:1px solid rgba(255,255,255,0.05);position:relative;}
 .ops:last-child{border-bottom:none;}
-.opsa{background:#f7f7f7;}
-.opsh{display:flex;align-items:center;gap:10px;margin-bottom:15px;}
-.opsn{font-size:10px;font-weight:700;color:var(--cyan);letter-spacing:.14em;min-width:22px;}
+.opsh{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.opsn{font-size:10px;font-weight:800;color:var(--cyan);letter-spacing:.14em;}
 .opsl{flex:1;height:1px;background:linear-gradient(90deg,var(--cyan),transparent);}
-.opst{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;}
-.res{font-family:Montserrat,sans-serif;font-size:15px;line-height:1.8;color:var(--text);border-left:3px solid var(--cyan);padding:13px 18px;background:var(--cyan-glow);border-radius:0 5px 5px 0;font-weight:500;}
-.ctx-g{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:12px;}
-.ctx-i{padding:10px 13px;background:#f2f2f2;border-radius:5px;border-left:2px solid var(--cyan);}
-.ctx-k{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px;font-weight:600;}
-.ctx-v{font-size:13px;font-weight:600;color:var(--text);}
-.op-tag{font-size:11px;background:var(--cyan-glow);border:1.5px solid rgba(0,196,188,.2);border-radius:3px;padding:3px 9px;color:var(--text);display:inline-block;margin:2px;font-weight:500;}
-.ok{display:flex;gap:10px;align-items:flex-start;padding:9px 13px;background:rgba(0,196,188,.06);border:1.5px solid rgba(0,196,188,.2);border-radius:5px;margin-bottom:5px;font-size:13px;color:var(--text);line-height:1.6;}
-.nok{display:flex;gap:10px;align-items:flex-start;padding:9px 13px;background:rgba(245,183,49,.06);border:1.5px solid rgba(245,183,49,.2);border-radius:5px;margin-bottom:5px;font-size:13px;color:var(--text);line-height:1.6;}
-.rg{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
-.rc{background:#f7f7f7;border-radius:5px;padding:13px 15px;border:1.5px solid rgba(0,196,188,.18);border-top:2.5px solid var(--cyan);}
-.rc-t{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
-.rc-d{font-size:12px;color:var(--text2);line-height:1.6;}
+.opst{font-size:10px;font-weight:800;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.14em;}
 
-/* ── TIME CARDS ── */
-.tcg{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
-.tc{border-radius:6px;padding:11px 7px;text-align:center;border:1.5px solid rgba(0,196,188,.18);background:#f2f2f2;}
-.tc.hi{background:var(--cyan);border-color:var(--cyan);}
-.tc-a{width:32px;height:32px;border-radius:50%;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;font-size:13px;background:var(--border2);}
-.tc.hi .tc-a{background:rgba(0,0,0,.2);}
-.tc-r{font-size:10px;font-weight:600;color:var(--text2);line-height:1.4;}
-.tc.hi .tc-r{color:#0d1b2a;}
-.tc-sub{font-size:9px;color:rgba(13,27,42,.7);margin-top:2px;}
+.capa{padding:60px 48px;text-align:center;background:linear-gradient(180deg, #1e2f38 0%, #1a2830 100%);}
+.capa-num{font-size:10px;color:var(--cyan);text-transform:uppercase;letter-spacing:.15em;margin-bottom:24px;font-weight:800;}
+.capa-logo{height:55px;margin:0 auto 30px;display:block;}
+.capa-line{width:40px;height:2px;background:var(--cyan);margin:0 auto 30px;}
+.capa-tagline{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.7;max-width:500px;margin:0 auto 40px;}
+.capa-meta{display:flex;justify-content:center;gap:15px;}
+.capa-card{background:rgba(255,255,255,0.03);border:1px solid rgba(0,196,188,0.2);padding:12px 24px;border-radius:6px;min-width:140px;}
+.capa-card-l{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
+.capa-card-v{font-size:13px;font-weight:700;color:var(--cyan);}
 
-/* ── TABLE ── */
-.ot{width:100%;border-collapse:collapse;font-size:12px;}
-.ot th{padding:8px 11px;text-align:left;background:#f2f2f2;color:var(--text3);font-weight:700;font-size:9px;text-transform:uppercase;letter-spacing:.07em;border-bottom:2px solid var(--border);}
-.ot td{padding:9px 11px;border-bottom:1px solid var(--border);color:var(--text2);}
-.ot .hi{color:var(--cyan);font-weight:700;}
-.ot .bold-row td{font-weight:700;color:var(--text);background:#f2f2f2;}
-.conv-pct{font-size:10px;color:var(--text3);font-weight:400;margin-left:4px;}
-.tnote{font-family:Montserrat,sans-serif;font-size:14px;color:var(--text);margin-top:13px;line-height:1.8;border-left:3px solid var(--cyan);padding:10px 16px;background:var(--cyan-glow);font-weight:500;}
+.res-box{background:rgba(0,196,188,0.05);border-left:3px solid var(--cyan);padding:24px 28px;border-radius:0 8px 8px 0;font-size:15px;line-height:1.8;color:rgba(255,255,255,0.9);font-weight:500;}
 
-/* ── ESF BLOCK ── */
-.esf{border:1.5px solid var(--border);border-radius:7px;overflow:hidden;margin-bottom:16px;}
-.esf-header{background:#f2f2f2;padding:12px 16px;text-align:center;border-bottom:1.5px solid rgba(0,196,188,.18);}
-.esf-header-t{font-size:10px;color:var(--cyan);font-weight:700;text-transform:uppercase;letter-spacing:.14em;margin-bottom:3px;}
-.esf-header-s{font-family:Montserrat,sans-serif;font-size:13px;color:var(--text2);font-style:normal;font-weight:600;}
-.esf-body{display:grid;grid-template-columns:1fr 1.5px 1fr 1.5px 1fr;}
-.esf-div{background:var(--border);}
-.esf-item{padding:18px 12px;text-align:center;}
-.esf-v{font-family:Montserrat,sans-serif;font-size:30px;font-weight:700;color:var(--cyan);line-height:1;}
-.esf-l{font-size:10px;color:var(--text2);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-top:5px;}
-.esf-s{font-size:11px;color:var(--text3);margin-top:2px;}
+.grid-ctx{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.ctx-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:18px;border-radius:6px;border-bottom:2px solid rgba(0,196,188,0.3);}
+.ctx-l{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;}
+.ctx-v{font-size:13px;font-weight:700;color:#fff;}
 
-/* ── INVESTMENT BOX ── */
-.ib{background:#1a2830;border-radius:8px;padding:36px 40px;text-align:center;border:2px solid rgba(0,196,188,.3);position:relative;}
-.ib-val{font-family:Montserrat,sans-serif;font-size:52px;font-weight:700;color:var(--cyan);line-height:1;margin:8px 0;letter-spacing:-.02em;}
-.ib-label{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.12em;font-weight:600;}
-.ib-sub{font-size:12px;color:var(--text3);margin-top:10px;}
-.ib-validity{position:absolute;top:20px;right:24px;text-align:right;}
-.ib-validity-l{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;}
-.ib-validity-v{font-family:Montserrat,sans-serif;font-size:14px;font-weight:600;color:var(--text2);}
+.diag-grid{display:grid;grid-template-columns:1fr 40px 1fr;gap:0;align-items:center;}
+.diag-side{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:24px;border-radius:8px;}
+.diag-t{font-size:10px;font-weight:800;color:var(--cyan);text-transform:uppercase;letter-spacing:.12em;margin-bottom:15px;}
+.diag-item{font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:8px;display:flex;gap:8px;}
+.diag-arrow{text-align:center;font-size:20px;color:var(--cyan);opacity:0.5;}
 
-/* ── CONDITIONS GRID ── */
-.cg{display:grid;grid-template-columns:1fr 1fr;gap:0;}
-.ci2{padding:8px 0;border-bottom:1px solid var(--border);}
-.ci2:nth-child(odd){padding-right:15px;}
-.ci2:nth-child(even){padding-left:15px;border-left:1px solid var(--border);}
-.ck2{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;}
-.cv2{font-size:12px;font-weight:600;color:var(--text);}
+.time-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+.time-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:20px 10px;text-align:center;border-radius:8px;transition:all .3s;}
+.time-card.active{background:rgba(0,196,188,0.1);border-color:var(--cyan);}
+.time-icon{width:36px;height:36px;background:rgba(255,255,255,0.05);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;color:var(--cyan);}
+.time-card.active .time-icon{background:var(--cyan);color:#fff;}
+.time-l{font-size:11px;font-weight:700;color:#fff;line-height:1.4;}
 
-/* ── ADM PANEL ── */
+.invest-box{background:rgba(255,255,255,0.02);border:2px solid rgba(0,196,188,0.3);padding:40px;border-radius:12px;text-align:center;position:relative;}
+.invest-l{font-size:11px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.15em;margin-bottom:10px;}
+.invest-v{font-size:52px;font-weight:800;color:var(--cyan);letter-spacing:-1px;margin-bottom:10px;}
+.invest-s{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:25px;}
+.invest-roi{background:rgba(0,196,188,0.05);padding:20px;border-radius:8px;font-size:13px;line-height:1.6;color:rgba(255,255,255,0.7);font-style:italic;}
 
-.adm-panel{position:fixed;top:0;right:-600px;width:580px;height:100vh;background:#fff;box-shadow:-4px 0 24px rgba(0,0,0,0.15);z-index:1000;transition:right .3s;display:flex;flex-direction:column;color:var(--text);}
-.adm-panel.open{right:0;}
-.adm-head{padding:20px 24px;border-bottom:1.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:#fcfcfc;}
-.adm-head-t{font-weight:800;font-size:16px;color:var(--text);}
-.adm-tabs{display:flex;background:#f2f2f2;padding:4px;gap:4px;}
-.adm-tab{flex:1;padding:10px;text-align:center;font-size:11px;font-weight:700;cursor:pointer;border-radius:4px;color:var(--text3);transition:all .15s;}
-.adm-tab.on{background:#fff;color:var(--cyan);box-shadow:0 2px 6px rgba(0,0,0,0.05);}
-.adm-body{flex:1;overflow-y:auto;padding:20px 24px;background:#fff;}
-.adm-row{display:grid;grid-template-columns:1.5fr 1fr 100px 120px;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eee;}
-.adm-name{font-weight:700;font-size:13px;}
-.adm-co{font-size:11px;color:var(--text3);}
-.adm-st{font-size:10px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:4px;text-align:center;}
-.adm-btn{background:#f7f7f7;border:1px solid #ddd;padding:6px 10px;border-radius:5px;font-size:10px;cursor:pointer;font-weight:600;transition:all .15s;}
-.adm-btn:hover{border-color:var(--cyan);color:var(--cyan);}
-.adm-btn.del{color:var(--red);border-color:rgba(224,85,85,0.2);}
-.adm-btn.del:hover{background:rgba(224,85,85,0.05);border-color:var(--red);}
-.adm-perf-card{background:#f9f9f9;border:1.5px solid var(--border);border-radius:8px;padding:16px;margin-bottom:16px;}
-.adm-perf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;}
-.adm-perf-stat{text-align:center;padding:10px;background:#fff;border-radius:6px;border:1px solid #eee;}
-.adm-perf-v{font-size:18px;font-weight:800;color:var(--cyan);}
-.adm-perf-l{font-size:9px;color:var(--text3);text-transform:uppercase;font-weight:700;margin-top:4px;}
-.adm-empty{text-align:center;padding:40px;color:var(--text3);font-size:13px;}
+.cond-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid rgba(255,255,255,0.05);border-radius:8px;overflow:hidden;}
+.cond-item{padding:15px 20px;border-bottom:1px solid rgba(255,255,255,0.05);}
+.cond-item:nth-child(odd){border-right:1px solid rgba(255,255,255,0.05);}
+.cond-l{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;}
+.cond-v{font-size:12px;font-weight:700;color:#fff;}
 
-/* ── FOOTER ── */
-.of{background:#ffffff;padding:18px 42px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid var(--cyan);box-shadow:0 -2px 12px rgba(0,196,188,.1);}
+.parc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;}
+.parc-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:25px;border-radius:8px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:140px;}
+.parc-logo{max-height:35px;margin-bottom:15px;opacity:0.9;}
+.parc-l{font-size:9px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.1em;font-weight:700;}
 
-/* ── MISC ── */
-.ab{display:inline-block;background:var(--cyan);color:#ffffff;font-size:11px;font-weight:700;padding:4px 13px;border-radius:3px;letter-spacing:.06em;margin-bottom:11px;text-transform:uppercase;}
-.rb{background:rgba(245,183,49,.07);border:1.5px solid rgba(245,183,49,.25);border-radius:5px;padding:12px 15px;margin-top:12px;}
-.rl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--amber);margin-bottom:3px;}
-.dg-ok{background:rgba(0,196,188,.06);border:1.5px solid rgba(0,196,188,.2);border-radius:5px;padding:9px 12px;margin-bottom:6px;font-size:12px;color:var(--text);line-height:1.6;display:flex;gap:9px;}
-.dg-ch{background:rgba(245,183,49,.06);border:1.5px solid rgba(245,183,49,.2);border-radius:5px;padding:9px 12px;margin-bottom:6px;font-size:12px;color:var(--text);line-height:1.6;display:flex;gap:9px;}
+.footer-final{background:#0d1b2a;padding:25px 48px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.05);}
+.footer-l{font-size:12px;font-weight:800;color:#fff;}
+.footer-l span{color:var(--cyan);}
+.footer-r{text-align:right;}
+.footer-v{font-size:11px;font-weight:700;color:#fff;margin-bottom:2px;}
+.footer-m{font-size:10px;color:rgba(255,255,255,0.4);}
 
-.prop-num{font-size:10px;font-weight:700;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;margin-right:6px;}
-.prop-ver{font-size:10px;font-weight:600;color:var(--text3);border:1px solid var(--border);border-radius:3px;padding:1px 6px;background:var(--bg3);}
+.v-filter{display:flex;gap:8px;margin-bottom:15px;}
+.v-tab{padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;border:1.5px solid rgba(0,196,188,0.15);background:#fff;color:var(--text2);cursor:pointer;}
+.v-tab.on{background:var(--cyan);color:#fff;border-color:var(--cyan);}
 
-.vend-filter{display:flex;gap:6px;align-items:center;margin-bottom:14px;flex-wrap:wrap;}
-.vend-tab{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;border:1.5px solid rgba(0,196,188,.18);background:#f2f2f2;color:var(--text2);cursor:pointer;font-family:Montserrat,sans-serif;transition:all .15s;}
-.vend-tab.on{background:var(--surface2);border-color:var(--cyan);color:var(--cyan);}
-.gmail-btn{background:#f2f2f2;border:1.5px solid rgba(0,196,188,.2);color:var(--text2);border-radius:5px;padding:6px 13px;font-size:11px;font-weight:600;cursor:pointer;font-family:Montserrat,sans-serif;display:flex;align-items:center;gap:5px;transition:all .15s;}
-.gmail-btn:hover{border-color:var(--cyan);color:var(--cyan);}
-
-/* ── CAPA ── */
-.capa-tagline{font-size:13px;color:rgba(26,40,48,.55);font-style:italic;line-height:1.65;margin-bottom:18px;max-width:480px;}
-.roi-pergunta{background:var(--cyan-glow);border:1px solid rgba(0,196,188,.25);border-radius:6px;padding:14px 20px;margin-top:14px;display:flex;align-items:center;gap:14px;}
-.roi-pergunta-icon{width:36px;height:36px;border-radius:50%;background:var(--cyan-dim);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.roi-pergunta-text{font-size:14px;color:var(--text);font-weight:500;line-height:1.5;}
-.roi-pergunta-text strong{color:var(--cyan);}
-.par-sf{flex:1.6;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 14px;border-right:1px solid var(--border);text-align:center;background:var(--bg4);}
-.par-sf-badge{font-size:9px;font-weight:700;color:var(--cyan);background:var(--cyan-dim);border:1px solid rgba(0,196,188,.25);border-radius:3px;padding:2px 8px;letter-spacing:.08em;text-transform:uppercase;margin-top:6px;display:inline-block;}
-.par-right{flex:1;display:flex;flex-direction:column;}
-.par-right .pa{border-right:none;border-bottom:1px solid var(--border);}
-.par-right .pa:last-child{border-bottom:none;}
-.z-connector{display:flex;align-items:center;justify-content:center;padding:4px 0;margin:0;}
-.z-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(0,196,188,.25),transparent);}
-.z-dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);opacity:.4;margin:0 8px;flex-shrink:0;}
-.tc-icon{width:32px;height:32px;border-radius:50%;margin:0 auto 6px;display:flex;align-items:center;justify-content:center;background:rgba(0,196,188,.12);}
-.tc.hi .tc-icon{background:rgba(0,0,0,.2);}
-.cliente-logo-wrap{width:72px;height:72px;border:1.5px solid rgba(0,196,188,.2);border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;margin:0 auto 14px;}
-
-.link-btn{background:transparent;color:var(--green);border:1.5px solid var(--green);border-radius:5px;padding:6px 13px;font-weight:600;font-size:12px;cursor:pointer;font-family:Montserrat,sans-serif;transition:all .2s;}
-.link-btn:hover{background:rgba(62,207,122,.08);}
-.link-copied{background:rgba(62,207,122,.12);border-color:var(--green);color:var(--green);}
-.sync-btn{background:transparent;color:var(--green);border:1.5px solid var(--green);border-radius:5px;padding:7px 13px;font-weight:600;font-size:12px;cursor:pointer;font-family:Montserrat,sans-serif;}
-.sync-btn:disabled{opacity:.5;cursor:not-allowed;}
-.sync-status{font-size:11px;padding:4px 10px;border-radius:4px;font-weight:600;display:none;}
-.sync-ok{color:var(--green);background:rgba(62,207,122,.1);border:1px solid rgba(62,207,122,.2);}
-.sync-err{color:#e05555;background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.2);}
-.sync-loading{color:#00c4bc;background:rgba(0,196,188,.1);border:1px solid rgba(0,196,188,.2);}
-@page{
-  margin: 12mm 10mm;
-  size: A4;
-}
 @media print{
-  html{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
-  .nav,.sync-btn,.gbtn,.sbtn,.nbtn,.jb,.jp,.fup-section{display:none!important;}
-  body{background:#fff!important;margin:0;padding:0;}
-  .main{max-width:100%!important;padding:0!important;margin:0!important;}
-  .op{border:none!important;border-radius:0!important;}
-  .ops{padding:16px 36px!important;border-bottom:1px solid #e0dbd4!important;page-break-inside:avoid;}
-  .opsa{background:#f8f8f8!important;}
-  .opsn{color:#00c4bc!important;}
-  .res{color:#1a2830!important;background:#f2f2f2!important;}
-  .ctx-i{background:#f2f2f2!important;}
-  .ctx-v{color:#1a2830!important;}
-  .ok{background:#e8f5f2!important;color:#1a2830!important;}
-  .nok{background:#fdf0ec!important;color:#1a2830!important;}
-  .rc{background:#f8f8f8!important;}
-  .tnote{color:#1a2830!important;background:#f2f2f2!important;}
-  .ab{background:#00c4bc!important;color:#1a2830!important;}
-  .ni-n{color:#00c4bc!important;}
-  .ot th{background:#f2f2f2!important;}
-  .ot .hi{color:#00c4bc!important;}
-  .ot .bold-row td{background:#f2f2f2!important;}
-  .esf-header{background:#f2f2f2!important;}
-  .esf-v{color:#00c4bc!important;}
-  .ib{background:#f8f8f8!important;border:2px solid #2d4048!important;}
-  .ib-val{color:#1a2830!important;font-size:44px!important;font-family:Montserrat,sans-serif!important;letter-spacing:-.02em!important;}
-  .ib-label{color:#ccc!important;}
-  .ib-sub{color:#8a9ea8!important;}
-  .ib-validity-l{color:#8a9ea8!important;}
-  .ib-validity-v{color:#ddd!important;}
-  .of{background:#f8f8f8!important;border-top:3px solid #009d94!important;}
-  .ct-ativo{background:#f8f8f8!important;color:#00c4bc!important;border-color:#00c4bc!important;}
-  .ops,.ops-dark{padding:16px 36px!important;border-bottom:1px solid #e0dbd4!important;page-break-inside:avoid;}
-  .tcg{page-break-inside:avoid!important;}
-  .esf{page-break-inside:avoid!important;}
-  .esf-body{page-break-inside:avoid!important;}
-  .ib{page-break-inside:avoid!important;}
-  .jw{page-break-inside:avoid!important;}
-  .rg{page-break-inside:avoid!important;}
-  .cg{page-break-inside:avoid!important;}
-  .par{page-break-inside:avoid!important;}
-  .ni{page-break-inside:avoid!important;}
-  .opsh{page-break-after:avoid!important;}
-  .ot{page-break-inside:avoid!important;}
-  table{page-break-inside:avoid!important;}
-  tr{page-break-inside:avoid!important;page-break-after:auto!important;}
-  .jw *{page-break-inside:avoid!important;}
-  .qual-tabs{display:none!important;}
-  .qual-desc{display:none!important;}
+  .nav,.fnav,.nbtn,.sbtn,.v-filter{display:none!important;}
+  body{background:#fff;}
+  .main{max-width:100%;padding:0;margin:0;}
+  .op{box-shadow:none;border-radius:0;}
+  .ops{page-break-inside:avoid;}
+  .footer-final{background:#1a2830!important;-webkit-print-color-adjust:exact;}
 }
 </style>
 </head>
 <body>
 <div id="app"></div>
 <script>
-const SHEETS_URL='https://script.google.com/macros/s/AKfycbzsezpT4z4FAYvIXAEeuH2UEbcqcejXqQ5hPSD_wryPljxVtRu7a6eu1QZPreNOVPOz/exec';
-const SEGS=['Tecnologia & SaaS','Serviços B2B & Consultoria','Indústria & Manufatura','Energia & Sustentabilidade','Marketing & Comunicação','Logística & Transporte','Jurídico & Contábil','Mobilidade & Automóveis','Seguros & Financeiro','Telecom & Conectividade','Saúde & Bem-estar','Impressão & Tecnologia','Financeiro & Contábil'];
-const ATIVOS=['Techware','WBP','Cadena','Consultar','Minascopy','Purifikar','Radio Memory','Velt','Perfil Apoio','Mytech','FDC','Triex','Zeus','Multilog','Regmed','Comis','CST','Macrosystem','Bycor','FBE','BWA','Strom','Nova Indiana','PSP','FGA','Afixcode','Janis','Atena','RBE','Maac','Uaify','Mednet','Volp','Zenite','Log School','YFN','Armind','MPFA'];
-const CLIENTS={
-  'Tecnologia & SaaS':['Mytech','Atena AI','Volp.ti','Uaify','Mednet','Zenite','DTI Digital','Atendare','Bornlogic','Mereo Tech','Nexxto','Netscanner','Vlatech','Buyco','SSTI','Nuvidio','Treve.io','TNX Brasil'],
-  'Serviços B2B & Consultoria':['Consultar','WBP','Perfil Apoio','MPFA Jurídico','Novix','Rocket Science','VMV Group','Conseiller','Theocom','Audaz','RN3 Inovação','Ideia Clara'],
-  'Indústria & Manufatura':['Nova Indiana Borrachas','Strom Engenharia','Regmed','Bycor','PSP Group','Alkon Indústria','Zinco Brasil','Pressmix','Chicago Pneumatic','Inwave','Innovatec','Planar'],
-  'Energia & Sustentabilidade':['Triex','RBE Energia','Capitale Energia','Armor Energia','Detronic','Innovare Energia'],
-  'Marketing & Comunicação':['Armind Eventos','Guerrilha Filmes','Magnex','Agência 947','ORO Comunicação','Pixxel'],
-  'Logística & Transporte':['Multilog','Multilog 02','Multilog 03','Maac Travel','Axis Shipping','Octo Transportes','Brasfrotas','Samid'],
-  'Jurídico & Contábil':['YFN Advogados','MPFA Jurídico','Gontijo Mendes','Candiotto Valle','Starling & Ferreira','Muzzi Advogados'],
-  'Mobilidade & Automóveis':['MM Rent a Car','Autopapo','Garmisch'],
-  'Seguros & Financeiro':['Grape Seguros','Suhai','Otmow','Partnerbank','Trademaster','Money Miles'],
-  'Telecom & Conectividade':['Log School','Techware','Sitel','Citta Telecom','Televale','Eagle Telecom'],
-  'Saúde & Bem-estar':['CST Medicina','Funcional Health Tech','RS Saúde','Salubrita','Tolife'],
-  'Impressão & Tecnologia':['Techware','Macrosystem','Radio Memory','Afixcode','Purifikar','Purifikar 02','Comis','FGA','Minascopy'],
-  'Financeiro & Contábil':['FBE Desenvolvimento','BWA','Cadena','Velt Corporativo','Janis']
-};
-
 const VENDEDORES={
   'andre':{nome:'André Albergaria',email:'andre@grupoescalar.com.br',tel:'(31) 99998-0237'},
   'marco':{nome:'Marco Tulio',email:'marco@grupoescalar.com.br',tel:''},
   'rhavi':{nome:'Rhavi',email:'rhavi@grupoescalar.com.br',tel:''}
 };
-
-const OBJ_OPTS=['Prospecção Outbound Consultiva','Mapeamento de Mercado & Inteligência','Construção de Base Estratégica','Social Selling & Relacionamento','Cadências Multicanais','Qualificação de Leads & Reuniões','Nutrição Outbound','Scripts de abordagem','Templates de e-mail','Mensagens LinkedIn/WhatsApp','Gestão Operacional & Performance'];
+const SEGS=['Tecnologia & SaaS','Serviços B2B & Consultoria','Indústria & Manufatura','Energia & Sustentabilidade','Marketing & Comunicação','Logística & Transporte','Jurídico & Contábil','Mobilidade & Automóveis','Seguros & Financeiro','Telecom & Conectividade','Saúde & Bem-estar','Impressão & Tecnologia','Financeiro & Contábil'];
 const RLBL={'abaixo_1':'< R$ 1MM','1_5':'R$ 1-5MM','5_20':'R$ 5-20MM','acima_20':'> R$ 20MM'};
 const VLBL={'nenhum':'0','1_2':'1-2','3_5':'3-5','6_10':'6-10','acima_10':'10+'};
 const CLBL={'menos30':'< 30 dias','30_60':'30-60 dias','60_120':'60-120 dias','mais120':'120+ dias'};
-const TLBL={'recorrente':'Recorrente (MRR)','projeto':'Projeto','misto':'Misto'};
 const CNAME={'nenhum':'Sem CRM','pipedrive':'Pipedrive','hubspot':'HubSpot','salesforce':'Salesforce','rdstation':'RD Station','planilha':'Planilhas','outros':'Outros'};
 const RNOME={'local':'Local','estadual':'Estadual','sul_sudeste':'Sul+Sudeste','sudeste':'Sudeste','brasil':'Brasil','america_latina':'América Latina','global':'Global'};
+const OBJ_OPTS=['Prospecção Outbound Consultiva','Mapeamento de Mercado & Inteligência','Construção de Base Estratégica','Social Selling & Relacionamento','Cadências Multicanais','Qualificação de Leads & Reuniões','Nutrição Outbound','Scripts de abordagem','Templates de e-mail','Mensagens LinkedIn/WhatsApp','Gestão Operacional & Performance'];
 
-const SF_SVG='<svg xmlns="http://www.w3.org/2000/svg" width="130" height="44" viewBox="0 0 325 110"><path d="M133.2,20.1c6.5-6.8,15.5-11,25.6-11c13.2,0,24.7,7.2,30.8,17.9c5.3-2.3,11.2-3.6,17.4-3.6c24.2,0,43.8,19.7,43.8,44c0,0.4,0,0.8,0,1.2c9.8,2,17.2,10.7,17.2,21.1c0,11.9-9.6,21.5-21.5,21.5H74.3C57.9,111.1,44.7,98,44.7,81.6c0-13.4,8.6-24.8,20.7-28.9C64.9,50.3,64.7,48,64.7,45.6C64.7,31.5,76.1,20,90.2,20c5.1,0,9.9,1.5,13.9,4.1C109.3,27.4,116.3,21.7,133.2,20.1z" fill="#00A1E0"/><text x="58" y="82" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="400" fill="white" letter-spacing="-0.5">sales<tspan font-style="italic">force</tspan></text></svg>';
-const G4_SVG='<img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663634474230/dZcrmkMRyROqiuCW.png" style="height:35px; opacity:0.9;">';
-const RAMPPY_SVG='<img src="https://i.ibb.co/LzNfX5T/logo-escalar.png" style="height:35px; filter: grayscale(1) brightness(0.5);">';
-
-function fmtD(){return new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});}
-function fmtDate(d){if(!d)return '';if(d.includes('T'))return new Date(d).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});return d;}
-function fmtVal(v){if(!v||v===0)return'—';if(v>=1000000)return'R$'+Math.round(v/1000000)+'M';if(v>=100000)return'R$'+Math.round(v/1000)+'k';return'R$'+v.toLocaleString('pt-BR');}
-function mrrList(l){return l.reduce((s,p)=>{const raw=(p.valor||'').replace(/[R$\s.]/g,'').replace(',','.');const n=parseFloat(raw);return s+(isNaN(n)?0:n);},0);}
+const LOGO_ESCALAR='https://files.manuscdn.com/user_upload_by_module/session_file/310519663657555915/GsSkaBxaWaIUoyHg.png';
+const LOGO_G4='https://files.manuscdn.com/user_upload_by_module/session_file/310519663634474230/dZcrmkMRyROqiuCW.png';
+const LOGO_SF='https://upload.wikimedia.org/wikipedia/commons/f/f9/Salesforce.com_logo.svg';
 
 let proposals=[];
-try{const r=localStorage.getItem('esc_bpo');if(r)proposals=JSON.parse(r);}catch(e){}
+try{const r=localStorage.getItem('esc_bpo_v3');if(r)proposals=JSON.parse(r);}catch(e){}
 
-if(proposals.length){
-  let changed=false;
-  let maxNum=Math.max(0,...proposals.map(p=>p.num||0));
-  proposals.forEach(p=>{
-    if(!p.num){p.num=++maxNum;changed=true;}
-    if(!p.ver){p.ver=1;changed=true;}
-    if(!p.fups){p.fups={};changed=true;}
-  });
-  if(changed){try{localStorage.setItem('esc_bpo',JSON.stringify(proposals));}catch(e){}}
-}
+let view='dash',step=1,F={},editId=null,vFilter='todos';
 
-if(!proposals.length){proposals=[{id:1,num:1,ver:1,vendedor:'andre',empresa:'TechFlow Solutions',segmento:'Tecnologia & SaaS',contato:'Marcos Lima',cargo:'CEO',website:'techflow.com.br',receita:'1_5',vendedores:'3_5',crm:'hubspot',regiao:'sudeste',crescimento:['Inbound','Outbound'],previsibilidade:'moderada',icp:'muito_claro',ciclo:'30_60',ticket_tipo:'recorrente',ticket:'R$ 15.000',dores:'Escalar prospecção com qualidade.',objetivo:'',objetivos:['Prospecção Outbound Consultiva'],reuniao:'Foco em tech 50+ funcionários no Sudeste.',modelo:'dedicado',valor:'R$ 8.500',ganho:'R$ 2.000',status:'enviada',created:'23/05/2026',fups:{}}];}
-syncCounter();
-function sv(){try{localStorage.setItem('esc_bpo',JSON.stringify(proposals));}catch(e){}}
-function nextNum(){
-  let counter=0;
-  try{counter=parseInt(localStorage.getItem('esc_bpo_counter')||'0');}catch(e){}
-  counter++;
-  try{localStorage.setItem('esc_bpo_counter',String(counter));}catch(e){}
-  return counter;
-}
-function syncCounter(){
-  try{
-    const cur=parseInt(localStorage.getItem('esc_bpo_counter')||'0');
-    const maxNum=Math.max(0,...proposals.map(p=>p.num||0));
-    if(maxNum>=cur) localStorage.setItem('esc_bpo_counter',String(maxNum));
-  }catch(e){}
-}
-function ef(){return{id:Date.now(),num:nextNum(),ver:1,vendedor:'andre',empresa:'',segmento:'',contato:'',cargo:'',website:'',receita:'',vendedores:'',crm:'',regiao:'',crescimento:[],previsibilidade:'',icp:'',ciclo:'',ticket_tipo:'',ticket:'',dores:'',objetivo:'',objetivos:[],reuniao:'',modelo:'compartilhado',valor:'',ganho:'',status:'rascunho',created:fmtD(),fups:{}};}
-
-let view='dash',step=1,F={},editId=null,vendFilter='todos';
-
-function showSyncStatus(msg,type){let el=document.getElementById('sync-status');if(!el)return;el.textContent=msg;el.className='sync-status sync-'+type;el.style.display='inline-block';if(type==='ok')setTimeout(()=>{el.style.display='none';},3000);}
-
-function syncToSheets(p){
-  showSyncStatus('Sincronizando...','loading');
-  const data=Object.assign({},p,{action:'upsert'});
-  fetch(SHEETS_URL,{method:'POST',mode:'no-cors',cache:'no-cache',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
-  .then(()=>{showSyncStatus('Sincronizado!','ok');})
-  .catch(err=>{console.error(err);showSyncStatus('Erro ao sincronizar','err');});
-}
-
-function deleteFromSheets(id){
-  fetch(SHEETS_URL,{method:'POST',mode:'no-cors',cache:'no-cache',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id,action:'delete'})})
-  .catch(err=>console.error(err));
-}
+function sv(){localStorage.setItem('esc_bpo_v3',JSON.stringify(proposals));}
+function ef(){return{id:Date.now(),num:proposals.length+1,vendedor:'andre',empresa:'',segmento:'',contato:'',cargo:'',website:'',receita:'',vendedores:'',crm:'',regiao:'',crescimento:[],dores:'',objetivos:[],ciclo:'',modelo:'compartilhado',valor:'',ganho:'',status:'rascunho',created:new Date().toLocaleDateString('pt-BR')};}
 
 function setF(k,v){F[k]=v;re();}
 function tgl(k,v){if(!F[k])F[k]=[];if(F[k].includes(v))F[k]=F[k].filter(x=>x!==v);else F[k].push(v);re();}
-function tglObj(el,v){if(!F.objetivos)F.objetivos=[];if(F.objetivos.includes(v))F.objetivos=F.objetivos.filter(x=>x!==v);else F.objetivos.push(v);re();}
-
-function goOP(id){editId=id;view='onepage';re();}
 function goDash(){view='dash';re();}
 function goNew(){F=ef();step=1;view='form';re();}
-function goEdit(id){const p=proposals.find(x=>x.id===id);if(!p)return;F=JSON.parse(JSON.stringify(p));if(!Array.isArray(F.crescimento))F.crescimento=[];if(!Array.isArray(F.objetivos))F.objetivos=[];editId=id;step=1;view='form';re();}
-
+function goEdit(id){const p=proposals.find(x=>x.id===id);F=JSON.parse(JSON.stringify(p));editId=id;step=1;view='form';re();}
+function goOP(id){editId=id;view='onepage';re();}
 function prev(){if(step>1){step--;re();}}
 function next(){if(step<4){step++;re();}else{save();}}
 function save(){
-  if(editId){const idx=proposals.findIndex(x=>x.id===editId);if(idx>-1)proposals[idx]=F;}
+  if(editId){const idx=proposals.findIndex(x=>x.id===editId);proposals[idx]=F;}
   else{proposals.unshift(F);}
-  sv();syncToSheets(F);view='dash';re();
+  sv();view='dash';re();
 }
-
-const QUAL_DESC={
-  'aberta':'Foco em volume de reuniões. Critérios de qualificação flexíveis para abranger mais fatias do mercado.',
-  'padrao':'Equilíbrio entre volume e qualidade. Critérios alinhados ao Perfil de Cliente Ideal (ICP).',
-  'restrita':'Foco total em qualidade e fit estratégico. Critérios rigorosos, priorizando contas de alto valor.'
-};
-
-function calcDiag(p){
-  const f=[],ch=[];
-  if(p.previsibilidade==='muito_previsivel')f.push('Processo comercial com boa maturidade e previsibilidade.');
-  if(p.icp==='muito_claro')f.push('ICP bem definido, facilitando a assertividade na prospecção.');
-  if(p.crm!=='nenhum'&&p.crm!=='planilha')f.push('Uso de CRM especializado para gestão de pipeline.');
-  if(p.previsibilidade==='baixa'||p.previsibilidade==='dependente')ch.push('Baixa previsibilidade e dependência de indicações/relacionamento.');
-  if(p.icp==='inexistente')ch.push('Falta de clareza no ICP, gerando esforço em leads desqualificados.');
-  if(p.crm==='nenhum'||p.crm==='planilha')ch.push('Ausência de ferramenta de CRM para controle de indicadores.');
-  if(p.ciclo==='mais120')ch.push('Ciclo de vendas longo exige cadências de nutrição mais estruturadas.');
-  
-  let resumo='Com base nos dados apresentados, identificamos que a <strong>'+(p.empresa||'empresa')+'</strong> possui '+(f.length>ch.length?'um cenário favorável para escala':'desafios importantes na estruturação comercial')+'. Nosso objetivo será '+(p.objetivo||'implementar um motor de prospecção outbound previsível')+'.';
-  return {f,ch,resumo};
-}
-
-function setQual(pid,tipo){
-  const p=proposals.find(x=>x.id===pid||x.id==pid);if(!p)return;
-  p.qualificacao=tipo;sv();
-  const tabs=document.querySelectorAll('#qtabs-'+pid+' .qual-tab');
-  const tipos=['aberta','padrao','restrita'];
-  tabs.forEach((t,i)=>{t.className='qual-tab'+(tipos[i]===tipo?' on':'');});
-  const desc=document.getElementById('qdesc-'+pid);
-  if(desc)desc.textContent=QUAL_DESC[tipo];
-}
-
-function saveFup(pid,n,key,val){
-  const p=proposals.find(x=>x.id===pid||x.id==pid);if(!p)return;
-  if(!p.fups)p.fups={};
-  if(!p.fups[n])p.fups[n]={};
-  p.fups[n][key]=val;
-  sv();
-  const box=document.getElementById('fup-'+pid+'-'+n);
-  if(!box)return;
-  const fup=p.fups[n];
-  const st=fup.status;
-  box.className='fup-box'+(st==='done'?' done':st==='pend'?' pend':'');
-  const dot=box.querySelector('.fup-dot');
-  if(dot)dot.className='fup-dot'+(st==='done'?' done':st==='pend'?' pend':'');
-}
-
-function setSt(id,st){
-  const p=proposals.find(x=>x.id===id);
-  if(p){p.status=st;sv();re();}
-}
-
-function delP(id){
-  if(confirm('Excluir esta proposta?')){
-    proposals=proposals.filter(x=>x.id!==id);
-    sv();re();
-  }
-}
-
-function setVendFilter(el,v){
-  vendFilter=v;
-  re();
-}
+function delP(id){if(confirm('Excluir proposta?')){proposals=proposals.filter(x=>x.id!==id);sv();re();}}
 
 function re(){document.getElementById('app').innerHTML=view==='dash'?rDash():view==='form'?rForm():rOP();}
 
 function rDash(){
-  const filtered=vendFilter==='todos'?proposals:proposals.filter(p=>p.vendedor===vendFilter);
-  const env=filtered.filter(p=>p.status==='enviada');
-  const apr=filtered.filter(p=>p.status==='aprovada');
-  const avgV=filtered.filter(p=>p.valor).length?mrrList(filtered.filter(p=>p.valor))/filtered.filter(p=>p.valor).length:0;
-  const conv=env.length+apr.length>0?Math.round(apr.length/(env.length+apr.length)*100)+'%':'—';
-  const BCOL={'rascunho':'br','enviada':'be','aprovada':'ba','perdida':'bp'};
+  const filtered=vFilter==='todos'?proposals:proposals.filter(p=>p.vendedor===vFilter);
+  const cards=filtered.map(p=>`
+    <div class="pcard">
+      <div class="pcard-top">
+        <div class="pav">${(p.empresa||'?').slice(0,2).toUpperCase()}</div>
+        <div class="pinfo">
+          <div class="pname">${p.empresa||'Sem nome'}</div>
+          <div class="pmeta">${p.segmento||'—'} · ${p.contato||'—'} · ${p.created}</div>
+        </div>
+        <div class="pact">
+          <span class="badge ${p.status==='aprovada'?'ba':p.status==='enviada'?'be':'br'}">${p.status}</span>
+          <span style="font-size:11px;font-weight:700;color:var(--cyan);">${p.valor||'—'}</span>
+          <button class="nbtn" style="padding:5px 10px;font-size:11px;" onclick="goOP(${p.id})">Ver Proposta</button>
+          <button class="sbtn" style="padding:5px 10px;" onclick="goEdit(${p.id})">Editar</button>
+          <button class="dbtn" onclick="delP(${p.id})">✕</button>
+        </div>
+      </div>
+    </div>
+  `).join('') || '<div class="empty">Nenhuma proposta encontrada.</div>';
 
-  const cards=!filtered.length?'<div class="empty">Nenhuma proposta'+(vendFilter!=='todos'?' para este vendedor':'')+'.</div>':filtered.map(p=>{
-    const fups=p.fups||{};
-    const fupHtml=[1,2,3,4,5].map(n=>{
-      const fup=fups[n]||{};
-      const st=fup.status||'';
-      const cls=st==='done'?' done':st==='pend'?' pend':'';
-      const dotCls=st==='done'?' done':st==='pend'?' pend':'';
-      return '<div class="fup-box'+cls+'" id="fup-'+p.id+'-'+n+'">'+
-        '<div class="fup-dot'+dotCls+'"></div>'+
-        '<div class="fup-num">FUP '+n+'</div>'+
-        '<input type="date" class="fup-dt" value="'+(fup.date||'')+'" onchange="saveFup('+p.id+','+n+',\'date\',this.value)">'+
-        '<textarea class="fup-nt" rows="2" placeholder="Anotação..." onchange="saveFup('+p.id+','+n+',\'note\',this.value)">'+(fup.note||'')+'</textarea>'+
-        '<div class="fup-sts">'+
-        '<span class="fup-st" onclick="saveFup('+p.id+','+n+',\'status\',\'done\')"><span style="width:7px;height:7px;border-radius:50%;background:#00c4bc;display:inline-block;margin-right:2px;"></span>OK</span>'+
-        '<span class="fup-st" onclick="saveFup('+p.id+','+n+',\'status\',\'pend\')"><span style="width:7px;height:7px;border-radius:50%;background:#f0c030;display:inline-block;margin-right:2px;"></span>Pend.</span>'+
-        '</div>'+
-        '</div>';
-    }).join('');
-
-    return '<div class="pcard">'+
-      '<div class="pcard-top">'+
-      '<div class="pav">'+((p.empresa||'?').slice(0,2).toUpperCase())+'</div>'+
-      '<div class="pinfo"><div class="pname">'+( p.empresa||'Sem nome')+'</div><div class="pmeta">'+(p.segmento||'—')+' · '+(p.contato||'—')+' · '+fmtDate(p.created)+'</div></div>'+
-      '<div class="pact">'+
-      '<span style="font-size:10px;font-weight:600;color:#4a6070;background:#f2f2f2;border:1.5px solid rgba(0,196,188,.14);border-radius:4px;padding:3px 8px;">'+((VENDEDORES[p.vendedor||'andre']||{}).nome||'—').split(' ')[0]+'</span>'+
-      '<span class="badge '+(BCOL[p.status]||'br')+'">'+ p.status+'</span>'+
-      '<span class="badge br">'+(p.modelo||'—')+'</span>'+
-      (p.valor?'<span style="font-weight:700;color:#00c4bc;font-size:13px;">'+p.valor+'/mês</span>':'')+
-      '<select class="ssel" onchange="setSt('+p.id+',this.value)">'+['rascunho','enviada','aprovada','perdida'].map(s=>'<option value="'+s+'"'+(p.status===s?' selected':'')+'>'+s+'</option>').join('')+'</select>'+
-      '<button class="nbtn" style="padding:6px 13px;font-size:11px;" onclick="goOP('+p.id+')">Ver OnePage</button>'+
-      '<button class="sbtn" onclick="goEdit('+p.id+')">Editar</button>'+
-      '<button class="dbtn" onclick="delP('+p.id+')">✕</button>'+
-      '</div></div>'+
-      '<div class="fup-section"><div class="fup-lbl">Follow-up</div><div class="fup-row">'+fupHtml+'</div></div>'+
-      '</div>';
-  }).join('');
-
-  var vendTabs=['todos|Todos','andre|André','marco|Marco Tulio','rhavi|Rhavi'];
-  var vendTabsHTML='<div class="vend-filter"><span style="font-size:11px;color:#8a9ea8;font-weight:600;margin-right:4px;">Filtrar:</span>';
-  vendTabs.forEach(function(item){
-    var parts=item.split('|'); var v=parts[0]; var l=parts[1];
-    vendTabsHTML+='<span class="vend-tab'+(vendFilter===v?' on':'')+'" onclick="setVendFilter(this,\''+v+'\')">'+l+'</span>';
-  });
-  vendTabsHTML+='</div>';
-
-  return '<div class="nav"><div><img src="https://i.ibb.co/LzNfX5T/logo-escalar.png" style="height:28px;"></div>' +
-    '<div style="display:flex;gap:10px;"><button class="sbtn" onclick="toggleAdm()">Painel ADM</button><button class="nbtn" onclick="goNew()">+ Nova Proposta</button></div></div>'+
-    '<div class="main">'+
-    vendTabsHTML+
-    '<div class="stats">'+
-    '<div class="stat"><div class="sv">'+filtered.length+'</div><div class="sl">Total</div></div>'+
-    '<div class="stat"><div class="sv">'+env.length+'</div><div class="sl">Enviadas</div></div>'+
-    '<div class="stat"><div class="sv" style="color:#3ecf7a;">'+apr.length+'</div><div class="sl">Aprovadas</div></div>'+
-    '<div class="stat"><div class="sv" style="color:#1a2830;font-size:18px;margin-top:8px;">'+fmtVal(avgV)+'</div><div class="sl">Ticket Médio</div></div>'+
-    '<div class="stat"><div class="sv" style="color:#1a2830;font-size:22px;margin-top:5px;">'+conv+'</div><div class="sl">Conversão</div></div>'+
-    '</div>'+
-    '<div class="pipe"><div class="pipe-t">Pipeline Financeiro (MRR)</div><div class="pipe-row">'+
-    '<div class="ps"><div class="ps-l">Em Negociação</div><div class="ps-v" style="color:#00c4bc;">'+env.length+'</div><div class="ps-s" style="color:#00c4bc;">'+fmtVal(mrrList(env))+'/mês</div></div>'+
-    '<div class="ps"><div class="ps-l">Aprovadas</div><div class="ps-v" style="color:#3ecf7a;">'+apr.length+'</div><div class="ps-s" style="color:#3ecf7a;">'+fmtVal(mrrList(apr))+'/mês</div></div>'+
-    '<div class="ps"><div class="ps-l">Ticket Médio</div><div class="ps-v" style="font-size:18px;color:#1a2830;">'+fmtVal(avgV)+'</div><div class="ps-s" style="color:#8a9ea8;">por proposta</div></div>'+
-    '<div class="ps"><div class="ps-l">Conversão</div><div class="ps-v" style="font-size:18px;color:#1a2830;">'+conv+'</div><div class="ps-s" style="color:#8a9ea8;">env → apr</div></div>'+
-    '</div></div>'+
-    cards+
-    '</div>';
+  return `
+    <div class="nav">
+      <div style="width:100px;"></div> <!-- Spacer -->
+      <div class="nav-center">
+        <img src="${LOGO_ESCALAR}" style="height:35px;">
+      </div>
+      <button class="nbtn" onclick="goNew()">+ Nova Proposta</button>
+    </div>
+    <div class="main">
+      <div class="v-filter">
+        <span class="v-tab ${vFilter==='todos'?'on':''}" onclick="vFilter='todos';re()">Todos</span>
+        ${Object.entries(VENDEDORES).map(([k,v])=>`<span class="v-tab ${vFilter===k?'on':''}" onclick="vFilter='${k}';re()">${v.nome.split(' ')[0]}</span>`).join('')}
+      </div>
+      ${cards}
+    </div>
+  `;
 }
 
 function rForm(){
-  const s=step;
-  const p=F;
+  const s=step; const p=F;
   let body='';
-  if(s===1){
-    body='<div class="sey">Etapa 1 de 4</div><div class="stt">Dados da Empresa</div><div class="ssb">Informações básicas para o diagnóstico.</div>'+
-      '<div class="fld"><label class="lbl">Nome da Empresa</label><input value="'+(p.empresa||'')+'" onchange="setF(\'empresa\',this.value)"></div>'+
-      '<div class="g2"><div class="fld"><label class="lbl">Segmento</label><select onchange="setF(\'segmento\',this.value)"><option value="">Selecione...</option>'+SEGS.map(x=>'<option '+(p.segmento===x?'selected':'')+'>'+x+'</option>').join('')+'</select></div>'+
-      '<div class="fld"><label class="lbl">Website</label><input placeholder="ex: empresa.com.br" value="'+(p.website||'')+'" onchange="setF(\'website\',this.value)"></div></div>'+
-      '<div class="g2"><div class="fld"><label class="lbl">Contato Principal</label><input value="'+(p.contato||'')+'" onchange="setF(\'contato\',this.value)"></div>'+
-      '<div class="fld"><label class="lbl">Cargo</label><input value="'+(p.cargo||'')+'" onchange="setF(\'cargo\',this.value)"></div></div>'+
-      '<div class="fld"><label class="lbl">Vendedor Responsável</label><select onchange="setF(\'vendedor\',this.value)">'+Object.entries(VENDEDORES).map(([k,v])=>'<option value="'+k+'" '+(p.vendedor===k?'selected':'')+'>'+v.nome+'</option>').join('')+'</select></div>';
-  }else if(s===2){
-    body='<div class="sey">Etapa 2 de 4</div><div class="stt">Perfil & Maturidade</div><div class="ssb">Entendendo o cenário atual de vendas.</div>'+
-      '<div class="g2"><div class="fld"><label class="lbl">Faturamento Anual</label><select onchange="setF(\'receita\',this.value)"><option value="">Selecione...</option>'+Object.entries(RLBL).map(([k,v])=>'<option value="'+k+'" '+(p.receita===k?'selected':'')+'>'+v+'</option>').join('')+'</select></div>'+
-      '<div class="fld"><label class="lbl">Time de Vendas</label><select onchange="setF(\'vendedores\',this.value)"><option value="">Selecione...</option>'+Object.entries(VLBL).map(([k,v])=>'<option value="'+k+'" '+(p.vendedores===k?'selected':'')+'>'+v+'</option>').join('')+'</select></div></div>'+
-      '<div class="g2"><div class="fld"><label class="lbl">CRM Atual</label><select onchange="setF(\'crm\',this.value)"><option value="">Selecione...</option>'+Object.entries(CNAME).map(([k,v])=>'<option value="'+k+'" '+(p.crm===k?'selected':'')+'>'+v+'</option>').join('')+'</select></div>'+
-      '<div class="fld"><label class="lbl">Região de Atuação</label><select onchange="setF(\'regiao\',this.value)"><option value="">Selecione...</option>'+Object.entries(RNOME).map(([k,v])=>'<option value="'+k+'" '+(p.regiao===k?'selected':'')+'>'+v+'</option>').join('')+'</select></div></div>'+
-      '<div class="fld"><label class="lbl">Canais de Crescimento Atuais</label><div class="chips">'+['Inbound','Outbound','Indicação','Canais/Parceiros','Eventos'].map(x=>'<div class="chip '+(p.crescimento&&p.crescimento.includes(x)?'on':'')+'" onclick="tgl(\'crescimento\',\''+x+'\')">'+x+'</div>').join('')+'</div></div>';
-  }else if(s===3){
-    body='<div class="sey">Etapa 3 de 4</div><div class="stt">Diagnóstico & Dores</div><div class="ssb">O que impede a empresa de crescer?</div>'+
-      '<div class="fld"><label class="lbl">Principais Dores / Desafios</label><textarea rows="3" onchange="setF(\'dores\',this.value)">'+(p.dores||'')+'</textarea></div>'+
-      '<div class="fld"><label class="lbl">Objetivo Principal do Projeto</label><div class="chips">'+OBJ_OPTS.map(x=>'<div class="obj-chip '+(p.objetivos&&p.objetivos.includes(x)?'on':'')+'" onclick="tglObj(this,\''+x+'\')">'+x+'</div>').join('')+'</div></div>'+
-      '<div class="fld"><label class="lbl">Ciclo Médio de Vendas</label><select onchange="setF(\'ciclo\',this.value)"><option value="">Selecione...</option>'+Object.entries(CLBL).map(([k,v])=>'<option value="'+k+'" '+(p.ciclo===k?'selected':'')+'>'+v+'</option>').join('')+'</select></div>';
-  }else{
-    body='<div class="sey">Etapa 4 de 4</div><div class="stt">Proposta & Modelo</div><div class="ssb">Definição do escopo e investimento.</div>'+
-      '<div class="fld"><label class="lbl">Modelo de Operação</label><div style="display:flex;gap:10px;"><div class="mbt '+(p.modelo==='compartilhado'?'on':'')+'" onclick="setF(\'modelo\',\'compartilhado\')">Compartilhado</div><div class="mbt '+(p.modelo==='dedicado'?'on':'')+'" onclick="setF(\'modelo\',\'dedicado\')">Dedicado</div></div></div>'+
-      '<div class="g2"><div class="fld"><label class="lbl">Investimento Mensal (ex: R$ 8.500)</label><input value="'+(p.valor||'')+'" onchange="setF(\'valor\',this.value)"></div>'+
-      '<div class="fld"><label class="lbl">Taxa de Sucesso / Ganho (opcional)</label><input value="'+(p.ganho||'')+'" onchange="setF(\'ganho\',this.value)"></div></div>'+
-      '<div class="fld"><label class="lbl">Status da Proposta</label><select onchange="setF(\'status\',this.value)"><option value="rascunho" '+(p.status==='rascunho'?'selected':'')+'>Rascunho</option><option value="enviada" '+(p.status==='enviada'?'selected':'')+'>Enviada</option><option value="aprovada" '+(p.status==='aprovada'?'selected':'')+'>Aprovada</option><option value="perdida" '+(p.status==='perdida'?'selected':'')+'>Perdida</option></select></div>';
-  }
+  if(s===1) body=`<div class="sey">Etapa 1 de 4</div><div class="stt">Dados da Empresa</div>
+    <div class="fld"><label class="lbl">Nome da Empresa</label><input value="${p.empresa}" onchange="setF('empresa',this.value)"></div>
+    <div class="g2">
+      <div class="fld"><label class="lbl">Segmento</label><select onchange="setF('segmento',this.value)"><option value="">Selecione...</option>${SEGS.map(x=>`<option ${p.segmento===x?'selected':''}>${x}</option>`).join('')}</select></div>
+      <div class="fld"><label class="lbl">Website</label><input placeholder="ex: empresa.com.br" value="${p.website}" onchange="setF('website',this.value)"></div>
+    </div>
+    <div class="g2">
+      <div class="fld"><label class="lbl">Contato Principal</label><input value="${p.contato}" onchange="setF('contato',this.value)"></div>
+      <div class="fld"><label class="lbl">Cargo</label><input value="${p.cargo}" onchange="setF('cargo',this.value)"></div>
+    </div>
+    <div class="fld"><label class="lbl">Vendedor Responsável</label><select onchange="setF('vendedor',this.value)">${Object.entries(VENDEDORES).map(([k,v])=>`<option value="${k}" ${p.vendedor===k?'selected':''}>${v.nome}</option>`).join('')}</select></div>`;
+  else if(s===2) body=`<div class="sey">Etapa 2 de 4</div><div class="stt">Perfil & Maturidade</div>
+    <div class="g2">
+      <div class="fld"><label class="lbl">Faturamento Anual</label><select onchange="setF('receita',this.value)"><option value="">Selecione...</option>${Object.entries(RLBL).map(([k,v])=>`<option value="${k}" ${p.receita===k?'selected':''}>${v}</option>`).join('')}</select></div>
+      <div class="fld"><label class="lbl">Time de Vendas</label><select onchange="setF('vendedores',this.value)"><option value="">Selecione...</option>${Object.entries(VLBL).map(([k,v])=>`<option value="${k}" ${p.vendedores===k?'selected':''}>${v}</option>`).join('')}</select></div>
+    </div>
+    <div class="g2">
+      <div class="fld"><label class="lbl">CRM Atual</label><select onchange="setF('crm',this.value)"><option value="">Selecione...</option>${Object.entries(CNAME).map(([k,v])=>`<option value="${k}" ${p.crm===k?'selected':''}>${v}</option>`).join('')}</select></div>
+      <div class="fld"><label class="lbl">Região de Atuação</label><select onchange="setF('regiao',this.value)"><option value="">Selecione...</option>${Object.entries(RNOME).map(([k,v])=>`<option value="${k}" ${p.regiao===k?'selected':''}>${v}</option>`).join('')}</select></div>
+    </div>`;
+  else if(s===3) body=`<div class="sey">Etapa 3 de 4</div><div class="stt">Diagnóstico & Dores</div>
+    <div class="fld"><label class="lbl">Principais Dores / Desafios</label><textarea rows="3" onchange="setF('dores',this.value)">${p.dores}</textarea></div>
+    <div class="fld"><label class="lbl">Objetivos do Projeto</label><div class="chips">${OBJ_OPTS.map(x=>`<div class="chip ${p.objetivos.includes(x)?'on':''}" onclick="tgl('objetivos','${x}')">${x}</div>`).join('')}</div></div>`;
+  else body=`<div class="sey">Etapa 4 de 4</div><div class="stt">Proposta & Modelo</div>
+    <div class="fld"><label class="lbl">Modelo de Operação</label><div style="display:flex;gap:10px;"><div class="mbt ${p.modelo==='compartilhado'?'on':''}" onclick="setF('modelo','compartilhado')">Compartilhado</div><div class="mbt ${p.modelo==='dedicado'?'on':''}" onclick="setF('modelo','dedicado')">Dedicado</div></div></div>
+    <div class="g2">
+      <div class="fld"><label class="lbl">Investimento Mensal</label><input placeholder="R$ 8.500" value="${p.valor}" onchange="setF('valor',this.value)"></div>
+      <div class="fld"><label class="lbl">Taxa de Ganho</label><input placeholder="R$ 2.000" value="${p.ganho}" onchange="setF('ganho',this.value)"></div>
+    </div>
+    <div class="fld"><label class="lbl">Status</label><select onchange="setF('status',this.value)"><option value="rascunho" ${p.status==='rascunho'?'selected':''}>Rascunho</option><option value="enviada" ${p.status==='enviada'?'selected':''}>Enviada</option><option value="aprovada" ${p.status==='aprovada'?'selected':''}>Aprovada</option></select></div>`;
 
-  return '<div class="nav"><div><img src="https://i.ibb.co/LzNfX5T/logo-escalar.png" style="height:28px;"></div><button class="sbtn" onclick="goDash()">Cancelar</button></div>'+
-    '<div class="main" style="max-width:600px;"><div class="fcard"><div class="prog"><div class="pf" style="width:'+(s*25)+'%"></div></div><div class="fbody">'+body+
-    '<div class="fnav"><button class="sbtn" onclick="prev()" '+(s===1?'disabled':'')+'>Voltar</button><button class="nbtn" onclick="next()">'+(s===4?'Salvar Proposta':'Próximo')+'</button></div></div></div></div>';
+  return `
+    <div class="nav">
+      <div style="width:100px;"></div>
+      <div class="nav-center"><img src="${LOGO_ESCALAR}" style="height:35px;"></div>
+      <button class="sbtn" onclick="goDash()">Cancelar</button>
+    </div>
+    <div class="main" style="max-width:600px;">
+      <div class="fcard">
+        <div class="prog"><div class="pf" style="width:${s*25}%"></div></div>
+        <div class="fbody">
+          ${body}
+          <div class="fnav">
+            <button class="sbtn" onclick="prev()" ${s===1?'disabled':''}>Voltar</button>
+            <button class="nbtn" onclick="next()">${s===4?'Gerar Proposta':'Próximo'}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 function rOP(){
-  var p=proposals.find(function(x){return x.id===editId;});
-  if(!p){goDash();return'';}
-  var diag=calcDiag(p);
-  var ded=(p.modelo||'').toLowerCase()==='dedicado';
-  var val=new Date(Date.now()+30*24*3600*1000).toLocaleDateString('pt-BR');
-  var vd=VENDEDORES[p.vendedor||'andre']||VENDEDORES['andre'];
-  var propNum=p.num?'#'+String(p.num).padStart(3,'0')+(p.ver&&p.ver>1?' v'+p.ver:''):'';
+  const p=proposals.find(x=>x.id===editId); if(!p) return '';
+  const vd=VENDEDORES[p.vendedor] || VENDEDORES['andre'];
+  const valData=new Date(Date.now()+30*24*3600*1000).toLocaleDateString('pt-BR');
   
-  var logoEscalar = '<div style="margin-bottom:20px;"><img src="https://i.ibb.co/LzNfX5T/logo-escalar.png" style="height:40px;" onerror="this.style.display=\'none\';"></div>';
-  var tagline='Motor de prospecção outbound para empresas B2B que querem crescer com previsibilidade.';
-  var roiPergunta='Empresas que investem em prospecção estruturada param de pensar no custo e começam a pensar em quantas oportunidades estão deixando na mesa.';
-
-  var logoCliente='';
-  if(p.website){
-    var _d=p.website.replace(/https?:\/\//,'').replace(/\/.*$/,'');
-    logoCliente='<div class="cliente-logo-wrap"><img src="https://logo.clearbit.com/'+_d+'" style="width:60px;height:60px;object-fit:contain;" onerror="this.style.display=\'none\';"></div>';
-  }
-
-  function sec(n,t,c){
-    return '<div class="ops"><div class="opsh"><div class="opsn">'+n+'</div><div class="opsl"></div><div class="opst">'+t+'</div></div>'+c+'</div>';
-  }
-
-  var cardStyle='display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:22px 16px 18px;text-align:center;flex:1;border-right:1px solid rgba(0,196,188,.14);';
-  var labelStyle='font-size:10px;font-weight:700;color:#8a9ea8;text-transform:uppercase;letter-spacing:.1em;margin-top:14px;padding-top:10px;border-top:1px solid rgba(0,196,188,.1);width:100%;text-align:center;';
-  var logoBox='display:flex;align-items:center;justify-content:center;height:72px;width:100%;';
-  
-  // G4 removida dos parceiros conforme solicitado (somente no final)
-  var parcHtml='<div style="display:flex;border:1.5px solid rgba(0,196,188,.14);border-radius:6px;overflow:hidden;">'
-    +'<div style="'+cardStyle+'"><div style="'+logoBox+'">'+SF_SVG+'</div><div style="'+labelStyle+'">CRM Partner Oficial</div></div>'
-    +'<div style="'+cardStyle.replace('border-right:1px solid rgba(0,196,188,.14);','')+'"><div style="'+logoBox+'">'+RAMPPY_SVG+'</div><div style="'+labelStyle+'">Sales Enablement</div></div>'
-    +'</div>';
-
-  var out='<div class="nav"><div><img src="https://i.ibb.co/LzNfX5T/logo-escalar.png" style="height:28px;"></div><div style="display:flex;gap:8px;">'
-    +'<button class="sbtn" onclick="goDash()">Dashboard</button>'
-    +'<button class="nbtn" onclick="window.print()">PDF</button>'
-    +'</div></div>'
-    +'<div class="main" style="max-width:800px;"><div class="op">'
-    +'<div class="ops" style="padding:40px 42px; background:#1a2830; color:#fff;">'
-    +logoEscalar
-    +'<div style="text-align:center; font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase; margin-bottom:20px;">Proposta Comercial &middot; '+propNum+'</div>'
-    +logoCliente
-    +'<div style="font-size:32px; font-weight:800; text-align:center; margin-bottom:10px;">'+(p.empresa||'Proposta Comercial')+'</div>'
-    +'<div style="font-size:14px; color:rgba(255,255,255,0.6); text-align:center; margin-bottom:24px;">'+tagline+'</div>'
-    +'<div style="display:flex; justify-content:center; gap:12px;">'
-    +'<div style="background:rgba(0,196,188,0.1); border:1px solid rgba(0,196,188,0.3); padding:8px 16px; border-radius:6px; font-size:12px;">Modelo: '+(ded?'Dedicado':'Compartilhado')+'</div>'
-    +'<div style="background:rgba(0,196,188,0.1); border:1px solid rgba(0,196,188,0.3); padding:8px 16px; border-radius:6px; font-size:12px;">Válida até: '+val+'</div>'
-    +'</div></div>'
-    +sec('01','Diagnóstico','<div class="res">'+diag.resumo+'</div>')
-    +sec('02','Investimento','<div class="ib"><div class="ib-label">Investimento Mensal</div><div class="ib-val">'+(p.valor||'A definir')+'</div>'+(p.ganho ? '<div style="font-size:18px;color:#00c4bc;font-weight:700;margin-bottom:15px;">+ Ganho: ' + p.ganho + '</div>' : '')+'<div class="ib-sub">Ferramentas e impostos inclusos &middot; Equipe CLT pela Escalar</div><div style="background:rgba(0,196,188,0.08); border:1px solid rgba(0,196,188,0.2); border-radius:6px; padding:15px; margin-top:20px; color:rgba(255,255,255,0.8); font-size:13px;">'+roiPergunta+'</div></div>')
-    +sec('03','Parceiros estratégicos',parcHtml)
-    +'<div class="of">'
-    +'<div><strong>ESCALAR</strong> BPO Comercial</div>'
-    +'<div style="display:flex; align-items:center; gap:10px;">'+G4_SVG+'</div>' // Logo G4 no final conforme solicitado
-    +'<div style="text-align:right; font-size:10px;">'+vd.nome+'<br>'+vd.email+'</div>'
-    +'</div>'
-    +'</div></div>';
-  return out;
-}
-
-// ── ADM LOGIC ──────────────────────────────────────────────────────────────
-let admTab = 'propostas';
-
-function toggleAdm() {
-  const panel = document.getElementById('adm-panel');
-  if (!panel) return;
-  panel.classList.toggle('open');
-  if (panel.classList.contains('open')) renderAdm();
-}
-
-function setAdmTab(t) {
-  admTab = t;
-  // Atualizar classes das tabs para feedback visual
-  const tabs = document.querySelectorAll('.adm-tab');
-  tabs.forEach(tab => {
-    if (tab.textContent.toLowerCase().includes(t.slice(0,3))) tab.classList.add('on');
-    else tab.classList.remove('on');
-  });
-  renderAdm();
-}
-
-function renderAdm() {
-  const body = document.getElementById('adm-body');
-  if (!body) return;
-
-  if (admTab === 'propostas') {
-    if (!proposals.length) {
-      body.innerHTML = '<div class="adm-empty">Nenhuma proposta cadastrada.</div>';
-      return;
-    }
-    const SCOL = {
-      'rascunho': 'color:#8a9ea8;background:rgba(0,0,0,.03)',
-      'enviada': 'color:#00c4bc;background:rgba(0,196,188,.1)',
-      'aprovada': 'color:#3ecf7a;background:rgba(62,207,122,.1)',
-      'perdida': 'color:#e05555;background:rgba(224,85,85,.1)'
-    };
-    body.innerHTML = proposals.map(p => `
-      <div class="adm-row">
-        <div>
-          <div class="adm-name">${p.empresa || 'Sem nome'}</div>
-          <div class="adm-co">${p.contato || '—'}</div>
-        </div>
-        <div style="font-size:10px;color:#8a9ea8;font-weight:600;">${((VENDEDORES[p.vendedor] || {}).nome || '—').split(' ')[0]}</div>
-        <span class="adm-st" style="${SCOL[p.status] || ''}">${p.status || 'rascunho'}</span>
-        <div style="display:flex;gap:4px;">
-          <button class="adm-btn" onclick="admEdit(${p.id})">✏️</button>
-          <button class="adm-btn del" onclick="admDel(${p.id})">✕</button>
-        </div>
-      </div>`).join('');
-  } else if (admTab === 'perf') {
-    const stats = {};
-    Object.keys(VENDEDORES).forEach(v => {
-      stats[v] = { total: 0, enviadas: 0, aprovadas: 0, mrr: 0 };
-    });
-
-    proposals.forEach(p => {
-      const v = p.vendedor || 'andre';
-      if (!stats[v]) stats[v] = { total: 0, enviadas: 0, aprovadas: 0, mrr: 0 };
-      stats[v].total++;
-      if (p.status === 'enviada') stats[v].enviadas++;
-      if (p.status === 'aprovada') {
-        stats[v].aprovadas++;
-        const val = parseFloat((p.valor || '').replace(/[R$\s.]/g, '').replace(',', '.')) || 0;
-        stats[v].mrr += val;
-      }
-    });
-
-    body.innerHTML = Object.entries(stats).map(([v, s]) => `
-      <div class="adm-perf-card">
-        <div style="font-weight:800;font-size:14px;color:var(--text);border-bottom:1px solid #eee;padding-bottom:8px;margin-bottom:12px;">
-          ${VENDEDORES[v].nome}
-        </div>
-        <div class="adm-perf-grid">
-          <div class="adm-perf-stat">
-            <div class="adm-perf-v">${s.total}</div>
-            <div class="adm-perf-l">Propostas</div>
+  return `
+    <div class="nav">
+      <div style="width:100px;"></div>
+      <div class="nav-center"><img src="${LOGO_ESCALAR}" style="height:35px;"></div>
+      <div style="display:flex;gap:10px;">
+        <button class="sbtn" onclick="goDash()">Dashboard</button>
+        <button class="nbtn" onclick="window.print()">Imprimir PDF</button>
+      </div>
+    </div>
+    <div class="main" style="max-width:850px;">
+      <div class="op">
+        <!-- CAPA -->
+        <div class="capa">
+          <div class="capa-num">PROPOSTA COMERCIAL · BPO COMERCIAL #${String(p.num).padStart(3,'0')}</div>
+          <img src="${LOGO_ESCALAR}" class="capa-logo">
+          <div class="capa-line"></div>
+          <div class="capa-tagline">Motor de prospecção outbound para empresas B2B que querem crescer com previsibilidade.</div>
+          <div class="capa-meta">
+            <div class="capa-card"><div class="capa-card-l">MODELO</div><div class="capa-card-v">${p.modelo==='dedicado'?'Dedicado':'Compartilhado'}</div></div>
+            <div class="capa-card"><div class="capa-card-l">VÁLIDA ATÉ</div><div class="capa-card-v">${valData}</div></div>
           </div>
-          <div class="adm-perf-stat">
-            <div class="adm-perf-v">${s.aprovadas}</div>
-            <div class="adm-perf-l">Fechadas</div>
+        </div>
+
+        <!-- SEÇÃO 01 -->
+        <div class="ops">
+          <div class="opsh"><div class="opsn">01</div><div class="opsl"></div><div class="opst">POR QUE A ESCALAR</div></div>
+          <div style="background:var(--cyan);color:#1a2830;font-size:10px;font-weight:800;padding:4px 12px;border-radius:4px;display:inline-block;margin-bottom:20px;">9 ANOS DE MERCADO B2B</div>
+          <div class="res-box">A Escalar é uma empresa de gente. Cada operação é conduzida de forma artesanal, com atenção genuína ao negócio do cliente — não vendemos pacotes, construímos motores comerciais sob medida, junto com você.</div>
+        </div>
+
+        <!-- SEÇÃO 02 -->
+        <div class="ops">
+          <div class="opsh"><div class="opsn">02</div><div class="opsl"></div><div class="opst">CONTEXTO MAPEADO</div></div>
+          <div class="grid-ctx">
+            <div class="ctx-card"><div class="ctx-l">FATURAMENTO ANUAL</div><div class="ctx-v">${RLBL[p.receita]||'—'}</div></div>
+            <div class="ctx-card"><div class="ctx-l">Nº DE VENDEDORES</div><div class="ctx-v">${VLBL[p.vendedores]||'—'}</div></div>
+            <div class="ctx-card"><div class="ctx-l">CRM ATUAL</div><div class="ctx-v">${CNAME[p.crm]||'—'}</div></div>
+            <div class="ctx-card"><div class="ctx-l">TICKET MÉDIO</div><div class="ctx-v">${p.valor||'—'}</div></div>
+            <div class="ctx-card"><div class="ctx-l">TIPO DE VENDA</div><div class="ctx-v">B2B</div></div>
+            <div class="ctx-card"><div class="ctx-l">CICLO COMERCIAL</div><div class="ctx-v">${CLBL[p.ciclo]||'—'}</div></div>
           </div>
-          <div class="adm-perf-stat">
-            <div class="adm-perf-v">${fmtVal(s.mrr)}</div>
-            <div class="adm-perf-l">MRR Total</div>
+        </div>
+
+        <!-- SEÇÃO 03 -->
+        <div class="ops">
+          <div class="opsh"><div class="opsn">03</div><div class="opsl"></div><div class="opst">DIAGNÓSTICO EXECUTIVO</div></div>
+          <div class="res-box" style="margin-bottom:25px;">A operação da <strong>${p.empresa}</strong> apresenta oportunidades de escala através da estruturação de um motor outbound previsível.</div>
+          <div class="diag-grid">
+            <div class="diag-side">
+              <div class="diag-t">HOJE</div>
+              <div class="diag-item"><span>–</span> Sem motor de prospecção estruturado</div>
+              <div class="diag-item"><span>–</span> Dependência de indicações</div>
+            </div>
+            <div class="diag-arrow">→</div>
+            <div class="diag-side" style="border-color:var(--cyan);background:rgba(0,196,188,0.05);">
+              <div class="diag-t">COM A ESCALAR</div>
+              <div class="diag-item"><span style="color:var(--cyan)">✓</span> Motor de prospecção ativa e previsível</div>
+              <div class="diag-item"><span style="color:var(--cyan)">✓</span> Pipeline estruturado com dados reais</div>
+              <div class="diag-item"><span style="color:var(--cyan)">✓</span> ICP ativado com cadências inteligentes</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO 06 -->
+        <div class="ops">
+          <div class="opsh"><div class="opsn">06</div><div class="opsl"></div><div class="opst">TIME ESCALAR — QUEM ESTARÁ AO SEU LADO</div></div>
+          <div class="time-grid">
+            <div class="time-card"><div class="time-icon">👤</div><div class="time-l">Gestor de Contas</div></div>
+            <div class="time-card"><div class="time-icon">📋</div><div class="time-l">Supervisor de Operações</div></div>
+            <div class="time-card"><div class="time-icon">👥</div><div class="time-l">Customer Success</div></div>
+            <div class="time-card"><div class="time-icon">⚡</div><div class="time-l">LDR Tech</div></div>
+            <div class="time-card active"><div class="time-icon">📞</div><div class="time-l">BDR ${p.modelo==='dedicado'?'Dedicado':'Compartilhado'}</div></div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO 08 -->
+        <div class="ops">
+          <div class="opsh"><div class="opsn">08</div><div class="opsl"></div><div class="opst">INVESTIMENTO</div></div>
+          <div class="invest-box">
+            <div class="invest-l">INVESTIMENTO MENSAL</div>
+            <div class="invest-v">${p.valor||'A definir'}</div>
+            <div class="invest-s">Ferramentas e impostos inclusos · Equipe CLT pela Escalar</div>
+            <div class="invest-roi">Empresas que investem em prospecção estruturada param de pensar no custo e começam a pensar em quantas oportunidades estão deixando na mesa.</div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO 09 -->
+        <div class="ops">
+          <div class="opsh"><div class="opsn">09</div><div class="opsl"></div><div class="opst">CONDIÇÕES COMERCIAIS</div></div>
+          <div class="cond-grid">
+            <div class="cond-item"><div class="cond-l">PRAZO CONTRATUAL</div><div class="cond-v">12 meses</div></div>
+            <div class="cond-item"><div class="cond-l">CANCELAMENTO</div><div class="cond-v">30 dias de aviso prévio</div></div>
+            <div class="cond-item"><div class="cond-l">FATURAMENTO</div><div class="cond-v">Mensal pós-serviço</div></div>
+            <div class="cond-item"><div class="cond-l">PRIMEIRO MÊS</div><div class="cond-v">50% adiantado</div></div>
+            <div class="cond-item"><div class="cond-l">EQUIPE</div><div class="cond-v">CLT contratada pela Escalar</div></div>
+            <div class="cond-item"><div class="cond-l">FERRAMENTAS</div><div class="cond-v">Inclusas no contrato</div></div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO 12 -->
+        <div class="ops">
+          <div class="opsh"><div class="opsn">12</div><div class="opsl"></div><div class="opst">PARCEIROS ESTRATÉGICOS</div></div>
+          <div class="parc-grid">
+            <div class="parc-card"><img src="${LOGO_SF}" class="parc-logo"><div class="parc-l">CRM PARTNER OFICIAL</div></div>
+            <div class="parc-card"><img src="${LOGO_G4}" class="parc-logo"><div class="parc-l">EDUCAÇÃO ESTRATÉGICA</div></div>
+            <div class="parc-card"><div style="font-size:20px;font-weight:800;margin-bottom:15px;">Ramppy</div><div class="parc-l">SALES ENABLEMENT</div></div>
+          </div>
+        </div>
+
+        <!-- FOOTER FINAL -->
+        <div class="footer-final">
+          <div class="footer-l"><span>ESCALAR</span> BPO Comercial</div>
+          <div class="footer-r">
+            <div class="footer-v">${vd.nome}</div>
+            <div class="footer-m">${vd.email} ${vd.tel?'· '+vd.tel:''}</div>
           </div>
         </div>
       </div>
-    `).join('');
-  } else if (admTab === 'config') {
-    body.innerHTML = `
-      <div style="padding:20px;text-align:center;">
-        <div style="font-size:12px;color:#8a9ea8;margin-bottom:20px;">Ações globais de administração</div>
-        <button class="adm-btn del" style="padding:12px 24px;font-size:12px;" onclick="admClearAll()">⚠️ Limpar Todas as Propostas</button>
-        <div style="margin-top:10px;font-size:10px;color:#e05555;">Atenção: esta ação é irreversível.</div>
-      </div>
-    `;
-  }
-}
-
-function admClearAll() {
-  if (!confirm('⚠️ PERIGO!\n\nVocê está prestes a apagar TODAS as propostas do sistema.\n\nTem certeza absoluta?')) return;
-  proposals = [];
-  sv();
-  renderAdm();
-  re();
-}
-
-function admEdit(id) {
-  toggleAdm();
-  goEdit(id);
-}
-
-function admDel(id) {
-  const p = proposals.find(x => x.id === id);
-  if (!p) return;
-  if (!confirm('Excluir proposta de "' + (p.empresa || 'Sem nome') + '"?\n\nIsso removerá os dados locais e inativará o link da planilha.')) return;
-  
-  deleteFromSheets(id);
-  proposals = proposals.filter(x => x.id !== id);
-  sv();
-  renderAdm();
-  re();
-}
-
-// Injetar o HTML do painel ADM no body
-const admHtml = `
-  <div id="adm-panel" class="adm-panel">
-    <div class="adm-head">
-      <div class="adm-head-t">Administração Escalar</div>
-      <button class="adm-btn" onclick="toggleAdm()">Fechar</button>
     </div>
-    <div class="adm-tabs">
-      <div class="adm-tab on" onclick="setAdmTab('propostas')">Propostas</div>
-      <div class="adm-tab" onclick="setAdmTab('perf')">Performance</div>
-      <div class="adm-tab" onclick="setAdmTab('config')">Config</div>
-    </div>
-    <div id="adm-body" class="adm-body"></div>
-  </div>
-`;
-document.body.insertAdjacentHTML('beforeend', admHtml);
+  `;
+}
 
-window.onload = re;
+window.onload=re;
 </script>
 </body>
 </html>
