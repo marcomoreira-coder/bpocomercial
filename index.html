@@ -625,6 +625,8 @@ function rOP(){
     logoCliente='<div class="cliente-logo-wrap"><img src="https://logo.clearbit.com/'+_d+'" style="width:60px;height:60px;object-fit:contain;" onerror="this.style.display=\'none\';"></div>';
   }
 
+  var logoG4 = '<div style="text-align:center; margin-top:10px; margin-bottom:15px;"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663634474230/dZcrmkMRyROqiuCW.png" style="height:50px; opacity:0.9;"></div>';
+
   var out='<div class="nav"><div><img src="https://i.ibb.co/LzNfX5T/logo-escalar.png" style="height:28px;"></div><div style="display:flex;gap:8px;">'
     +'<button class="sbtn" onclick="goDash()">Dashboard</button>'
     +'<button class="nbtn" onclick="window.print()">PDF</button>'
@@ -634,6 +636,7 @@ function rOP(){
     +logoEscalar
     +'<div style="text-align:center; font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase; margin-bottom:20px;">Proposta Comercial &middot; '+propNum+'</div>'
     +logoCliente
+    +logoG4
     +'<div style="font-size:32px; font-weight:800; text-align:center; margin-bottom:10px;">'+(p.empresa||'Proposta Comercial')+'</div>'
     +'<div style="font-size:14px; color:rgba(255,255,255,0.6); text-align:center; margin-bottom:24px;">'+tagline+'</div>'
     +'<div style="display:flex; justify-content:center; gap:12px;">'
