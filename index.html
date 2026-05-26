@@ -202,21 +202,29 @@ select option{background:var(--bg2);color:var(--text);}
 .cv2{font-size:12px;font-weight:600;color:var(--text);}
 
 /* ── ADM PANEL ── */
-.adm-trigger{position:fixed;bottom:20px;right:20px;background:rgba(0,0,0,.3);color:#fff;padding:6px 12px;border-radius:20px;font-size:10px;cursor:pointer;z-index:999;}
-.adm-panel{position:fixed;top:0;right:-400px;width:380px;height:100vh;background:#fff;box-shadow:-4px 0 20px rgba(0,0,0,.15);z-index:1000;transition:right .3s;display:flex;flex-direction:column;}
+
+.adm-panel{position:fixed;top:0;right:-600px;width:580px;height:100vh;background:#fff;box-shadow:-4px 0 24px rgba(0,0,0,0.15);z-index:1000;transition:right .3s;display:flex;flex-direction:column;color:var(--text);}
 .adm-panel.open{right:0;}
-.adm-head{padding:20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;}
-.adm-head-t{font-weight:700;font-size:14px;}
-.adm-body{flex:1;overflow-y:auto;padding:16px;}
-.adm-item{padding:12px;border:1px solid #eee;border-radius:6px;margin-bottom:8px;font-size:11px;}
-.adm-btn{background:#f2f2f2;border:none;padding:6px 10px;border-radius:4px;font-size:10px;cursor:pointer;font-weight:600;}
-.adm-btn.del{color:var(--red);}
-.adm-btn.del:hover{background:rgba(224,85,85,.08);}
-.adm-empty{text-align:center;padding:20px;color:var(--text3);font-size:12px;}
-.adm-lock{display:none;padding:16px;text-align:center;}
-.adm-lock.show{display:block;}
-.adm-lock input{max-width:200px;text-align:center;margin:8px auto 0;display:block;}
-.adm-lock-lbl{font-size:11px;color:var(--text3);margin-bottom:6px;}
+.adm-head{padding:20px 24px;border-bottom:1.5px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:#fcfcfc;}
+.adm-head-t{font-weight:800;font-size:16px;color:var(--text);}
+.adm-tabs{display:flex;background:#f2f2f2;padding:4px;gap:4px;}
+.adm-tab{flex:1;padding:10px;text-align:center;font-size:11px;font-weight:700;cursor:pointer;border-radius:4px;color:var(--text3);transition:all .15s;}
+.adm-tab.on{background:#fff;color:var(--cyan);box-shadow:0 2px 6px rgba(0,0,0,0.05);}
+.adm-body{flex:1;overflow-y:auto;padding:20px 24px;background:#fff;}
+.adm-row{display:grid;grid-template-columns:1.5fr 1fr 100px 120px;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eee;}
+.adm-name{font-weight:700;font-size:13px;}
+.adm-co{font-size:11px;color:var(--text3);}
+.adm-st{font-size:10px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:4px;text-align:center;}
+.adm-btn{background:#f7f7f7;border:1px solid #ddd;padding:6px 10px;border-radius:5px;font-size:10px;cursor:pointer;font-weight:600;transition:all .15s;}
+.adm-btn:hover{border-color:var(--cyan);color:var(--cyan);}
+.adm-btn.del{color:var(--red);border-color:rgba(224,85,85,0.2);}
+.adm-btn.del:hover{background:rgba(224,85,85,0.05);border-color:var(--red);}
+.adm-perf-card{background:#f9f9f9;border:1.5px solid var(--border);border-radius:8px;padding:16px;margin-bottom:16px;}
+.adm-perf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;}
+.adm-perf-stat{text-align:center;padding:10px;background:#fff;border-radius:6px;border:1px solid #eee;}
+.adm-perf-v{font-size:18px;font-weight:800;color:var(--cyan);}
+.adm-perf-l{font-size:9px;color:var(--text3);text-transform:uppercase;font-weight:700;margin-top:4px;}
+.adm-empty{text-align:center;padding:40px;color:var(--text3);font-size:13px;}
 
 /* ── FOOTER ── */
 .of{background:#ffffff;padding:18px 42px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid var(--cyan);box-shadow:0 -2px 12px rgba(0,196,188,.1);}
@@ -529,7 +537,7 @@ function rDash(){
   vendTabsHTML+='</div>';
 
   return '<div class="nav"><div><img src="https://i.ibb.co/LzNfX5T/logo-escalar.png" style="height:28px;"></div>' +
-    '<div><button class="nbtn" onclick="goNew()">+ Nova Proposta</button></div></div>'+
+    '<div style="display:flex;gap:10px;"><button class="sbtn" onclick="toggleAdm()">Painel ADM</button><button class="nbtn" onclick="goNew()">+ Nova Proposta</button></div></div>'+
     '<div class="main">'+
     vendTabsHTML+
     '<div class="stats">'+
@@ -658,7 +666,143 @@ function rOP(){
   return out;
 }
 
-window.onload=re;
+// ── ADM LOGIC ──────────────────────────────────────────────────────────────
+let admTab = 'propostas';
+
+function toggleAdm() {
+  const panel = document.getElementById('adm-panel');
+  if (!panel) return;
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) renderAdm();
+}
+
+function setAdmTab(t) {
+  admTab = t;
+  renderAdm();
+}
+
+function renderAdm() {
+  const body = document.getElementById('adm-body');
+  if (!body) return;
+
+  if (admTab === 'propostas') {
+    if (!proposals.length) {
+      body.innerHTML = '<div class="adm-empty">Nenhuma proposta cadastrada.</div>';
+      return;
+    }
+    const SCOL = {
+      'rascunho': 'color:#8a9ea8;background:rgba(0,0,0,.03)',
+      'enviada': 'color:#00c4bc;background:rgba(0,196,188,.1)',
+      'aprovada': 'color:#3ecf7a;background:rgba(62,207,122,.1)',
+      'perdida': 'color:#e05555;background:rgba(224,85,85,.1)'
+    };
+    body.innerHTML = proposals.map(p => `
+      <div class="adm-row">
+        <div>
+          <div class="adm-name">${p.empresa || 'Sem nome'}</div>
+          <div class="adm-co">${p.contato || '—'}</div>
+        </div>
+        <div style="font-size:10px;color:#8a9ea8;font-weight:600;">${((VENDEDORES[p.vendedor] || {}).nome || '—').split(' ')[0]}</div>
+        <span class="adm-st" style="${SCOL[p.status] || ''}">${p.status || 'rascunho'}</span>
+        <div style="display:flex;gap:4px;">
+          <button class="adm-btn" onclick="admEdit(${p.id})">✏️</button>
+          <button class="adm-btn del" onclick="admDel(${p.id})">✕</button>
+        </div>
+      </div>`).join('');
+  } else {
+    // Relatórios de Performance
+    const stats = {};
+    Object.keys(VENDEDORES).forEach(v => {
+      stats[v] = { total: 0, enviadas: 0, aprovadas: 0, mrr: 0 };
+    });
+
+    proposals.forEach(p => {
+      const v = p.vendedor || 'andre';
+      if (!stats[v]) stats[v] = { total: 0, enviadas: 0, aprovadas: 0, mrr: 0 };
+      stats[v].total++;
+      if (p.status === 'enviada') stats[v].enviadas++;
+      if (p.status === 'aprovada') {
+        stats[v].aprovadas++;
+        const val = parseFloat((p.valor || '').replace(/[R$\s.]/g, '').replace(',', '.')) || 0;
+        stats[v].mrr += val;
+      }
+    });
+
+    body.innerHTML = Object.entries(stats).map(([v, s]) => `
+      <div class="adm-perf-card">
+        <div style="font-weight:800;font-size:14px;color:var(--text);border-bottom:1px solid #eee;padding-bottom:8px;margin-bottom:12px;">
+          ${VENDEDORES[v].nome}
+        </div>
+        <div class="adm-perf-grid">
+          <div class="adm-perf-stat">
+            <div class="adm-perf-v">${s.total}</div>
+            <div class="adm-perf-l">Propostas</div>
+          </div>
+          <div class="adm-perf-stat">
+            <div class="adm-perf-v">${s.aprovadas}</div>
+            <div class="adm-perf-l">Fechadas</div>
+          </div>
+          <div class="adm-perf-stat">
+            <div class="adm-perf-v">${fmtVal(s.mrr)}</div>
+            <div class="adm-perf-l">MRR Total</div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  } else if (admTab === 'config') {
+    body.innerHTML = `
+      <div style="padding:20px;text-align:center;">
+        <div style="font-size:12px;color:#8a9ea8;margin-bottom:20px;">Ações globais de administração</div>
+        <button class="adm-btn del" style="padding:12px 24px;font-size:12px;" onclick="admClearAll()">⚠️ Limpar Todas as Propostas</button>
+        <div style="margin-top:10px;font-size:10px;color:#e05555;">Atenção: esta ação é irreversível.</div>
+      </div>
+    `;
+  }
+}
+
+function admClearAll() {
+  if (!confirm('⚠️ PERIGO!\n\nVocê está prestes a apagar TODAS as propostas do sistema.\n\nTem certeza absoluta?')) return;
+  proposals = [];
+  sv();
+  renderAdm();
+  re();
+}
+
+function admEdit(id) {
+  toggleAdm();
+  goEdit(id);
+}
+
+function admDel(id) {
+  const p = proposals.find(x => x.id === id);
+  if (!p) return;
+  if (!confirm('Excluir proposta de "' + (p.empresa || 'Sem nome') + '"?\n\nIsso removerá os dados locais e inativará o link da planilha.')) return;
+  
+  deleteFromSheets(id);
+  proposals = proposals.filter(x => x.id !== id);
+  sv();
+  renderAdm();
+  re();
+}
+
+// Injetar o HTML do painel ADM no body
+const admHtml = `
+  <div id="adm-panel" class="adm-panel">
+    <div class="adm-head">
+      <div class="adm-head-t">Administração Escalar</div>
+      <button class="adm-btn" onclick="toggleAdm()">Fechar</button>
+    </div>
+    <div class="adm-tabs">
+      <div class="adm-tab ${admTab === 'propostas' ? 'on' : ''}" onclick="setAdmTab('propostas')">Propostas</div>
+      <div class="adm-tab ${admTab === 'perf' ? 'on' : ''}" onclick="setAdmTab('perf')">Performance</div>
+      <div class="adm-tab ${admTab === 'config' ? 'on' : ''}" onclick="setAdmTab('config')">Config</div>
+    </div>
+    <div id="adm-body" class="adm-body"></div>
+  </div>
+`;
+document.body.insertAdjacentHTML('beforeend', admHtml);
+
+window.onload = re;
 </script>
 </body>
 </html>
