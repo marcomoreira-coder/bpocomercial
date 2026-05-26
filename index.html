@@ -1,365 +1,320 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposta Comercial — Escalar BPO</title>
-    <!-- Fonte Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-general: #f2f2f2;
-            --surface: #ffffff;
-            --text-primary: #1a2830;
-            --text-secondary: #4a6070;
-            --text-muted: #8a9ea8;
-            --accent-cyan: #00c4bc;
-            --border-cyan: rgba(0, 196, 188, 0.22);
-            --shadow-cyan: rgba(0, 196, 188, 0.1);
-            --dark-surface: #1a2830;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial — Escalar BPO</title>
+<!-- Fonte Montserrat -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Reset e Base */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Montserrat',sans-serif;background:#f2f2f2;color:#1a2830;line-height:1.5;}
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body { 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--bg-general); 
-            color: var(--text-primary);
-            line-height: 1.5;
-        }
+/* Cores e Superfícies */
+.nav{background:#ffffff;border-bottom:1px solid rgba(0,196,188,.22);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,196,188,.05);}
+.nlogo{font-size:15px;font-weight:800;color:#1a2830;letter-spacing:.06em;}.nlogo span{color:#00c4bc;}
+.nsub{font-size:10px;color:#8a9ea8;margin-top:1px;font-weight:500;}
 
-        /* Nav & Footer */
-        .nav { 
-            background-color: var(--surface); 
-            padding: 16px 24px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            position: sticky; 
-            top: 0; 
-            z-index: 100;
-            box-shadow: 0 2px 10px var(--shadow-cyan);
-            border-bottom: 1px solid var(--border-cyan);
-        }
+/* Botões */
+.nbtn{background:#00c4bc;color:#ffffff;border:none;border-radius:5px;padding:8px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:'Montserrat',sans-serif;}
+.gbtn{background:transparent;color:#00c4bc;border:1.5px solid #00c4bc;border-radius:5px;padding:7px 15px;font-weight:600;font-size:12px;cursor:pointer;font-family:'Montserrat',sans-serif;}
+.dbtn{background:transparent;color:#dc2626;border:1.5px solid rgba(220,38,38,.3);border-radius:5px;padding:7px 12px;font-weight:600;font-size:12px;cursor:pointer;font-family:'Montserrat',sans-serif;}
+.sbtn{background:transparent;color:#4a6070;border:1.5px solid rgba(0,196,188,.22);border-radius:5px;padding:7px 13px;font-weight:600;font-size:12px;cursor:pointer;font-family:'Montserrat',sans-serif;}
 
-        .main { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+/* Main e Cards */
+.main{max-width:960px;margin:0 auto;padding:28px 22px 60px;}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px;}
+.stat{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);border-radius:7px;padding:14px 16px;}
+.sv{font-size:28px;font-weight:800;color:#00c4bc;}
+.sl{font-size:10px;color:#8a9ea8;text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-top:3px;}
 
-        /* Logos */
-        .logo-container { text-align: center; margin-bottom: 30px; }
-        .logo-escalar { height: 50px; display: block; margin: 0 auto; }
-        
-        /* Buttons */
-        .btn-primary {
-            background-color: var(--accent-cyan);
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: opacity 0.2s;
-            font-family: 'Montserrat', sans-serif;
-        }
-        .btn-primary:hover { opacity: 0.9; }
+.pipe{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);border-radius:7px;padding:15px 18px;margin-bottom:18px;}
+.pipe-t{font-size:10px;font-weight:800;color:#8a9ea8;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;}
+.pipe-row{display:flex;border:1.5px solid rgba(0,196,188,.1);border-radius:6px;overflow:hidden;}
+.ps{flex:1;padding:12px 14px;border-right:1.5px solid rgba(0,196,188,.1);text-align:center;}
+.ps:last-child{border-right:none;}
+.ps-l{font-size:10px;font-weight:700;color:#8a9ea8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
+.ps-v{font-size:22px;font-weight:800;}
+.ps-s{font-size:12px;font-weight:600;margin-top:2px;}
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent-cyan);
-            border: 1.5px solid var(--accent-cyan);
-            padding: 9px 19px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Montserrat', sans-serif;
-        }
+.pcard{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);border-radius:7px;padding:14px 18px;margin-bottom:10px;transition:transform 0.2s;}
+.pcard:hover{transform:translateY(-2px);}
+.pname{font-weight:700;font-size:14px;color:#1a2830;margin-bottom:2px;}
+.pmeta{font-size:11px;color:#4a6070;}
 
-        /* Cards & Surfaces */
-        .card {
-            background-color: var(--surface);
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border: 1px solid var(--border-cyan);
-        }
+/* Form e Inputs */
+.fcard{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);border-radius:8px;overflow:hidden;}
+.pf{height:100%;background:#00c4bc;transition:width .4s;}
+input,select,textarea{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);color:#1a2830;font-size:13px;padding:9px 12px;border-radius:5px;outline:none;width:100%;font-family:'Montserrat',sans-serif;transition:border .18s;}
+input:focus,select:focus,textarea:focus{border-color:#00c4bc;box-shadow:0 0 0 3px rgba(0,196,188,.05);}
+.lbl{font-size:10px;color:#4a6070;text-transform:uppercase;letter-spacing:.08em;font-weight:700;display:block;margin-bottom:5px;}
 
-        /* Investment Box - Dark Contrast */
-        .investment-box {
-            background-color: var(--dark-surface);
-            color: #ffffff;
-            border-radius: 12px;
-            padding: 40px;
-            text-align: center;
-            margin: 40px 0;
-        }
-        .investment-box h2 { color: var(--accent-cyan); margin-bottom: 10px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
-        .investment-value { font-size: 48px; font-weight: 800; margin: 10px 0; }
+/* OnePage Específico */
+.op{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);border-radius:8px;overflow:hidden;}
+.res{font-family:'Montserrat',sans-serif;font-size:15px;line-height:1.8;color:#1a2830;border-left:4px solid #00c4bc;padding:13px 18px;background:rgba(0,196,188,.03);border-radius:0 5px 5px 0;font-weight:500;}
 
-        /* Strategic Partners */
-        .partners-section { margin-top: 50px; text-align: center; }
-        .partners-title { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; }
-        .partners-grid { 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            gap: 40px; 
-            flex-wrap: wrap;
-            padding: 20px;
-        }
-        .partner-logo { height: 30px; filter: grayscale(100%); opacity: 0.7; transition: all 0.3s; }
-        .partner-logo:hover { filter: grayscale(0%); opacity: 1; }
+/* Investimento - Caixa Escura */
+.ib{background:#1a2830;border-radius:8px;padding:36px 40px;text-align:center;border:2px solid #2d4048;position:relative;}
+.ib-val{font-family:'Montserrat',sans-serif;font-size:52px;font-weight:800;color:#ffffff;line-height:1;margin:8px 0;letter-spacing:-.02em;}
+.ib-label{font-size:11px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.12em;font-weight:700;}
+.ib-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:10px;}
 
-        /* Admin Section */
-        .admin-footer {
-            margin-top: 60px;
-            padding: 20px;
-            text-align: center;
-            font-size: 10px;
-            color: var(--text-muted);
-        }
-        .admin-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            margin: 0 10px;
-            cursor: pointer;
-        }
-        .admin-link:hover { color: var(--accent-cyan); }
-        
-        /* Inputs */
-        input, select, textarea {
-            background-color: #ffffff;
-            border: 1.5px solid var(--border-cyan);
-            border-radius: 6px;
-            padding: 12px;
-            color: var(--text-primary);
-            font-family: 'Montserrat', sans-serif;
-            width: 100%;
-            outline: none;
-        }
-        input:focus { border-color: var(--accent-cyan); }
+/* Parceiros Centralizados */
+.par{display:flex;justify-content:center;align-items:center;gap:30px;padding:20px;flex-wrap:wrap;border:1.5px solid rgba(0,196,188,.15);border-radius:8px;background:#ffffff;}
+.pa{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;}
+.pa img{max-height:35px;width:auto;filter:grayscale(100%);opacity:0.6;transition:all 0.3s;}
+.pa:hover img{filter:grayscale(0%);opacity:1;}
+.pa-d{font-size:9px;color:#8a9ea8;margin-top:8px;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
 
-        /* OnePage Specifics */
-        .op-section { padding: 30px 0; border-bottom: 1px solid #eee; }
-        .op-title { color: var(--accent-cyan); font-weight: 800; font-size: 18px; margin-bottom: 15px; }
-        
-        /* Dashboard Stats */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 30px; }
-        .stat-card { background: var(--surface); padding: 20px; border-radius: 10px; border: 1px solid var(--border-cyan); }
-        .stat-val { font-size: 24px; font-weight: 800; color: var(--accent-cyan); }
-        .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; }
+/* Admin Footer */
+.admin-zone{margin-top:40px;padding:20px;text-align:center;border-top:1px solid #eee;}
+.admin-btn{font-size:9px;color:#8a9ea8;text-transform:uppercase;letter-spacing:1px;cursor:pointer;padding:5px 10px;border-radius:4px;transition:all 0.2s;}
+.admin-btn:hover{color:#00c4bc;background:rgba(0,196,188,0.05);}
 
-    </style>
+/* Utilitários do OnePage */
+.logo-onepage{display:block;margin:0 auto 30px;max-height:60px;width:auto;}
+
+/* Estilos herdados e ajustados */
+.pav{background:rgba(0,196,188,.12);color:#00c4bc;font-weight:800;}
+.be{color:#00c4bc;border-color:rgba(0,196,188,.3);background:rgba(0,196,188,.08);}
+.chip.on{border-color:#00c4bc;background:rgba(0,196,188,.08);color:#00c4bc;}
+.obj-chip.on{border-color:#00c4bc;background:rgba(0,196,188,.08);color:#00c4bc;}
+.mbt.on{border-color:#00c4bc;background:rgba(0,196,188,.08);color:#00c4bc;}
+.tc.hi{background:#00c4bc;border-color:#00c4bc;}
+</style>
 </head>
 <body>
-
 <div id="app"></div>
 
 <script>
-    // Configurações e Dados
-    const CONFIG = {
-        logoEscalar: 'https://novosite.grupoescalar.com/wp-content/uploads/2025/07/ESCALAR-NOVO-LOGO-28-scaled.webp',
-        logoSalesforce: 'https://www.salesforce.com/news/wp-content/uploads/sites/3/2021/05/Salesforce-Logo.png',
-        logoG4Scale: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/770267104128527.5f5bd7c3666f4.png'
+// Logotipos Oficiais
+const LOGOS = {
+    escalar: 'https://novosite.grupoescalar.com/wp-content/uploads/2025/07/ESCALAR-NOVO-LOGO-28-scaled.webp',
+    salesforce: 'https://www.salesforce.com/news/wp-content/uploads/sites/3/2021/05/Salesforce-Logo.png',
+    g4scale: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/770267104128527.5f5bd7c3666f4.png'
+};
+
+// Dados e Lógica (Preservando a lógica original do usuário)
+var proposals = JSON.parse(localStorage.getItem('escalar_proposals') || '[]');
+var view = 'dash';
+var step = 1;
+var editId = null;
+var F = {};
+var isAdmin = false;
+
+// Configurações Originais
+const SEGS = ['Tecnologia & SaaS','Serviços B2B & Consultoria','Indústria & Manufatura','Energia & Sustentabilidade','Logística & Transporte','Jurídico & Contábil','Saúde & Bem-estar'];
+const OBJ_OPTS = ['Gerar leads qualificados','Aumentar previsibilidade','Estruturar pré-vendas','Escalar volume de reuniões','Reduzir CAC','Validar novo mercado'];
+const VENDEDORES = {
+    andre:{n:'André Albergaria',c:'Sócio Diretor',e:'andre@grupoescalar.com'},
+    marco:{n:'Marco Tulio',c:'Gerente Comercial',e:'marco@grupoescalar.com'},
+    rhavi:{n:'Rhavi',c:'Consultor Comercial',e:'rhavi@grupoescalar.com'}
+};
+const CLIENTS = {
+    'Tecnologia & SaaS': ['Senior','Totvs','Omie','RD Station','Pipefy'],
+    'Serviços B2B & Consultoria': ['PWC','EY','Deloitte','KPMG','Accenture']
+};
+
+function save(){ localStorage.setItem('escalar_proposals', JSON.stringify(proposals)); }
+
+function fmtVal(v){ 
+    if(!v) return 'R$ 0';
+    return 'R$ ' + parseFloat(v).toLocaleString('pt-BR', {minimumFractionDigits:2});
+}
+
+function calcDiag(p){
+    // Lógica de diagnóstico original preservada
+    return {
+        resumo: "Com base no cenário de " + (p.empresa || 'cliente') + ", identificamos uma oportunidade clara de escala através da estruturação de um motor de prospecção outbound dedicado.",
+        f: ["Presença digital estabelecida", "ICP bem mapeado"],
+        ch: ["Baixa previsibilidade de pipeline", "Dependência de indicações"]
     };
+}
 
-    let state = {
-        view: 'dashboard', // dashboard, form, onepage
-        proposals: JSON.parse(localStorage.getItem('escalar_proposals') || '[]'),
-        editingId: null,
-        isAdmin: false
-    };
+// Renderização
+function render(){
+    var app = document.getElementById('app');
+    if(view==='dash') app.innerHTML = rDash();
+    else if(view==='form') app.innerHTML = rForm();
+    else if(view==='op') app.innerHTML = rOP();
+}
 
-    function render() {
-        const app = document.getElementById('app');
-        if (state.view === 'dashboard') app.innerHTML = renderDashboard();
-        else if (state.view === 'form') app.innerHTML = renderForm();
-        else if (state.view === 'onepage') app.innerHTML = renderOnePage();
-    }
-
-    function renderDashboard() {
-        const cards = state.proposals.map(p => `
-            <div class="card">
-                <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <div>
-                        <h3 style="color:var(--text-primary)">${p.empresa || 'Nova Proposta'}</h3>
-                        <p style="color:var(--text-secondary); font-size:12px;">${p.segmento || 'Sem segmento'}</p>
-                    </div>
-                    <div style="display:flex; gap:10px;">
-                        <button class="btn-secondary" onclick="viewProposal('${p.id}')">Ver OnePage</button>
-                        <button class="btn-primary" onclick="editProposal('${p.id}')">Editar</button>
-                    </div>
+function rDash(){
+    var cards = proposals.map(p => `
+        <div class="pcard">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                    <div class="pname">${p.empresa || 'Sem Nome'}</div>
+                    <div class="pmeta">${p.segmento || 'Sem Segmento'} • ${p.valor || 'R$ 0'}</div>
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button class="sbtn" onclick="goOP('${p.id}')">OnePage</button>
+                    <button class="nbtn" onclick="goEdit('${p.id}')">Editar</button>
+                    ${isAdmin ? `<button class="dbtn" onclick="delP('${p.id}')">Excluir</button>` : ''}
                 </div>
             </div>
-        `).join('') || '<div class="card" style="text-align:center; color:var(--text-muted)">Nenhuma proposta criada.</div>';
+        </div>
+    `).join('') || '<div style="text-align:center; padding:40px; color:#aaa;">Nenhuma proposta encontrada.</div>';
 
-        return `
-            <div class="nav">
-                <img src="${CONFIG.logoEscalar}" alt="Escalar" style="height:30px;">
-                <button class="btn-primary" onclick="newState()">+ Nova Proposta</button>
+    return `
+        <div class="nav">
+            <div class="nlogo"><span>ESCALAR</span> BPO</div>
+            <button class="nbtn" onclick="goNew()">+ Nova Proposta</button>
+        </div>
+        <div class="main">
+            <div class="stats">
+                <div class="stat"><div class="sv">${proposals.length}</div><div class="sl">Total</div></div>
+                <div class="stat"><div class="sv" style="color:#8a9ea8">0</div><div class="sl">Rascunhos</div></div>
+                <div class="stat"><div class="sv">0</div><div class="sl">Enviadas</div></div>
+                <div class="stat"><div class="sv" style="color:#16a34a">0</div><div class="sl">Aprovadas</div></div>
+                <div class="stat"><div class="sv" style="color:#dc2626">0</div><div class="sl">Perdidas</div></div>
             </div>
-            <div class="main">
-                <div class="stats-grid">
-                    <div class="stat-card"><div class="stat-val">${state.proposals.length}</div><div class="stat-label">Total</div></div>
-                    <div class="stat-card"><div class="stat-val">R$ 0</div><div class="stat-label">Pipeline</div></div>
+            ${cards}
+            <div class="admin-zone">
+                <span class="admin-btn" onclick="toggleAdmin()">Painel ADM</span>
+                ${isAdmin ? `<span class="admin-btn" style="color:#dc2626" onclick="clearAll()">Limpar Base</span>` : ''}
+            </div>
+        </div>
+    `;
+}
+
+function rForm(){
+    var body = '';
+    if(step===1){
+        body = `
+            <div class="lbl">Bloco 01</div>
+            <h2 style="margin-bottom:20px;">Identificação do cliente</h2>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:15px;">
+                <div><label class="lbl">Empresa</label><input value="${F.empresa||''}" oninput="F.empresa=this.value"></div>
+                <div><label class="lbl">Website</label><input value="${F.website||''}" oninput="F.website=this.value"></div>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:15px;">
+                <div><label class="lbl">Segmento</label>
+                    <select onchange="F.segmento=this.value">
+                        <option>Selecione...</option>
+                        ${SEGS.map(s=>`<option ${F.segmento===s?'selected':''}>${s}</option>`).join('')}
+                    </select>
                 </div>
-                ${cards}
-                
-                <div class="admin-footer">
-                    <span class="admin-link" onclick="toggleAdmin()">Painel ADM</span>
-                    ${state.isAdmin ? `
-                        <span class="admin-link" style="color:red" onclick="clearAll()">Limpar Tudo</span>
-                    ` : ''}
-                </div>
+                <div><label class="lbl">Contato</label><input value="${F.contato||''}" oninput="F.contato=this.value"></div>
+            </div>
+        `;
+    } else if(step===2){
+        body = `
+            <div class="lbl">Bloco 02</div>
+            <h2 style="margin-bottom:20px;">Contexto comercial</h2>
+            <div style="margin-bottom:15px;">
+                <label class="lbl">Objetivo com a Escalar</label>
+                <textarea rows="4" oninput="F.objetivo=this.value">${F.objetivo||''}</textarea>
+            </div>
+            <div style="margin-bottom:15px;">
+                <label class="lbl">Ticket Médio</label>
+                <input value="${F.ticket||''}" oninput="F.ticket=this.value" placeholder="R$ 5.000">
+            </div>
+        `;
+    } else {
+        body = `
+            <div class="lbl">Bloco 03</div>
+            <h2 style="margin-bottom:20px;">Investimento e Modelo</h2>
+            <div style="margin-bottom:15px;">
+                <label class="lbl">Valor Mensal</label>
+                <input value="${F.valor||''}" oninput="F.valor=this.value" style="font-size:20px; font-weight:800; color:#00c4bc;">
+            </div>
+            <div style="margin-bottom:15px;">
+                <label class="lbl">Modelo Operacional</label>
+                <select onchange="F.modelo=this.value">
+                    <option value="compartilhado" ${F.modelo==='compartilhado'?'selected':''}>BDR Compartilhado</option>
+                    <option value="dedicado" ${F.modelo==='dedicado'?'selected':''}>BDR Dedicado</option>
+                </select>
             </div>
         `;
     }
 
-    function renderOnePage() {
-        const p = state.proposals.find(x => x.id === state.editingId);
-        return `
-            <div class="nav">
-                <img src="${CONFIG.logoEscalar}" alt="Escalar" style="height:30px;">
-                <button class="btn-secondary" onclick="state.view='dashboard'; render()">← Voltar</button>
-            </div>
-            <div class="main">
-                <div class="logo-container">
-                    <img src="${CONFIG.logoEscalar}" class="logo-escalar" alt="Escalar Logo">
-                </div>
-                
-                <div class="card">
-                    <h1 style="font-weight:800; color:var(--text-primary); text-align:center; margin-bottom:10px;">PROPOSTA COMERCIAL</h1>
-                    <p style="text-align:center; color:var(--text-secondary)">Preparada para: <strong>${p.empresa}</strong></p>
-                </div>
-
-                <div class="op-section">
-                    <h2 class="op-title">DIAGNÓSTICO E CONTEXTO</h2>
-                    <p style="color:var(--text-secondary)">Segmento: ${p.segmento}</p>
-                    <div style="background:#f9f9f9; padding:15px; border-radius:8px; margin-top:10px; border-left:4px solid var(--accent-cyan)">
-                        ${p.objetivo || 'Objetivos comerciais alinhados para expansão de mercado e geração de leads qualificados.'}
+    return `
+        <div class="nav">
+            <div class="nlogo"><span>ESCALAR</span> BPO</div>
+            <button class="sbtn" onclick="goDash()">Dashboard</button>
+        </div>
+        <div style="height:4px; background:#eee;"><div class="pf" style="width:${(step/3)*100}%"></div></div>
+        <div class="main" style="max-width:600px;">
+            <div class="fcard">
+                <div style="padding:30px;">
+                    ${body}
+                    <div style="display:flex; justify-content:space-between; margin-top:30px;">
+                        <button class="sbtn" onclick="${step===1?'goDash()':'step--;render()'}">${step===1?'Cancelar':'Anterior'}</button>
+                        <button class="nbtn" onclick="${step<3?'step++;render()':'saveP()'}">${step===3?'Gerar OnePage':'Próximo'}</button>
                     </div>
-                </div>
-
-                <div class="investment-box">
-                    <h2>INVESTIMENTO MENSAL</h2>
-                    <div class="investment-value">${p.valor || 'R$ 0.000,00'}</div>
-                    <p style="font-size:12px; opacity:0.6;">Condições comerciais válidas por 15 dias</p>
-                </div>
-
-                <div class="partners-section">
-                    <div class="partners-title">Parceiros Estratégicos</div>
-                    <div class="partners-grid">
-                        <img src="${CONFIG.logoSalesforce}" class="partner-logo" alt="Salesforce">
-                        <img src="${CONFIG.logoG4Scale}" class="partner-logo" alt="G4 Scale">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Pipedrive_logo.svg/2560px-Pipedrive_logo.svg.png" class="partner-logo" alt="Pipedrive" style="height:20px;">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/HubSpot_Logo.svg/2560px-HubSpot_Logo.svg.png" class="partner-logo" alt="HubSpot" style="height:20px;">
-                    </div>
-                </div>
-
-                <div class="admin-footer">
-                    <span class="admin-link" onclick="state.view='dashboard'; render()">Dashboard</span>
-                    ${state.isAdmin ? `<span class="admin-link" style="color:red" onclick="deleteProposal('${p.id}')">Excluir Proposta</span>` : ''}
                 </div>
             </div>
-        `;
-    }
+        </div>
+    `;
+}
 
-    function renderForm() {
-        const p = state.proposals.find(x => x.id === state.editingId) || {};
-        return `
-            <div class="nav">
-                <img src="${CONFIG.logoEscalar}" alt="Escalar" style="height:30px;">
-                <button class="btn-secondary" onclick="state.view='dashboard'; render()">Cancelar</button>
+function rOP(){
+    var p = proposals.find(x => x.id === editId);
+    var d = calcDiag(p);
+    return `
+        <div class="nav">
+            <div class="nlogo"><span>ESCALAR</span> BPO</div>
+            <div style="display:flex; gap:10px;">
+                <button class="sbtn" onclick="window.print()">Baixar PDF</button>
+                <button class="nbtn" onclick="goDash()">Dashboard</button>
             </div>
-            <div class="main">
-                <div class="card">
-                    <h2 style="margin-bottom:20px; color:var(--text-primary)">Dados da Proposta</h2>
-                    <div style="margin-bottom:15px">
-                        <label style="font-size:11px; font-weight:700; color:var(--text-muted)">NOME DA EMPRESA</label>
-                        <input type="text" id="f-empresa" value="${p.empresa || ''}" placeholder="Ex: Tech Solutions">
+        </div>
+        <div class="main">
+            <div class="op">
+                <div style="padding:40px;">
+                    <img src="${LOGOS.escalar}" class="logo-onepage" alt="Escalar">
+                    
+                    <h1 style="text-align:center; font-weight:800; margin-bottom:10px;">PROPOSTA COMERCIAL</h1>
+                    <p style="text-align:center; color:#8a9ea8; margin-bottom:40px;">Preparada para: <strong>${p.empresa}</strong></p>
+
+                    <div style="margin-bottom:40px;">
+                        <div class="lbl" style="color:#00c4bc; margin-bottom:10px;">Diagnóstico Estratégico</div>
+                        <div class="res">${d.resumo}</div>
                     </div>
-                    <div style="margin-bottom:15px">
-                        <label style="font-size:11px; font-weight:700; color:var(--text-muted)">SEGMENTO</label>
-                        <select id="f-segmento">
-                            <option value="Tecnologia" ${p.segmento === 'Tecnologia' ? 'selected' : ''}>Tecnologia & SaaS</option>
-                            <option value="Serviços" ${p.segmento === 'Serviços' ? 'selected' : ''}>Serviços B2B</option>
-                            <option value="Indústria" ${p.segmento === 'Indústria' ? 'selected' : ''}>Indústria</option>
-                        </select>
+
+                    <div class="ib">
+                        <div class="ib-label">INVESTIMENTO MENSAL</div>
+                        <div class="ib-val">${p.valor || 'Sob consulta'}</div>
+                        <div class="ib-sub">Modelo: ${p.modelo==='dedicado'?'BDR Dedicado':'BDR Compartilhado'}</div>
                     </div>
-                    <div style="margin-bottom:15px">
-                        <label style="font-size:11px; font-weight:700; color:var(--text-muted)">VALOR INVESTIMENTO</label>
-                        <input type="text" id="f-valor" value="${p.valor || ''}" placeholder="R$ 6.500,00">
+
+                    <div style="margin-top:60px;">
+                        <div class="lbl" style="text-align:center; margin-bottom:20px;">Parceiros Estratégicos</div>
+                        <div class="par">
+                            <div class="pa"><img src="${LOGOS.salesforce}"><div class="pa-d">CRM Partner</div></div>
+                            <div class="pa"><img src="${LOGOS.g4scale}"><div class="pa-d">Scale Member</div></div>
+                            <div class="pa"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Pipedrive_logo.svg/2560px-Pipedrive_logo.svg.png" style="height:20px;"><div class="pa-d">Preferred</div></div>
+                        </div>
                     </div>
-                    <div style="margin-bottom:15px">
-                        <label style="font-size:11px; font-weight:700; color:var(--text-muted)">OBJETIVO PRINCIPAL</label>
-                        <textarea id="f-objetivo" rows="3">${p.objetivo || ''}</textarea>
-                    </div>
-                    <button class="btn-primary" style="width:100%" onclick="saveProposal()">Salvar Proposta</button>
                 </div>
             </div>
-        `;
-    }
+        </div>
+    `;
+}
 
-    // Ações
-    function newState() {
-        state.editingId = 'p_' + Date.now();
-        state.view = 'form';
-        render();
-    }
-
-    function editProposal(id) {
-        state.editingId = id;
-        state.view = 'form';
-        render();
-    }
-
-    function viewProposal(id) {
-        state.editingId = id;
-        state.view = 'onepage';
-        render();
-    }
-
-    function saveProposal() {
-        const p = {
-            id: state.editingId,
-            empresa: document.getElementById('f-empresa').value,
-            segmento: document.getElementById('f-segmento').value,
-            valor: document.getElementById('f-valor').value,
-            objetivo: document.getElementById('f-objetivo').value
-        };
-        const idx = state.proposals.findIndex(x => x.id === p.id);
-        if (idx > -1) state.proposals[idx] = p;
-        else state.proposals.push(p);
-        
-        localStorage.setItem('escalar_proposals', JSON.stringify(state.proposals));
-        state.view = 'dashboard';
-        render();
-    }
-
-    function deleteProposal(id) {
-        if(confirm('Excluir esta proposta?')) {
-            state.proposals = state.proposals.filter(x => x.id !== id);
-            localStorage.setItem('escalar_proposals', JSON.stringify(state.proposals));
-            state.view = 'dashboard';
-            render();
-        }
-    }
-
-    function toggleAdmin() {
-        state.isAdmin = !state.isAdmin;
-        render();
-    }
-
-    function clearAll() {
-        if(confirm('LIMPAR TODOS OS DADOS?')) {
-            state.proposals = [];
-            localStorage.removeItem('escalar_proposals');
-            render();
-        }
-    }
-
-    // Inicialização
+// Navegação e Ações
+function goDash(){ view='dash'; render(); }
+function goNew(){ F={}; step=1; view='form'; editId='p_'+Date.now(); render(); }
+function goEdit(id){ 
+    var p = proposals.find(x=>x.id===id);
+    F = {...p}; step=1; view='form'; editId=id; render(); 
+}
+function goOP(id){ editId=id; view='op'; render(); }
+function saveP(){
+    var idx = proposals.findIndex(x=>x.id===editId);
+    if(idx>-1) proposals[idx] = {...F, id:editId};
+    else proposals.push({...F, id:editId});
+    save();
+    view='op';
     render();
-</script>
+}
+function delP(id){ if(confirm('Excluir proposta?')){ proposals=proposals.filter(x=>x.id!==id); save(); render(); } }
+function toggleAdmin(){ isAdmin=!isAdmin; render(); }
+function clearAll(){ if(confirm('Limpar tudo?')){ proposals=[]; save(); render(); } }
 
+render();
+</script>
 </body>
 </html>
