@@ -196,8 +196,8 @@ select option{background:var(--bg2);color:var(--text);}
 /* ── CONDITIONS GRID ── */
 .cg{display:grid;grid-template-columns:1fr 1fr;gap:0;}
 .ci2{padding:8px 0;border-bottom:1px solid var(--border);}
-.ci2:nth-child(odd){padding-right:12px;}
-.ci2:nth-child(even){padding-left:12px;border-left:1px solid var(--border);}
+.ci2:nth-child(odd){padding-right:15px;}
+.ci2:nth-child(even){padding-left:15px;border-left:1px solid var(--border);}
 .ck2{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px;}
 .cv2{font-size:12px;font-weight:600;color:var(--text);}
 
@@ -364,6 +364,10 @@ const TLBL={'recorrente':'Recorrente (MRR)','projeto':'Projeto','misto':'Misto'}
 const CNAME={'nenhum':'Sem CRM','pipedrive':'Pipedrive','hubspot':'HubSpot','salesforce':'Salesforce','rdstation':'RD Station','planilha':'Planilhas','outros':'Outros'};
 const RNOME={'local':'Local','estadual':'Estadual','sul_sudeste':'Sul+Sudeste','sudeste':'Sudeste','brasil':'Brasil','america_latina':'América Latina','global':'Global'};
 
+const SF_SVG='<svg xmlns="http://www.w3.org/2000/svg" width="130" height="44" viewBox="0 0 325 110"><path d="M133.2,20.1c6.5-6.8,15.5-11,25.6-11c13.2,0,24.7,7.2,30.8,17.9c5.3-2.3,11.2-3.6,17.4-3.6c24.2,0,43.8,19.7,43.8,44c0,0.4,0,0.8,0,1.2c9.8,2,17.2,10.7,17.2,21.1c0,11.9-9.6,21.5-21.5,21.5H74.3C57.9,111.1,44.7,98,44.7,81.6c0-13.4,8.6-24.8,20.7-28.9C64.9,50.3,64.7,48,64.7,45.6C64.7,31.5,76.1,20,90.2,20c5.1,0,9.9,1.5,13.9,4.1C109.3,27.4,116.3,21.7,133.2,20.1z" fill="#00A1E0"/><text x="58" y="82" font-family="Arial,Helvetica,sans-serif" font-size="27" font-weight="400" fill="white" letter-spacing="-0.5">sales<tspan font-style="italic">force</tspan></text></svg>';
+const G4_SVG='<img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663634474230/dZcrmkMRyROqiuCW.png" style="height:35px; opacity:0.9;">';
+const RAMPPY_SVG='<img src="https://i.ibb.co/LzNfX5T/logo-escalar.png" style="height:35px; filter: grayscale(1) brightness(0.5);">';
+
 function fmtD(){return new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});}
 function fmtDate(d){if(!d)return '';if(d.includes('T'))return new Date(d).toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});return d;}
 function fmtVal(v){if(!v||v===0)return'—';if(v>=1000000)return'R$'+Math.round(v/1000000)+'M';if(v>=100000)return'R$'+Math.round(v/1000)+'k';return'R$'+v.toLocaleString('pt-BR');}
@@ -481,6 +485,23 @@ function saveFup(pid,n,key,val){
   if(dot)dot.className='fup-dot'+(st==='done'?' done':st==='pend'?' pend':'');
 }
 
+function setSt(id,st){
+  const p=proposals.find(x=>x.id===id);
+  if(p){p.status=st;sv();re();}
+}
+
+function delP(id){
+  if(confirm('Excluir esta proposta?')){
+    proposals=proposals.filter(x=>x.id!==id);
+    sv();re();
+  }
+}
+
+function setVendFilter(el,v){
+  vendFilter=v;
+  re();
+}
+
 function re(){document.getElementById('app').innerHTML=view==='dash'?rDash():view==='form'?rForm():rOP();}
 
 function rDash(){
@@ -557,61 +578,41 @@ function rDash(){
     '</div>';
 }
 
-function setSt(id,s){const p=proposals.find(x=>x.id===id);if(p){p.status=s;sv();syncToSheets(p);re();}}
-function delP(id){if(!confirm('Excluir?'))return;deleteFromSheets(id);proposals=proposals.filter(x=>x.id!==id);sv();re();}
-function setVendFilter(el,v){vendFilter=v;re();}
-
-function chip(l,v,key,multi){const on=multi?(F[key]||[]).includes(v):F[key]===v;const cl=multi?`tgl('${key}','${v}')`:`setF('${key}','${v}')`;return`<span class="chip${on?' on':''}" onclick="${cl}">${l}</span>`;}
-function fld(lbl,key,ph){return`<div class="fld"><label class="lbl">${lbl}</label><input value="${F[key]||''}" placeholder="${ph||''}" oninput="F['${key}']=this.value"></div>`;}
-function seld(lbl,key,opts){return`<div class="fld"><label class="lbl">${lbl}</label><select onchange="F['${key}']=this.value"><option value="">Selecione...</option>${opts.map(([v,l])=>`<option value="${v}"${F[key]===v?' selected':''}>${l}</option>`).join('')}</select></div>`;}
-
 function rForm(){
-  const ded=F.modelo==='dedicado';
-  const d=step>=3?calcDiag(F):{f:[],ch:[],resumo:''};
+  const s=step;
+  const p=F;
   let body='';
-  if(step===1){body=`<div class="sey">Bloco 01</div><div class="stt">Identificação do cliente</div><div class="ssb">Dados básicos para contextualizar a proposta</div>
-    <div class="g2">${fld('Empresa','empresa','Nome da empresa')}${fld('Website','website','https://empresa.com.br')}</div>
-    <div class="g2">${seld('Segmento','segmento',SEGS.map(s=>[s,s]))}${fld('Contato','contato','Nome do decisor')}</div>
-    <div class="g2">${fld('Cargo','cargo','CEO, Diretor...')}${seld('Região','regiao',[['local','Local'],['estadual','Estadual'],['sul_sudeste','Sul+Sudeste'],['sudeste','Sudeste'],['brasil','Brasil'],['america_latina','América Latina'],['global','Global']])}</div>
-    <div class="g2">${seld('Faturamento anual','receita',[['abaixo_1','< R$ 1MM'],['1_5','R$ 1-5MM'],['5_20','R$ 5-20MM'],['acima_20','> R$ 20MM']])}${seld('Nº de vendedores','vendedores',[['nenhum','Nenhum'],['1_2','1-2'],['3_5','3-5'],['6_10','6-10'],['acima_10','10+']])}</div>
-    ${seld('CRM atual','crm',[['nenhum','Sem CRM'],['pipedrive','Pipedrive'],['hubspot','HubSpot'],['salesforce','Salesforce'],['rdstation','RD Station'],['planilha','Planilhas'],['outros','Outros']])}${seld('Vendedor responsável','vendedor',[['andre','André Albergaria'],['marco','Marco Tulio'],['rhavi','Rhavi']])}`;
-  }else if(step===2){
-    const objChips=OBJ_OPTS.map(o=>{
-      const on=(F.objetivos||[]).includes(o);
-      return '<span class="obj-chip'+(on?' on':'')+'" onclick="tglObj(this,\''+o.replace(/'/g,'\\\'')+'\')">' +o+'</span>';
-    }).join('');
-    body=`<div class="sey">Bloco 02</div><div class="stt">Contexto comercial</div><div class="ssb">Como a empresa cresce e onde quer chegar</div>
-    <div class="cin"><label class="lbl">Como cresce hoje?</label><div class="chips">${['Indicação','Outbound','Inbound','Parceiros','Networking','Tráfego Pago','Outro'].map(v=>chip(v,v,'crescimento',true)).join('')}</div></div>
-    <div class="cin"><label class="lbl">Previsibilidade comercial</label><div class="chips">${[['Muito previsível','muito_previsivel'],['Moderada','moderada'],['Baixa','baixa'],['Dependente de relacionamento','dependente']].map(([l,v])=>chip(l,v,'previsibilidade',false)).join('')}</div></div>
-    <div class="cin"><label class="lbl">ICP definido?</label><div class="chips">${[['Muito claro','muito_claro'],['Parcialmente','parcial'],['Inexistente','inexistente']].map(([l,v])=>chip(l,v,'icp',false)).join('')}</div></div>
-    <div class="g2">
-      <div class="cin"><label class="lbl">Ciclo comercial</label><div class="chips">${[['< 30d','menos30'],['30-60d','30_60'],['60-120d','60_120'],['120+d','mais120']].map(([l,v])=>chip(l,v,'ciclo',false)).join('')}</div></div>
-      <div class="cin"><label class="lbl">Tipo de venda</label><div class="chips">${[['Recorrente (MRR)','recorrente'],['Projeto','projeto'],['Misto','misto']].map(([l,v])=>chip(l,v,'ticket_tipo',false)).join('')}</div></div>
-    </div>
-    ${fld('Ticket médio','ticket','Ex: R$ 5.000')}
-    <div class="fld"><label class="lbl">Principais dores</label><textarea rows="2" oninput="F.dores=this.value" placeholder="Descreva os desafios...">${F.dores||''}</textarea></div>
-    <div class="fld"><label class="lbl">Objetivo com a Escalar</label><div style="margin-top:6px;">${objChips}</div>
-    <textarea rows="2" style="margin-top:8px;" oninput="F.objetivo=this.value" placeholder="Ou descreva livremente...">${F.objetivo||''}</textarea></div>`;
-  }else if(step===3){
-    body=`<div class="sey">Bloco 03</div><div class="stt">Diagnóstico gerado</div><div class="ssb">Análise automática — revise antes de continuar</div>
-    <div style="margin-bottom:14px;"><div style="font-size:10px;color:#00c4bc;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px;">Resumo executivo</div><div class="res">${d.resumo}</div></div>
-    ${d.f.length?'<div style="font-size:10px;color:#00c4bc;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:7px;">Pontos fortes</div>'+d.f.map(x=>`<div class="dg-ok"><span style="color:#00c4bc;font-weight:700;">✓</span>${x}</div>`).join(''):''}
-    ${d.ch.length?'<div style="font-size:10px;color:#f59542;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin:11px 0 7px;">Desafios</div>'+d.ch.map(x=>`<div class="dg-ch"><span style="color:#f59542;font-weight:700;">→</span>${x}</div>`).join(''):''}`;
+  if(s===1){
+    body='<div class="sey">Etapa 1 de 4</div><div class="stt">Dados da Empresa</div><div class="ssb">Informações básicas para o diagnóstico.</div>'+
+      '<div class="fld"><label class="lbl">Nome da Empresa</label><input value="'+(p.empresa||'')+'" onchange="setF(\'empresa\',this.value)"></div>'+
+      '<div class="g2"><div class="fld"><label class="lbl">Segmento</label><select onchange="setF(\'segmento\',this.value)"><option value="">Selecione...</option>'+SEGS.map(x=>'<option '+(p.segmento===x?'selected':'')+'>'+x+'</option>').join('')+'</select></div>'+
+      '<div class="fld"><label class="lbl">Website</label><input placeholder="ex: empresa.com.br" value="'+(p.website||'')+'" onchange="setF(\'website\',this.value)"></div></div>'+
+      '<div class="g2"><div class="fld"><label class="lbl">Contato Principal</label><input value="'+(p.contato||'')+'" onchange="setF(\'contato\',this.value)"></div>'+
+      '<div class="fld"><label class="lbl">Cargo</label><input value="'+(p.cargo||'')+'" onchange="setF(\'cargo\',this.value)"></div></div>'+
+      '<div class="fld"><label class="lbl">Vendedor Responsável</label><select onchange="setF(\'vendedor\',this.value)">'+Object.entries(VENDEDORES).map(([k,v])=>'<option value="'+k+'" '+(p.vendedor===k?'selected':'')+'>'+v.nome+'</option>').join('')+'</select></div>';
+  }else if(s===2){
+    body='<div class="sey">Etapa 2 de 4</div><div class="stt">Perfil & Maturidade</div><div class="ssb">Entendendo o cenário atual de vendas.</div>'+
+      '<div class="g2"><div class="fld"><label class="lbl">Faturamento Anual</label><select onchange="setF(\'receita\',this.value)"><option value="">Selecione...</option>'+Object.entries(RLBL).map(([k,v])=>'<option value="'+k+'" '+(p.receita===k?'selected':'')+'>'+v+'</option>').join('')+'</select></div>'+
+      '<div class="fld"><label class="lbl">Time de Vendas</label><select onchange="setF(\'vendedores\',this.value)"><option value="">Selecione...</option>'+Object.entries(VLBL).map(([k,v])=>'<option value="'+k+'" '+(p.vendedores===k?'selected':'')+'>'+v+'</option>').join('')+'</select></div></div>'+
+      '<div class="g2"><div class="fld"><label class="lbl">CRM Atual</label><select onchange="setF(\'crm\',this.value)"><option value="">Selecione...</option>'+Object.entries(CNAME).map(([k,v])=>'<option value="'+k+'" '+(p.crm===k?'selected':'')+'>'+v+'</option>').join('')+'</select></div>'+
+      '<div class="fld"><label class="lbl">Região de Atuação</label><select onchange="setF(\'regiao\',this.value)"><option value="">Selecione...</option>'+Object.entries(RNOME).map(([k,v])=>'<option value="'+k+'" '+(p.regiao===k?'selected':'')+'>'+v+'</option>').join('')+'</select></div></div>'+
+      '<div class="fld"><label class="lbl">Canais de Crescimento Atuais</label><div class="chips">'+['Inbound','Outbound','Indicação','Canais/Parceiros','Eventos'].map(x=>'<div class="chip '+(p.crescimento&&p.crescimento.includes(x)?'on':'')+'" onclick="tgl(\'crescimento\',\''+x+'\')">'+x+'</div>').join('')+'</div></div>';
+  }else if(s===3){
+    body='<div class="sey">Etapa 3 de 4</div><div class="stt">Diagnóstico & Dores</div><div class="ssb">O que impede a empresa de crescer?</div>'+
+      '<div class="fld"><label class="lbl">Principais Dores / Desafios</label><textarea rows="3" onchange="setF(\'dores\',this.value)">'+(p.dores||'')+'</textarea></div>'+
+      '<div class="fld"><label class="lbl">Objetivo Principal do Projeto</label><div class="chips">'+OBJ_OPTS.map(x=>'<div class="obj-chip '+(p.objetivos&&p.objetivos.includes(x)?'on':'')+'" onclick="tglObj(this,\''+x+'\')">'+x+'</div>').join('')+'</div></div>'+
+      '<div class="fld"><label class="lbl">Ciclo Médio de Vendas</label><select onchange="setF(\'ciclo\',this.value)"><option value="">Selecione...</option>'+Object.entries(CLBL).map(([k,v])=>'<option value="'+k+'" '+(p.ciclo===k?'selected':'')+'>'+v+'</option>').join('')+'</select></div>';
   }else{
-    body=`<div class="sey">Bloco 04</div><div class="stt">Configuração operacional</div><div class="ssb">Modelo, projeções e investimento</div>
-    <div class="cin"><label class="lbl" style="margin-bottom:10px;">Modelo operacional</label>
-    <div style="display:flex;gap:10px;">${[['compartilhado','BDR Compartilhado','350 abordagens/mês'],['dedicado','BDR Dedicado','1.100 abordagens/mês']].map(([v,l,s])=>`<div class="mbt${F.modelo===v?' on':''}" onclick="setF('modelo','${v}')"><div>${l}</div><div style="font-size:11px;opacity:.6;font-weight:400;margin-top:3px;">${s}</div></div>`).join('')}</div></div>
-    <div class="g2">
-      <div class="fld"><label class="lbl">Investimento mensal</label><input value="${F.valor||''}" placeholder="Ex: R$ 6.500" oninput="F.valor=this.value" style="font-size:16px;font-weight:700;"></div>
-      <div class="fld"><label class="lbl">Opção de Ganho</label><input value="${F.ganho||''}" placeholder="Ex: R$ 2.000" oninput="F.ganho=this.value" style="font-size:16px;font-weight:700;"></div>
-    </div>`;
+    body='<div class="sey">Etapa 4 de 4</div><div class="stt">Proposta & Modelo</div><div class="ssb">Definição do escopo e investimento.</div>'+
+      '<div class="fld"><label class="lbl">Modelo de Operação</label><div style="display:flex;gap:10px;"><div class="mbt '+(p.modelo==='compartilhado'?'on':'')+'" onclick="setF(\'modelo\',\'compartilhado\')">Compartilhado</div><div class="mbt '+(p.modelo==='dedicado'?'on':'')+'" onclick="setF(\'modelo\',\'dedicado\')">Dedicado</div></div></div>'+
+      '<div class="g2"><div class="fld"><label class="lbl">Investimento Mensal (ex: R$ 8.500)</label><input value="'+(p.valor||'')+'" onchange="setF(\'valor\',this.value)"></div>'+
+      '<div class="fld"><label class="lbl">Taxa de Sucesso / Ganho (opcional)</label><input value="'+(p.ganho||'')+'" onchange="setF(\'ganho\',this.value)"></div></div>'+
+      '<div class="fld"><label class="lbl">Status da Proposta</label><select onchange="setF(\'status\',this.value)"><option value="rascunho" '+(p.status==='rascunho'?'selected':'')+'>Rascunho</option><option value="enviada" '+(p.status==='enviada'?'selected':'')+'>Enviada</option><option value="aprovada" '+(p.status==='aprovada'?'selected':'')+'>Aprovada</option><option value="perdida" '+(p.status==='perdida'?'selected':'')+'>Perdida</option></select></div>';
   }
-  return `<div class="nav"><div><img src="https://i.ibb.co/LzNfX5T/logo-escalar.png" style="height:28px;"></div></div>
-    <div class="main"><div class="fcard"><div class="prog"><div class="pf" style="width:${step*25}%"></div></div>
-    <div class="fbody">${body}<div class="fnav">
-    <button class="sbtn" onclick="${step===1?'goDash()':'prev()'}">${step===1?'Cancelar':'Voltar'}</button>
-    <button class="nbtn" onclick="next()">${step===4?'Salvar Proposta':'Próximo'}</button>
-    </div></div></div></div>`;
+
+  return '<div class="nav"><div><img src="https://i.ibb.co/LzNfX5T/logo-escalar.png" style="height:28px;"></div><button class="sbtn" onclick="goDash()">Cancelar</button></div>'+
+    '<div class="main" style="max-width:600px;"><div class="fcard"><div class="prog"><div class="pf" style="width:'+(s*25)+'%"></div></div><div class="fbody">'+body+
+    '<div class="fnav"><button class="sbtn" onclick="prev()" '+(s===1?'disabled':'')+'>Voltar</button><button class="nbtn" onclick="next()">'+(s===4?'Salvar Proposta':'Próximo')+'</button></div></div></div></div>';
 }
 
 function rOP(){
@@ -633,7 +634,19 @@ function rOP(){
     logoCliente='<div class="cliente-logo-wrap"><img src="https://logo.clearbit.com/'+_d+'" style="width:60px;height:60px;object-fit:contain;" onerror="this.style.display=\'none\';"></div>';
   }
 
-  var logoG4 = '<div style="text-align:center; margin-top:10px; margin-bottom:15px;"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663634474230/dZcrmkMRyROqiuCW.png" style="height:50px; opacity:0.9;"></div>';
+  function sec(n,t,c){
+    return '<div class="ops"><div class="opsh"><div class="opsn">'+n+'</div><div class="opsl"></div><div class="opst">'+t+'</div></div>'+c+'</div>';
+  }
+
+  var cardStyle='display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:22px 16px 18px;text-align:center;flex:1;border-right:1px solid rgba(0,196,188,.14);';
+  var labelStyle='font-size:10px;font-weight:700;color:#8a9ea8;text-transform:uppercase;letter-spacing:.1em;margin-top:14px;padding-top:10px;border-top:1px solid rgba(0,196,188,.1);width:100%;text-align:center;';
+  var logoBox='display:flex;align-items:center;justify-content:center;height:72px;width:100%;';
+  
+  // G4 removida dos parceiros conforme solicitado (somente no final)
+  var parcHtml='<div style="display:flex;border:1.5px solid rgba(0,196,188,.14);border-radius:6px;overflow:hidden;">'
+    +'<div style="'+cardStyle+'"><div style="'+logoBox+'">'+SF_SVG+'</div><div style="'+labelStyle+'">CRM Partner Oficial</div></div>'
+    +'<div style="'+cardStyle.replace('border-right:1px solid rgba(0,196,188,.14);','')+'"><div style="'+logoBox+'">'+RAMPPY_SVG+'</div><div style="'+labelStyle+'">Sales Enablement</div></div>'
+    +'</div>';
 
   var out='<div class="nav"><div><img src="https://i.ibb.co/LzNfX5T/logo-escalar.png" style="height:28px;"></div><div style="display:flex;gap:8px;">'
     +'<button class="sbtn" onclick="goDash()">Dashboard</button>'
@@ -644,24 +657,20 @@ function rOP(){
     +logoEscalar
     +'<div style="text-align:center; font-size:10px; color:rgba(255,255,255,0.4); text-transform:uppercase; margin-bottom:20px;">Proposta Comercial &middot; '+propNum+'</div>'
     +logoCliente
-    +logoG4
     +'<div style="font-size:32px; font-weight:800; text-align:center; margin-bottom:10px;">'+(p.empresa||'Proposta Comercial')+'</div>'
     +'<div style="font-size:14px; color:rgba(255,255,255,0.6); text-align:center; margin-bottom:24px;">'+tagline+'</div>'
     +'<div style="display:flex; justify-content:center; gap:12px;">'
     +'<div style="background:rgba(0,196,188,0.1); border:1px solid rgba(0,196,188,0.3); padding:8px 16px; border-radius:6px; font-size:12px;">Modelo: '+(ded?'Dedicado':'Compartilhado')+'</div>'
     +'<div style="background:rgba(0,196,188,0.1); border:1px solid rgba(0,196,188,0.3); padding:8px 16px; border-radius:6px; font-size:12px;">Válida até: '+val+'</div>'
     +'</div></div>'
-    +'<div class="ops"> <div class="opsh"><div class="opsn">01</div><div class="opsl"></div><div class="opst">Diagnóstico</div></div>'
-    +'<div class="res">'+diag.resumo+'</div></div>'
-    +'<div class="ops"> <div class="opsh"><div class="opsn">02</div><div class="opsl"></div><div class="opst">Investimento</div></div>'
-    +'<div class="ib">'
-    +'<div class="ib-label">Investimento Mensal</div>'
-    +'<div class="ib-val">'+(p.valor||'A definir')+'</div>'
-    +(p.ganho ? '<div style="font-size:18px;color:#00c4bc;font-weight:700;margin-bottom:15px;">+ Ganho: ' + p.ganho + '</div>' : '')
-    +'<div class="ib-sub">Ferramentas e impostos inclusos &middot; Equipe CLT pela Escalar</div>'
-    +'<div style="background:rgba(0,196,188,0.08); border:1px solid rgba(0,196,188,0.2); border-radius:6px; padding:15px; margin-top:20px; color:rgba(255,255,255,0.8); font-size:13px;">'+roiPergunta+'</div>'
-    +'</div></div>'
-    +'<div class="of"><div><strong>ESCALAR</strong> BPO Comercial</div><div style="text-align:right; font-size:10px;">'+vd.nome+'<br>'+vd.email+'</div></div>'
+    +sec('01','Diagnóstico','<div class="res">'+diag.resumo+'</div>')
+    +sec('02','Investimento','<div class="ib"><div class="ib-label">Investimento Mensal</div><div class="ib-val">'+(p.valor||'A definir')+'</div>'+(p.ganho ? '<div style="font-size:18px;color:#00c4bc;font-weight:700;margin-bottom:15px;">+ Ganho: ' + p.ganho + '</div>' : '')+'<div class="ib-sub">Ferramentas e impostos inclusos &middot; Equipe CLT pela Escalar</div><div style="background:rgba(0,196,188,0.08); border:1px solid rgba(0,196,188,0.2); border-radius:6px; padding:15px; margin-top:20px; color:rgba(255,255,255,0.8); font-size:13px;">'+roiPergunta+'</div></div>')
+    +sec('03','Parceiros estratégicos',parcHtml)
+    +'<div class="of">'
+    +'<div><strong>ESCALAR</strong> BPO Comercial</div>'
+    +'<div style="display:flex; align-items:center; gap:10px;">'+G4_SVG+'</div>' // Logo G4 no final conforme solicitado
+    +'<div style="text-align:right; font-size:10px;">'+vd.nome+'<br>'+vd.email+'</div>'
+    +'</div>'
     +'</div></div>';
   return out;
 }
@@ -678,6 +687,12 @@ function toggleAdm() {
 
 function setAdmTab(t) {
   admTab = t;
+  // Atualizar classes das tabs para feedback visual
+  const tabs = document.querySelectorAll('.adm-tab');
+  tabs.forEach(tab => {
+    if (tab.textContent.toLowerCase().includes(t.slice(0,3))) tab.classList.add('on');
+    else tab.classList.remove('on');
+  });
   renderAdm();
 }
 
@@ -710,7 +725,6 @@ function renderAdm() {
         </div>
       </div>`).join('');
   } else if (admTab === 'perf') {
-    // Relatórios de Performance
     const stats = {};
     Object.keys(VENDEDORES).forEach(v => {
       stats[v] = { total: 0, enviadas: 0, aprovadas: 0, mrr: 0 };
@@ -793,9 +807,9 @@ const admHtml = `
       <button class="adm-btn" onclick="toggleAdm()">Fechar</button>
     </div>
     <div class="adm-tabs">
-      <div class="adm-tab ${admTab === 'propostas' ? 'on' : ''}" onclick="setAdmTab('propostas')">Propostas</div>
-      <div class="adm-tab ${admTab === 'perf' ? 'on' : ''}" onclick="setAdmTab('perf')">Performance</div>
-      <div class="adm-tab ${admTab === 'config' ? 'on' : ''}" onclick="setAdmTab('config')">Config</div>
+      <div class="adm-tab on" onclick="setAdmTab('propostas')">Propostas</div>
+      <div class="adm-tab" onclick="setAdmTab('perf')">Performance</div>
+      <div class="adm-tab" onclick="setAdmTab('config')">Config</div>
     </div>
     <div id="adm-body" class="adm-body"></div>
   </div>
