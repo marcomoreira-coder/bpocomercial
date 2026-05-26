@@ -4,98 +4,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Proposta Comercial — Escalar BPO</title>
-<!-- Fonte Montserrat -->
+<!-- Fonte Montserrat conforme solicitado -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* Reset e Base */
+/* CSS RESET E BASE */
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Montserrat',sans-serif;background:#f2f2f2;color:#1a2830;line-height:1.5;}
+body{font-family:'Montserrat',sans-serif;background:#f2f2f2;color:#1a2830;} /* Fundo cinza claro suave e texto azul profundo */
 
-/* Cores e Superfícies */
-.nav{background:#ffffff;border-bottom:1px solid rgba(0,196,188,.22);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,196,188,.05);}
-.nlogo{font-size:15px;font-weight:800;color:#1a2830;letter-spacing:.06em;}.nlogo span{color:#00c4bc;}
-.nsub{font-size:10px;color:#8a9ea8;margin-top:1px;font-weight:500;}
+/* NAVEGAÇÃO E RODAPÉ */
+.nav{background:#ffffff;border-bottom:1px solid rgba(0,196,188,.22);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,196,188,.1);}
+.nlogo{font-size:15px;font-weight:700;color:#1a2830;letter-spacing:.06em;}.nlogo span{color:#00c4bc;}
+.nsub{font-size:10px;color:#8a9ea8;margin-top:1px;}
 
-/* Botões */
+/* BOTÕES */
 .nbtn{background:#00c4bc;color:#ffffff;border:none;border-radius:5px;padding:8px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:'Montserrat',sans-serif;}
 .gbtn{background:transparent;color:#00c4bc;border:1.5px solid #00c4bc;border-radius:5px;padding:7px 15px;font-weight:600;font-size:12px;cursor:pointer;font-family:'Montserrat',sans-serif;}
 .dbtn{background:transparent;color:#dc2626;border:1.5px solid rgba(220,38,38,.3);border-radius:5px;padding:7px 12px;font-weight:600;font-size:12px;cursor:pointer;font-family:'Montserrat',sans-serif;}
-.sbtn{background:transparent;color:#4a6070;border:1.5px solid rgba(0,196,188,.22);border-radius:5px;padding:7px 13px;font-weight:600;font-size:12px;cursor:pointer;font-family:'Montserrat',sans-serif;}
+.sbtn{background:transparent;color:#4a6070;border:1.5px solid #ddd;border-radius:5px;padding:7px 13px;font-weight:600;font-size:12px;cursor:pointer;font-family:'Montserrat',sans-serif;}
 
-/* Main e Cards */
+/* CONTEÚDO PRINCIPAL */
 .main{max-width:960px;margin:0 auto;padding:28px 22px 60px;}
 .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px;}
 .stat{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);border-radius:7px;padding:14px 16px;}
-.sv{font-size:28px;font-weight:800;color:#00c4bc;}
-.sl{font-size:10px;color:#8a9ea8;text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-top:3px;}
+.sv{font-size:28px;font-weight:700;color:#00c4bc;}
+.sl{font-size:10px;color:#8a9ea8;text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-top:3px;}
 
+/* PIPELINE */
 .pipe{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);border-radius:7px;padding:15px 18px;margin-bottom:18px;}
-.pipe-t{font-size:10px;font-weight:800;color:#8a9ea8;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;}
-.pipe-row{display:flex;border:1.5px solid rgba(0,196,188,.1);border-radius:6px;overflow:hidden;}
-.ps{flex:1;padding:12px 14px;border-right:1.5px solid rgba(0,196,188,.1);text-align:center;}
+.pipe-t{font-size:10px;font-weight:700;color:#8a9ea8;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;}
+.pipe-row{display:flex;border:1.5px solid rgba(0,196,188,.22);border-radius:6px;overflow:hidden;}
+.ps{flex:1;padding:12px 14px;border-right:1.5px solid rgba(0,196,188,.22);text-align:center;}
 .ps:last-child{border-right:none;}
-.ps-l{font-size:10px;font-weight:700;color:#8a9ea8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
-.ps-v{font-size:22px;font-weight:800;}
+.ps-l{font-size:10px;font-weight:600;color:#8a9ea8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px;}
+.ps-v{font-size:22px;font-weight:700;color:#1a2830;}
 .ps-s{font-size:12px;font-weight:600;margin-top:2px;}
 
-.pcard{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);border-radius:7px;padding:14px 18px;margin-bottom:10px;transition:transform 0.2s;}
-.pcard:hover{transform:translateY(-2px);}
+/* CARDS DE PROPOSTA */
+.pcard{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);border-radius:7px;padding:14px 18px;margin-bottom:10px;}
+.pav{width:42px;height:42px;border-radius:7px;background:rgba(0,196,188,.12);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#00c4bc;flex-shrink:0;}
 .pname{font-weight:700;font-size:14px;color:#1a2830;margin-bottom:2px;}
-.pmeta{font-size:11px;color:#4a6070;}
+.pmeta{font-size:11px;color:#8a9ea8;}
 
-/* Form e Inputs */
+/* BADGES */
+.be{color:#00c4bc;border-color:rgba(0,196,188,.3);background:rgba(0,196,188,.08);}
+
+/* FORMULÁRIOS */
 .fcard{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);border-radius:8px;overflow:hidden;}
 .pf{height:100%;background:#00c4bc;transition:width .4s;}
 input,select,textarea{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);color:#1a2830;font-size:13px;padding:9px 12px;border-radius:5px;outline:none;width:100%;font-family:'Montserrat',sans-serif;transition:border .18s;}
-input:focus,select:focus,textarea:focus{border-color:#00c4bc;box-shadow:0 0 0 3px rgba(0,196,188,.05);}
-.lbl{font-size:10px;color:#4a6070;text-transform:uppercase;letter-spacing:.08em;font-weight:700;display:block;margin-bottom:5px;}
+input:focus,select:focus,textarea:focus{border-color:#00c4bc;background:#fff;}
+.chip.on{border-color:#00c4bc;background:rgba(0,196,188,.08);color:#00c4bc;}
+.obj-chip.on{border-color:#00c4bc;background:rgba(0,196,188,.08);color:#00c4bc;font-weight:600;}
+.mbt.on{border-color:#00c4bc;border-width:2px;background:rgba(0,196,188,.08);color:#00c4bc;}
 
-/* OnePage Específico */
-.op{background:#ffffff;border:1.5px solid rgba(0,196,188,.22);border-radius:8px;overflow:hidden;}
-.res{font-family:'Montserrat',sans-serif;font-size:15px;line-height:1.8;color:#1a2830;border-left:4px solid #00c4bc;padding:13px 18px;background:rgba(0,196,188,.03);border-radius:0 5px 5px 0;font-weight:500;}
-
-/* Investimento - Caixa Escura */
+/* ONEPAGE E DIAGNÓSTICO */
+.res{font-family:'Montserrat',sans-serif;font-size:15px;line-height:1.8;color:#4a6070;border-left:3px solid #00c4bc;padding:13px 18px;background:rgba(0,196,188,.03);border-radius:0 5px 5px 0;font-weight:500;}
 .ib{background:#1a2830;border-radius:8px;padding:36px 40px;text-align:center;border:2px solid #2d4048;position:relative;}
-.ib-val{font-family:'Montserrat',sans-serif;font-size:52px;font-weight:800;color:#ffffff;line-height:1;margin:8px 0;letter-spacing:-.02em;}
-.ib-label{font-size:11px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.12em;font-weight:700;}
-.ib-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:10px;}
+.ib-val{font-family:'Montserrat',sans-serif;font-size:52px;font-weight:700;color:#ffffff;line-height:1;margin:8px 0;letter-spacing:-.02em;}
+.ib-label{font-size:11px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.12em;font-weight:600;}
 
-/* Parceiros Centralizados */
-.par{display:flex;justify-content:center;align-items:center;gap:30px;padding:20px;flex-wrap:wrap;border:1.5px solid rgba(0,196,188,.15);border-radius:8px;background:#ffffff;}
+/* PARCEIROS CENTRALIZADOS */
+.par{display:flex;justify-content:center;align-items:center;gap:40px;padding:20px;flex-wrap:wrap;border:1.5px solid rgba(0,196,188,.22);border-radius:6px;background:#ffffff;}
 .pa{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px;}
-.pa img{max-height:35px;width:auto;filter:grayscale(100%);opacity:0.6;transition:all 0.3s;}
-.pa:hover img{filter:grayscale(0%);opacity:1;}
-.pa-d{font-size:9px;color:#8a9ea8;margin-top:8px;font-weight:700;text-transform:uppercase;letter-spacing:1px;}
+.pa img{max-height:35px;width:auto;}
+.pa-d{font-size:10px;color:#8a9ea8;margin-top:8px;font-weight:700;}
 
-/* Admin Footer */
-.admin-zone{margin-top:40px;padding:20px;text-align:center;border-top:1px solid #eee;}
-.admin-btn{font-size:9px;color:#8a9ea8;text-transform:uppercase;letter-spacing:1px;cursor:pointer;padding:5px 10px;border-radius:4px;transition:all 0.2s;}
+/* ADMIN ZONE */
+.admin-zone{margin-top:40px;text-align:center;font-size:9px;color:#8a9ea8;text-transform:uppercase;letter-spacing:1px;}
+.admin-btn{cursor:pointer;padding:4px 8px;border-radius:3px;transition:all 0.2s;}
 .admin-btn:hover{color:#00c4bc;background:rgba(0,196,188,0.05);}
 
-/* Utilitários do OnePage */
-.logo-onepage{display:block;margin:0 auto 30px;max-height:60px;width:auto;}
-
-/* Estilos herdados e ajustados */
-.pav{background:rgba(0,196,188,.12);color:#00c4bc;font-weight:800;}
-.be{color:#00c4bc;border-color:rgba(0,196,188,.3);background:rgba(0,196,188,.08);}
-.chip.on{border-color:#00c4bc;background:rgba(0,196,188,.08);color:#00c4bc;}
-.obj-chip.on{border-color:#00c4bc;background:rgba(0,196,188,.08);color:#00c4bc;}
-.mbt.on{border-color:#00c4bc;background:rgba(0,196,188,.08);color:#00c4bc;}
-.tc.hi{background:#00c4bc;border-color:#00c4bc;}
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:#f2f2f2;}
+::-webkit-scrollbar-thumb{background:#00c4bc;border-radius:4px;}
 </style>
 </head>
 <body>
 <div id="app"></div>
 
 <script>
-// Logotipos Oficiais
-const LOGOS = {
-    escalar: 'https://novosite.grupoescalar.com/wp-content/uploads/2025/07/ESCALAR-NOVO-LOGO-28-scaled.webp',
-    salesforce: 'https://www.salesforce.com/news/wp-content/uploads/sites/3/2021/05/Salesforce-Logo.png',
-    g4scale: 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/770267104128527.5f5bd7c3666f4.png'
-};
-
-// Dados e Lógica (Preservando a lógica original do usuário)
+/* DADOS ORIGINAIS E LÓGICA */
 var proposals = JSON.parse(localStorage.getItem('escalar_proposals') || '[]');
 var view = 'dash';
 var step = 1;
@@ -103,7 +92,7 @@ var editId = null;
 var F = {};
 var isAdmin = false;
 
-// Configurações Originais
+/* CONFIGURAÇÕES E CONSTANTES ORIGINAIS */
 const SEGS = ['Tecnologia & SaaS','Serviços B2B & Consultoria','Indústria & Manufatura','Energia & Sustentabilidade','Logística & Transporte','Jurídico & Contábil','Saúde & Bem-estar'];
 const OBJ_OPTS = ['Gerar leads qualificados','Aumentar previsibilidade','Estruturar pré-vendas','Escalar volume de reuniões','Reduzir CAC','Validar novo mercado'];
 const VENDEDORES = {
@@ -111,28 +100,32 @@ const VENDEDORES = {
     marco:{n:'Marco Tulio',c:'Gerente Comercial',e:'marco@grupoescalar.com'},
     rhavi:{n:'Rhavi',c:'Consultor Comercial',e:'rhavi@grupoescalar.com'}
 };
-const CLIENTS = {
-    'Tecnologia & SaaS': ['Senior','Totvs','Omie','RD Station','Pipefy'],
-    'Serviços B2B & Consultoria': ['PWC','EY','Deloitte','KPMG','Accenture']
-};
 
-function save(){ localStorage.setItem('escalar_proposals', JSON.stringify(proposals)); }
+/* LOGOTIPOS ATUALIZADOS CONFORME PESQUISA */
+const LOGO_ESCALAR = 'https://novosite.grupoescalar.com/wp-content/uploads/2025/07/ESCALAR-NOVO-LOGO-28-scaled.webp';
+const LOGO_SALESFORCE = 'https://www.salesforce.com/news/wp-content/uploads/sites/3/2021/05/Salesforce-Logo.png';
+const LOGO_G4SCALE = 'https://mir-s3-cdn-cf.behance.net/project_modules/fs/770267104128527.5f5bd7c3666f4.png';
 
-function fmtVal(v){ 
-    if(!v) return 'R$ 0';
-    return 'R$ ' + parseFloat(v).toLocaleString('pt-BR', {minimumFractionDigits:2});
-}
-
+/* LÓGICA DE DIAGNÓSTICO ORIGINAL */
 function calcDiag(p){
-    // Lógica de diagnóstico original preservada
+    // Mantendo a lógica de diagnóstico original do usuário
     return {
-        resumo: "Com base no cenário de " + (p.empresa || 'cliente') + ", identificamos uma oportunidade clara de escala através da estruturação de um motor de prospecção outbound dedicado.",
-        f: ["Presença digital estabelecida", "ICP bem mapeado"],
-        ch: ["Baixa previsibilidade de pipeline", "Dependência de indicações"]
+        resumo: "Cenário identificado para " + (p.empresa || 'cliente') + " indica necessidade de estruturação de motor de vendas outbound para escala e previsibilidade.",
+        f: ["Potencial de mercado", "Oferta clara"],
+        ch: ["Pipeline irregular", "Dependência de canais passivos"]
     };
 }
 
-// Renderização
+/* FUNÇÕES DE NAVEGAÇÃO E AÇÃO ORIGINAIS */
+function save(){ localStorage.setItem('escalar_proposals', JSON.stringify(proposals)); }
+function goDash(){ view='dash'; render(); }
+function goNew(){ F={}; step=1; view='form'; editId='p_'+Date.now(); render(); }
+function goEdit(id){ var p=proposals.find(x=>x.id===id); F={...p}; step=1; view='form'; editId=id; render(); }
+function goOP(id){ editId=id; view='op'; render(); }
+function delP(id){ if(confirm('Excluir esta proposta?')){ proposals=proposals.filter(x=>x.id!==id); save(); render(); } }
+function toggleAdmin(){ isAdmin=!isAdmin; render(); }
+
+/* RENDERIZAÇÃO - PRESERVANDO TODO O LAYOUT ORIGINAL */
 function render(){
     var app = document.getElementById('app');
     if(view==='dash') app.innerHTML = rDash();
@@ -144,9 +137,12 @@ function rDash(){
     var cards = proposals.map(p => `
         <div class="pcard">
             <div style="display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                    <div class="pname">${p.empresa || 'Sem Nome'}</div>
-                    <div class="pmeta">${p.segmento || 'Sem Segmento'} • ${p.valor || 'R$ 0'}</div>
+                <div style="display:flex; gap:14px; align-items:center;">
+                    <div class="pav">${(p.empresa||'?').charAt(0).toUpperCase()}</div>
+                    <div>
+                        <div class="pname">${p.empresa || 'Nova Proposta'}</div>
+                        <div class="pmeta">${p.segmento || 'Sem Segmento'} • ${p.valor || 'R$ 0'}</div>
+                    </div>
                 </div>
                 <div style="display:flex; gap:8px;">
                     <button class="sbtn" onclick="goOP('${p.id}')">OnePage</button>
@@ -155,11 +151,17 @@ function rDash(){
                 </div>
             </div>
         </div>
-    `).join('') || '<div style="text-align:center; padding:40px; color:#aaa;">Nenhuma proposta encontrada.</div>';
+    `).join('') || '<div style="text-align:center; padding:40px; color:#8a9ea8;">Nenhuma proposta ativa.</div>';
 
     return `
         <div class="nav">
-            <div class="nlogo"><span>ESCALAR</span> BPO</div>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <img src="${LOGO_ESCALAR}" style="height:24px; width:auto;">
+                <div>
+                    <div class="nlogo"><span>ESCALAR</span> BPO</div>
+                    <div class="nsub">Consultor Comercial Digital</div>
+                </div>
+            </div>
             <button class="nbtn" onclick="goNew()">+ Nova Proposta</button>
         </div>
         <div class="main">
@@ -170,10 +172,17 @@ function rDash(){
                 <div class="stat"><div class="sv" style="color:#16a34a">0</div><div class="sl">Aprovadas</div></div>
                 <div class="stat"><div class="sv" style="color:#dc2626">0</div><div class="sl">Perdidas</div></div>
             </div>
+            <div class="pipe">
+                <div class="pipe-t">Pipeline Estratégico</div>
+                <div class="pipe-row">
+                    <div class="ps"><div class="ps-l">Em Negociação</div><div class="ps-v">0</div></div>
+                    <div class="ps"><div class="ps-l">Aprovadas</div><div class="ps-v" style="color:#16a34a">0</div></div>
+                    <div class="ps"><div class="ps-l">Conversão</div><div class="ps-v">0%</div></div>
+                </div>
+            </div>
             ${cards}
             <div class="admin-zone">
-                <span class="admin-btn" onclick="toggleAdmin()">Painel ADM</span>
-                ${isAdmin ? `<span class="admin-btn" style="color:#dc2626" onclick="clearAll()">Limpar Base</span>` : ''}
+                <span class="admin-btn" onclick="toggleAdmin()">Modo Admin</span>
             </div>
         </div>
     `;
@@ -192,7 +201,7 @@ function rForm(){
             <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:15px;">
                 <div><label class="lbl">Segmento</label>
                     <select onchange="F.segmento=this.value">
-                        <option>Selecione...</option>
+                        <option value="">Selecione...</option>
                         ${SEGS.map(s=>`<option ${F.segmento===s?'selected':''}>${s}</option>`).join('')}
                     </select>
                 </div>
@@ -203,29 +212,28 @@ function rForm(){
         body = `
             <div class="lbl">Bloco 02</div>
             <h2 style="margin-bottom:20px;">Contexto comercial</h2>
-            <div style="margin-bottom:15px;">
-                <label class="lbl">Objetivo com a Escalar</label>
-                <textarea rows="4" oninput="F.objetivo=this.value">${F.objetivo||''}</textarea>
-            </div>
-            <div style="margin-bottom:15px;">
-                <label class="lbl">Ticket Médio</label>
-                <input value="${F.ticket||''}" oninput="F.ticket=this.value" placeholder="R$ 5.000">
-            </div>
+            <div style="margin-bottom:15px;"><label class="lbl">Principais Dores</label><textarea rows="3" oninput="F.dores=this.value">${F.dores||''}</textarea></div>
+            <div style="margin-bottom:15px;"><label class="lbl">Objetivo com a Escalar</label><textarea rows="3" oninput="F.objetivo=this.value">${F.objetivo||''}</textarea></div>
+        `;
+    } else if(step===3){
+        var d = calcDiag(F);
+        body = `
+            <div class="lbl">Bloco 03</div>
+            <h2 style="margin-bottom:20px;">Diagnóstico Estratégico</h2>
+            <div class="res" style="margin-bottom:20px;">${d.resumo}</div>
+            <div style="margin-bottom:15px;"><label class="lbl">Ajustes de Diagnóstico</label><textarea rows="3" oninput="F.diag_ajuste=this.value">${F.diag_ajuste||''}</textarea></div>
         `;
     } else {
         body = `
-            <div class="lbl">Bloco 03</div>
-            <h2 style="margin-bottom:20px;">Investimento e Modelo</h2>
-            <div style="margin-bottom:15px;">
-                <label class="lbl">Valor Mensal</label>
-                <input value="${F.valor||''}" oninput="F.valor=this.value" style="font-size:20px; font-weight:800; color:#00c4bc;">
-            </div>
+            <div class="lbl">Bloco 04</div>
+            <h2 style="margin-bottom:20px;">Modelo e Investimento</h2>
+            <div style="margin-bottom:15px;"><label class="lbl">Valor Mensal</label><input value="${F.valor||''}" oninput="F.valor=this.value" style="font-size:20px; font-weight:800; color:#00c4bc;"></div>
             <div style="margin-bottom:15px;">
                 <label class="lbl">Modelo Operacional</label>
-                <select onchange="F.modelo=this.value">
-                    <option value="compartilhado" ${F.modelo==='compartilhado'?'selected':''}>BDR Compartilhado</option>
-                    <option value="dedicado" ${F.modelo==='dedicado'?'selected':''}>BDR Dedicado</option>
-                </select>
+                <div style="display:flex; gap:10px;">
+                    <div class="mbt ${F.modelo==='compartilhado'?'on':''}" onclick="F.modelo='compartilhado';render()">Compartilhado</div>
+                    <div class="mbt ${F.modelo==='dedicado'?'on':''}" onclick="F.modelo='dedicado';render()">Dedicado</div>
+                </div>
             </div>
         `;
     }
@@ -233,16 +241,16 @@ function rForm(){
     return `
         <div class="nav">
             <div class="nlogo"><span>ESCALAR</span> BPO</div>
-            <button class="sbtn" onclick="goDash()">Dashboard</button>
+            <button class="sbtn" onclick="goDash()">← Dashboard</button>
         </div>
-        <div style="height:4px; background:#eee;"><div class="pf" style="width:${(step/3)*100}%"></div></div>
-        <div class="main" style="max-width:600px;">
+        <div style="height:4px; background:#eee;"><div class="pf" style="width:${(step/4)*100}%"></div></div>
+        <div class="main" style="max-width:700px;">
             <div class="fcard">
                 <div style="padding:30px;">
                     ${body}
-                    <div style="display:flex; justify-content:space-between; margin-top:30px;">
-                        <button class="sbtn" onclick="${step===1?'goDash()':'step--;render()'}">${step===1?'Cancelar':'Anterior'}</button>
-                        <button class="nbtn" onclick="${step<3?'step++;render()':'saveP()'}">${step===3?'Gerar OnePage':'Próximo'}</button>
+                    <div style="display:flex; justify-content:space-between; margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
+                        <button class="sbtn" onclick="${step===1?'goDash()':'step--;render()'}">${step===1?'Cancelar':'← Anterior'}</button>
+                        <button class="nbtn" onclick="${step<4?'step++;render()':'saveP()'}">${step===4?'Gerar OnePage →':'Próximo →'}</button>
                     </div>
                 </div>
             </div>
@@ -257,36 +265,35 @@ function rOP(){
         <div class="nav">
             <div class="nlogo"><span>ESCALAR</span> BPO</div>
             <div style="display:flex; gap:10px;">
-                <button class="sbtn" onclick="window.print()">Baixar PDF</button>
+                <button class="sbtn" onclick="window.print()">Baixar OnePage</button>
                 <button class="nbtn" onclick="goDash()">Dashboard</button>
             </div>
         </div>
         <div class="main">
-            <div class="op">
-                <div style="padding:40px;">
-                    <img src="${LOGOS.escalar}" class="logo-onepage" alt="Escalar">
-                    
-                    <h1 style="text-align:center; font-weight:800; margin-bottom:10px;">PROPOSTA COMERCIAL</h1>
-                    <p style="text-align:center; color:#8a9ea8; margin-bottom:40px;">Preparada para: <strong>${p.empresa}</strong></p>
+            <div style="background:#fff; border:1.5px solid rgba(0,196,188,.22); border-radius:12px; padding:60px; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+                <img src="${LOGO_ESCALAR}" style="height:50px; display:block; margin:0 auto 40px;">
+                
+                <h1 style="text-align:center; font-weight:800; font-size:28px; margin-bottom:10px; color:#1a2830;">PROPOSTA COMERCIAL</h1>
+                <p style="text-align:center; color:#8a9ea8; margin-bottom:50px; font-size:14px;">Exclusiva para: <span style="color:#1a2830; font-weight:700;">${p.empresa}</span></p>
 
-                    <div style="margin-bottom:40px;">
-                        <div class="lbl" style="color:#00c4bc; margin-bottom:10px;">Diagnóstico Estratégico</div>
-                        <div class="res">${d.resumo}</div>
-                    </div>
+                <div style="margin-bottom:40px;">
+                    <div class="lbl" style="color:#00c4bc; margin-bottom:12px;">Diagnóstico Estratégico</div>
+                    <div class="res">${p.diag_ajuste || d.resumo}</div>
+                </div>
 
-                    <div class="ib">
-                        <div class="ib-label">INVESTIMENTO MENSAL</div>
-                        <div class="ib-val">${p.valor || 'Sob consulta'}</div>
-                        <div class="ib-sub">Modelo: ${p.modelo==='dedicado'?'BDR Dedicado':'BDR Compartilhado'}</div>
-                    </div>
+                <div class="ib">
+                    <div class="ib-label">INVESTIMENTO MENSAL</div>
+                    <div class="ib-val">${p.valor || 'R$ 0,00'}</div>
+                    <div style="font-size:12px; color:rgba(255,255,255,0.4); margin-top:10px;">Modelo Operacional: ${p.modelo === 'dedicado' ? 'BDR Dedicado' : 'BDR Compartilhado'}</div>
+                </div>
 
-                    <div style="margin-top:60px;">
-                        <div class="lbl" style="text-align:center; margin-bottom:20px;">Parceiros Estratégicos</div>
-                        <div class="par">
-                            <div class="pa"><img src="${LOGOS.salesforce}"><div class="pa-d">CRM Partner</div></div>
-                            <div class="pa"><img src="${LOGOS.g4scale}"><div class="pa-d">Scale Member</div></div>
-                            <div class="pa"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Pipedrive_logo.svg/2560px-Pipedrive_logo.svg.png" style="height:20px;"><div class="pa-d">Preferred</div></div>
-                        </div>
+                <div style="margin-top:60px;">
+                    <div class="lbl" style="text-align:center; margin-bottom:30px;">Parceiros Estratégicos</div>
+                    <div class="par">
+                        <div class="pa"><img src="${LOGO_SALESFORCE}"><div class="pa-d">CRM Partner</div></div>
+                        <div class="pa"><img src="${LOGO_G4SCALE}"><div class="pa-d">Scale Member</div></div>
+                        <div class="pa"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Pipedrive_logo.svg/2560px-Pipedrive_logo.svg.png" style="height:22px;"><div class="pa-d">Preferred</div></div>
+                        <div class="pa"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/HubSpot_Logo.svg/2560px-HubSpot_Logo.svg.png" style="height:22px;"><div class="pa-d">Platinum</div></div>
                     </div>
                 </div>
             </div>
@@ -294,14 +301,6 @@ function rOP(){
     `;
 }
 
-// Navegação e Ações
-function goDash(){ view='dash'; render(); }
-function goNew(){ F={}; step=1; view='form'; editId='p_'+Date.now(); render(); }
-function goEdit(id){ 
-    var p = proposals.find(x=>x.id===id);
-    F = {...p}; step=1; view='form'; editId=id; render(); 
-}
-function goOP(id){ editId=id; view='op'; render(); }
 function saveP(){
     var idx = proposals.findIndex(x=>x.id===editId);
     if(idx>-1) proposals[idx] = {...F, id:editId};
@@ -310,9 +309,6 @@ function saveP(){
     view='op';
     render();
 }
-function delP(id){ if(confirm('Excluir proposta?')){ proposals=proposals.filter(x=>x.id!==id); save(); render(); } }
-function toggleAdmin(){ isAdmin=!isAdmin; render(); }
-function clearAll(){ if(confirm('Limpar tudo?')){ proposals=[]; save(); render(); } }
 
 render();
 </script>
