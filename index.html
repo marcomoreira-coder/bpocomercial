@@ -578,7 +578,7 @@ function rForm(){
   }else if(step===2){
     const objChips=OBJ_OPTS.map(o=>{
       const on=(F.objetivos||[]).includes(o);
-      return '<span class="obj-chip'+(on?' on':''+'" onclick="tglObj(this,\''+o.replace(/'/g,'\\\'')+'\')">' +o+'</span>';
+      return '<span class="obj-chip'+(on?' on':'')+'" onclick="tglObj(this,\''+o.replace(/'/g,'\\\'')+'\')">' +o+'</span>';
     }).join('');
     body=`<div class="sey">Bloco 02</div><div class="stt">Contexto comercial</div><div class="ssb">Como a empresa cresce e onde quer chegar</div>
     <div class="cin"><label class="lbl">Como cresce hoje?</label><div class="chips">${['Indicação','Outbound','Inbound','Parceiros','Networking','Tráfego Pago','Outro'].map(v=>chip(v,v,'crescimento',true)).join('')}</div></div>
@@ -709,7 +709,7 @@ function renderAdm() {
           <button class="adm-btn del" onclick="admDel(${p.id})">✕</button>
         </div>
       </div>`).join('');
-  } else {
+  } else if (admTab === 'perf') {
     // Relatórios de Performance
     const stats = {};
     Object.keys(VENDEDORES).forEach(v => {
